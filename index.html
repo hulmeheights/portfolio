@@ -1179,7 +1179,7 @@
       <label>Message *</label>
       <textarea placeholder="What's on your mind?"></textarea>
     </div>
-    <button class="submit-btn">Submit</button>
+    <button class="submit-btn" onclick="submitContact(event)">Submit</button>
   </div>
 </section>
 
@@ -1190,7 +1190,7 @@
     <p>Early access to projects, behind-the-scenes builds, and occasional transmissions from the void.</p>
     <div class="signup-row">
       <input type="email" placeholder="your@email.com">
-      <button>Subscribe</button>
+      <button onclick="submitSubscribe(event)">Subscribe</button>
     </div>
   </div>
 </section>
@@ -1650,4 +1650,55 @@
       setTimeout(() => toast.classList.remove('show'), 2500);
     });
   });
+async function submitContact(e) {
+    e.preventDefault();
+    const btn = e.target;
+    const form = btn.closest('.contact-inner');
+    const name = form.querySelector('input[placeholder="Your name"]').value;
+    const email = form.querySelector('input[placeholder="your@email.com"]').value;
+    const message = form.querySelector('textarea').value;
+    if (!name || !email || !message) { showToast('Please fill all fields'); return; }
+    btn.textContent = 'SENDING...';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, type: 'contact' })
+      });
+      if (res.ok) {
+        showToast('Message sent successfully');
+        form.querySelector('input[placeholder="Your name"]').value = '';
+        form.querySelector('input[placeholder="your@email.com"]').value = '';
+        form.querySelector('textarea').value = '';
+      } else { showToast('Failed to send — try again'); }
+    } catch(err) { showToast('Failed to send — try again'); }
+    btn.textContent = 'SUBMIT';
+  }
+
+  async function submitSubscribe(e) {
+    e.preventDefault();
+    const btn = e.target;
+    const input = btn.parentElement.querySelector('input');
+    const email = input.value;
+    if (!email) { showToast('Enter your email'); return; }
+    btn.textContent = 'SENDING...';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'subscribe' })
+      });
+      if (res.ok) { showToast('Subscribed — welcome aboard'); input.value = ''; }
+      else { showToast('Failed — try again'); }
+    } catch(err) { showToast('Failed — try again'); }
+    btn.textContent = 'SUBSCRIBE';
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
 </script>
