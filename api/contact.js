@@ -48,7 +48,7 @@ export default async function handler(req, res) {
         unsubscribed: false,
       }),
     });
-
+await new Promise(r => setTimeout(r, 1500));
     // Also notify you
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
