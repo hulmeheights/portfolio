@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haydon Hulme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f0efe9;
+    --fg-dim: #9a9a92;
+    --fg-muted: #5a5a55;
+    --accent: #e8600a;
+    --accent-light: #ff7a1a;
+    --border: #1e1e1e;
+    --card-bg: #131313;
+    --card-border: #1e1e1e;
+    --font-display: 'Bebas Neue', 'Impact', sans-serif;
+    --font-body: 'Instrument Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 28px 40px;
+    position: relative;
+  }
+
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 14vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .hero-name .first { color: var(--fg); }
+  .hero-name .last { color: var(--accent); }
+
+  .hero-clock { margin-top: 12px; }
+
+  .hero-time {
+    font-family: var(--font-mono);
+    font-size: clamp(15px, 2.5vw, 22px);
+    letter-spacing: 0.08em;
+    color: var(--fg);
+    font-weight: 400;
+  }
+
+  .hero-tz {
+    font-family: var(--font-mono);
+    font-size: clamp(11px, 1.5vw, 14px);
+    letter-spacing: 0.06em;
+    color: var(--fg-muted);
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* Hamburger */
+  .menu-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    padding: 4px 0;
+    margin-top: 8px;
+    background: none;
+    border: none;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--fg);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+  /* Hero tagline */
+  .hero-bottom { max-width: 600px; }
+
+  .hero-tagline {
+    font-family: var(--font-body);
+    font-size: clamp(16px, 2.8vw, 26px);
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .hero-tagline span {
+    font-weight: 400;
+    color: var(--fg-dim);
+  }
+
+  /* ===== SIDE QUESTS ===== */
+  .sidequests {
+    padding: 28px 0 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .sidequests-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-left: 28px;
+  }
+
+  .apps-scroll-wrapper {
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  .apps-track {
+    display: flex;
+    animation: apps-scroll 20s linear infinite;
+    gap: 24px;
+    align-items: center;
+    width: max-content;
+  }
+
+  .app-chip {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .app-chip:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px rgba(232, 96, 10, 0.08);
+  }
+
+  .app-chip-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .app-chip-icon svg { width: 16px; height: 16px; }
+
+  .app-chip span {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @keyframes apps-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== PROJECTS ===== */
+  .projects {
+    padding: 80px 28px 60px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 60px;
+  }
+
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 8vw, 80px);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--fg);
+  }
+
+  .section-header .arrow {
+    color: var(--accent);
+    font-size: 28px;
+    animation: bounce-down 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  .project-card {
+    margin-bottom: 80px;
+    padding: 28px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .project-card:hover {
+    border-color: #ddd;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .project-card:hover::after { opacity: 0.7; }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 5vw, 48px);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--fg);
+  }
+
+  .project-number {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--fg-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .project-subtitle {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .project-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover .project-img { transform: scale(1.01); }
+
+  .project-img:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;
+  }
+
+  .project-img-placeholder {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--fg-muted);
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+  }
+
+  .project-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 20px;
+    transition: gap 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .project-cta:hover { color: var(--accent-light); }
+
+  .project-card:hover .project-cta { gap: 12px; }
+
+  /* ===== SERVICES MARQUEE ===== */
+  .services {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+    overflow: hidden;
+  }
+
+  .services-track {
+    display: flex;
+    animation: services-scroll 8s linear infinite;
+    white-space: nowrap;
+  }
+
+  .services-item {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 3vw, 36px);
+    letter-spacing: 0.06em;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-shrink: 0;
+    color: var(--fg);
+  }
+
+  .services-item .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @keyframes services-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== REFERENCES ===== */
+  .references { padding: 80px 28px; position: relative; overflow: hidden; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  /* Daily Transmission */
+  .transmission-card {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 36px;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    background: var(--card-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .transmission-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    opacity: 0.5;
+  }
+
+  .transmission-day {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .transmission-quote {
+    font-family: var(--font-body);
+    font-size: clamp(18px, 3vw, 24px);
+    line-height: 1.6;
+    color: var(--fg);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .transmission-author {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--fg-dim);
+  }
+
+  .transmission-refresh {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--fg-muted);
+    margin-top: 24px;
+    text-transform: uppercase;
+  }
+
+  /* Floating particles */
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-particle linear infinite;
+  }
+
+  @keyframes float-particle {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { opacity: 0; transform: translateY(-20px) scale(1); }
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    padding: 80px 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .contact h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+    text-align: center;
+    color: var(--fg);
+  }
+
+  .contact p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--fg-dim);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .form-group { margin-bottom: 16px; }
+
+  .form-group label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 13px 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .submit-btn:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+  }
+
+  /* ===== EMAIL SIGNUP ===== */
+  .email-signup {
+    padding: 72px 28px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .email-signup-inner {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .email-signup h3 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 4vw, 40px);
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    color: var(--fg);
+  }
+
+  .email-signup p {
+    font-size: 14px;
+    color: var(--fg-dim);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .signup-row { display: flex; gap: 10px; }
+
+  .signup-row input {
+    flex: 1;
+    padding: 13px 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .signup-row input:focus { border-color: var(--accent); }
+
+  .signup-row button {
+    padding: 13px 24px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .signup-row button:hover {
+    transform: translateY(-2px);
+    background: var(--accent-light);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 52px 28px 40px;
+  }
+
+  .footer-cta {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .footer-cta .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .footer-cta h3 {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4vw, 44px);
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+    color: var(--fg);
+  }
+
+  .footer-cta a {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    transition: opacity 0.3s;
+  }
+
+  .footer-cta a:hover { opacity: 0.7; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-links { display: flex; gap: 24px; }
+
+  .footer-links a,
+  .footer-socials a {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--fg); }
+  .footer-socials a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--fg-muted);
+  }
+
+  .footer-socials { display: flex; gap: 20px; }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Project preview content */
+  .project-preview {
+    position: relative;
+  }
+
+  .preview-content {
+    padding: 16px;
+    width: 100%;
+  }
+
+  /* Currently Building ticker */
+  .status-bar {
+    padding: 20px 28px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .status-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .status-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .status-text {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-dim);
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== NAV OVERLAY ===== */
+  .nav-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.97);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-overlay a {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 8vw, 60px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg);
+    transition: color 0.3s;
+  }
+
+  .nav-overlay a:hover { color: var(--accent); }
+
+  .nav-overlay .nav-socials { display: flex; gap: 24px; margin-top: 20px; }
+
+  .nav-overlay .nav-socials a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .hero { padding: 28px 20px 36px; }
+    .sidequests { padding: 24px 20px 36px; }
+    .projects { padding: 60px 20px 40px; }
+    .project-card { padding: 20px; }
+    .references { padding: 60px 20px; }
+    .contact { padding: 60px 20px; }
+    .email-signup { padding: 56px 20px; }
+    .footer { padding: 40px 20px 32px; }
+    .signup-row { flex-direction: column; }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 32px;
+    }
+    .project-meta { margin-bottom: 0; }
+    .project-info-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  /* Toast notification */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--card-bg);
+    border: 1px solid var(--accent);
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 14px 28px;
+    border-radius: 10px;
+    z-index: 10000;
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV OVERLAY -->
+<!-- Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Case study coming soon</div>
+
+<div class="nav-overlay" id="navOverlay">
+  <a href="#" onclick="closeNav()">HOME</a>
+  <a href="#projects" onclick="closeNav()">PROJECTS</a>
+  <a href="#contact" onclick="closeNav()">CONTACT</a>
+  <div class="nav-socials">
+    <a href="https://x.com/hulmeheights" target="_blank">X (TWITTER)</a>
+    <a href="https://www.instagram.com/hulmeheights/" target="_blank">INSTAGRAM</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-identity">
+      <div class="hero-name"><span class="first">HAYDON</span><br><span class="last">HULME</span></div>
+      <div class="hero-clock">
+        <div class="hero-time" id="heroTime">--:--:-- --</div>
+        <span class="hero-tz" id="heroTz">(GMT)</span>
+      </div>
+    </div>
+    <button class="menu-btn" id="menuBtn" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="hero-bottom fade-up">
+    <div class="hero-tagline"><strong>Build in silence. Ship with intention.</strong> <span>Consciousness meets code — crafting systems that evolve.</span></div>
+  </div>
+</section>
+
+<!-- SIDE QUESTS -->
+<section class="sidequests">
+  <div class="sidequests-label">Side Quests:</div>
+  <div class="apps-scroll-wrapper">
+    <div class="apps-track" id="appsTrack"></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-header fade-up">
+    <h2>PROJECTS</h2>
+    <span class="arrow">↓</span>
+  </div>
+
+  <!-- BLACK BOX OS -->
+  <div class="project-card fade-up">
+    <div class="project-info-col">
+      <div class="project-meta">
+        <div>
+          <div class="project-title">BLACK BOX OS</div>
+          <div class="project-subtitle">Product Design + Dev / Personal</div>
+        </div>
+        <div class="project-number">01</div>
+      </div>
+      <a href="#" class="project-cta" onclick="event.stopPropagation()">View Project →</a>
+    </div>
+    <div class="project-images">
+      <div class="project-img project-preview" style="background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 100%);">
+        <div class="preview-content">
+          <div style="font-family: var(--font-display); font-size: 28px; letter-spacing: 0.05em; color: #f0efe9;">BLACK BOX OS</div>
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; color: #555; margin-top: 6px;">GAMIFIED PERSONAL DEVELOPMENT SYSTEM</div>
+          <div style="width: 60px; height: 2px; background: var(--accent); margin-top: 12px;"></div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: linear-gradient(135deg, #0f0f1a 0%, #16162a 100%);">
+        <div class="preview-content">
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #e8600a;"></div>
+            <div style="font-family: var(--font-mono); font-size: 10px; color: #666; letter-spacing: 0.1em;">ORACLE PROTOCOL</div>
+          </div>
+          <div style="margin-top: 10px; display: flex; gap: 4px;">
+            <div style="height: 3px; flex: 3; background: var(--accent); border-radius: 2px;"></div>
+            <div style="height: 3px; flex: 1; background: #222; border-radius: 2px;"></div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">PHASE 3 OF 4 COMPLETE</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #0a0a12;">
+        <div class="preview-content">
+          <div style="font-family: var(--font-mono); font-size: 9px; color: #e8600a; letter-spacing: 0.15em;">ASSESSMENT</div>
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 4px;">
+            <div style="height: 2px; width: 80%; background: #1e1e2e; border-radius: 1px;"></div>
+            <div style="height: 2px; width: 65%; background: #1e1e2e; border-radius: 1px;"></div>
+            <div style="height: 2px; width: 90%; background: #1e1e2e; border-radius: 1px;"></div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">CHARACTER PROGRESSION • XP SYSTEM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTEL TRACKER -->
+  <div class="project-card fade-up">
+    <div class="project-info-col">
+      <div class="project-meta">
+        <div>
+          <div class="project-title">INTEL TRACKER</div>
+          <div class="project-subtitle">B2B SaaS + Dashboard / Work</div>
+        </div>
+        <div class="project-number">02</div>
+      </div>
+      <a href="#" class="project-cta" onclick="event.stopPropagation()">View Project →</a>
+    </div>
+    <div class="project-images">
+      <div class="project-img project-preview" style="background: linear-gradient(135deg, #091018 0%, #0d1a2a 100%);">
+        <div class="preview-content">
+          <div style="font-family: var(--font-display); font-size: 24px; letter-spacing: 0.05em; color: #f0efe9;">COMPETITIVE INTEL</div>
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; color: #555; margin-top: 4px;">REAL-TIME MONITORING DASHBOARD</div>
+          <div style="margin-top: 12px; display: flex; gap: 6px;">
+            <div style="padding: 3px 8px; background: rgba(46,204,113,0.15); border: 1px solid rgba(46,204,113,0.3); border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #2ecc71;">LIVE</div>
+            <div style="padding: 3px 8px; background: rgba(232,96,10,0.15); border: 1px solid rgba(232,96,10,0.3); border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #e8600a;">24 SIGNALS</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #0a1018;">
+        <div class="preview-content">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 40px; gap: 3px; padding: 0 8px;">
+            <div style="width: 12%; height: 45%; background: rgba(232,96,10,0.6); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 65%; background: rgba(232,96,10,0.7); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 35%; background: rgba(232,96,10,0.5); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 80%; background: rgba(232,96,10,0.8); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 55%; background: rgba(232,96,10,0.6); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 90%; background: var(--accent); border-radius: 2px 2px 0 0;"></div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">COMPETITOR ANALYSIS</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #091018;">
+        <div class="preview-content">
+          <div style="font-family: var(--font-mono); font-size: 9px; color: #2ecc71; letter-spacing: 0.1em;">▲ ALERTS</div>
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <div style="width: 5px; height: 5px; border-radius: 50%; background: #2ecc71;"></div>
+              <div style="height: 2px; flex: 1; background: #162030; border-radius: 1px;"></div>
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <div style="width: 5px; height: 5px; border-radius: 50%; background: #e8600a;"></div>
+              <div style="height: 2px; flex: 1; background: #162030; border-radius: 1px;"></div>
+            </div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">PRICE • FEATURE • STRATEGY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OMNAI -->
+  <div class="project-card fade-up">
+    <div class="project-info-col">
+      <div class="project-meta">
+        <div>
+          <div class="project-title">OMNAI</div>
+          <div class="project-subtitle">AI Aggregator + UI / Personal</div>
+        </div>
+        <div class="project-number">03</div>
+      </div>
+      <a href="#" class="project-cta" onclick="event.stopPropagation()">View Project →</a>
+    </div>
+    <div class="project-images">
+      <div class="project-img project-preview" style="background: linear-gradient(135deg, #050a05 0%, #0a150a 100%);">
+        <div class="preview-content">
+          <div style="font-family: var(--font-display); font-size: 28px; letter-spacing: 0.08em; color: #00ff41;">OMNAI</div>
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; color: #1a4a1a; margin-top: 4px;">AI MODEL AGGREGATION LAYER</div>
+          <div style="margin-top: 10px; font-family: var(--font-mono); font-size: 8px; color: #0a3a0a;">████████░░ 82%</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #060d06;">
+        <div class="preview-content">
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">GPT-4</div>
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">CLAUDE</div>
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">GEMINI</div>
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">LLAMA</div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #0a3a0a; margin-top: 8px;">MODEL SELECTION ENGINE</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #050a05;">
+        <div class="preview-content">
+          <div style="font-family: var(--font-mono); font-size: 9px; color: #00ff41; letter-spacing: 0.1em;">[ MATRIX UI ]</div>
+          <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 7px; color: #0a3a0a; line-height: 1.6;">
+            > route_query<br>
+            > select_model<br>
+            > return_response
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BHPCBD -->
+  <div class="project-card fade-up">
+    <div class="project-info-col">
+      <div class="project-meta">
+        <div>
+          <div class="project-title">BHPCBD</div>
+          <div class="project-subtitle">Branding + E-Commerce / Personal</div>
+        </div>
+        <div class="project-number">04</div>
+      </div>
+      <a href="#" class="project-cta" onclick="event.stopPropagation()">View Project →</a>
+    </div>
+    <div class="project-images">
+      <div class="project-img project-preview" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1510 100%);">
+        <div class="preview-content">
+          <div style="font-family: var(--font-display); font-size: 24px; letter-spacing: 0.06em; color: #f0efe9;">BHPCBD</div>
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; color: #555; margin-top: 4px;">LAB-TESTED CBD PRODUCTS • UK</div>
+          <div style="margin-top: 10px; font-family: var(--font-mono); font-size: 8px; color: #8B7355; letter-spacing: 0.1em;">DREAM BEYOND LIMITS</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #100e0a;">
+        <div class="preview-content">
+          <div style="display: flex; gap: 8px;">
+            <div style="width: 28px; height: 40px; background: linear-gradient(to bottom, #2a2318, #1a1510); border-radius: 4px; border: 1px solid #2a2318;"></div>
+            <div style="width: 28px; height: 40px; background: linear-gradient(to bottom, #2a2318, #1a1510); border-radius: 4px; border: 1px solid #2a2318;"></div>
+            <div style="width: 28px; height: 40px; background: linear-gradient(to bottom, #2a2318, #1a1510); border-radius: 4px; border: 1px solid #2a2318;"></div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">OILS • CAPSULES • BALMS</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #0d0b08;">
+        <div class="preview-content">
+          <div style="display: flex; gap: 12px;">
+            <div style="text-align: center;">
+              <div style="font-family: var(--font-mono); font-size: 7px; color: #555;">ORGANIC</div>
+              <div style="font-family: var(--font-mono); font-size: 9px; color: #8B7355; margin-top: 2px;">✓</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: var(--font-mono); font-size: 7px; color: #555;">GMO-FREE</div>
+              <div style="font-family: var(--font-mono); font-size: 9px; color: #8B7355; margin-top: 2px;">✓</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: var(--font-mono); font-size: 7px; color: #555;">LAB-TESTED</div>
+              <div style="font-family: var(--font-mono); font-size: 9px; color: #8B7355; margin-top: 2px;">✓</div>
+            </div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">FULL SPECTRUM • UK SUPPLIER</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES MARQUEE -->
+<section class="services">
+  <div class="services-track">
+    <div class="services-item">PRODUCT DESIGN <span class="dot"></span></div>
+    <div class="services-item">WEB DEVELOPMENT <span class="dot"></span></div>
+    <div class="services-item">AI SYSTEMS <span class="dot"></span></div>
+    <div class="services-item">BRAND STRATEGY <span class="dot"></span></div>
+    <div class="services-item">PRODUCT DESIGN <span class="dot"></span></div>
+    <div class="services-item">WEB DEVELOPMENT <span class="dot"></span></div>
+    <div class="services-item">AI SYSTEMS <span class="dot"></span></div>
+    <div class="services-item">BRAND STRATEGY <span class="dot"></span></div>
+    <div class="services-item">PRODUCT DESIGN <span class="dot"></span></div>
+    <div class="services-item">WEB DEVELOPMENT <span class="dot"></span></div>
+    <div class="services-item">AI SYSTEMS <span class="dot"></span></div>
+    <div class="services-item">BRAND STRATEGY <span class="dot"></span></div>
+  </div>
+</section>
+
+<!-- CURRENTLY BUILDING -->
+<div class="status-bar fade-up">
+  <div class="status-bar-inner">
+    <div class="status-dot"></div>
+    <span class="status-label">Currently building:</span>
+    <span class="status-text">Black Box OS v7 — Oracle Protocol expansion & character visualisation system</span>
+  </div>
+</div>
+
+<!-- DAILY TRANSMISSION -->
+<section class="references" id="transmission">
+  <div class="section-label">Daily Transmission</div>
+  <div class="transmission-card fade-up">
+    <div class="transmission-day" id="transmissionDay"></div>
+    <div class="transmission-quote" id="transmissionQuote"></div>
+    <div class="transmission-author" id="transmissionAuthor"></div>
+    <div class="transmission-refresh">refreshes every 24 hours</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">CONTACT</div>
+    <h2>LET'S BUILD SOMETHING</h2>
+    <p>Got an idea, a project, or just want to connect? Drop a message and let's see what we can create together.</p>
+    <div class="form-group">
+      <label>Name *</label>
+      <input type="text" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label>Email *</label>
+      <input type="email" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label>Message *</label>
+      <textarea placeholder="What's on your mind?"></textarea>
+    </div>
+    <button class="submit-btn">Submit</button>
+  </div>
+</section>
+
+<!-- EMAIL SIGNUP -->
+<section class="email-signup">
+  <div class="email-signup-inner">
+    <h3>STAY IN THE LOOP</h3>
+    <p>Early access to projects, behind-the-scenes builds, and occasional transmissions from the void.</p>
+    <div class="signup-row">
+      <input type="email" placeholder="your@email.com">
+      <button>Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-cta">
+    <div class="label">LIKE WHAT YOU SEE?</div>
+    <h3>LET'S CREATE SOMETHING TOGETHER</h3>
+    <a href="mailto:hulmeheights@gmail.com">hulmeheights@gmail.com</a>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-links">
+      <a href="#">HOME</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <div class="footer-copy">©2026 HAYDON HULME — ALL RIGHTS RESERVED</div>
+    <div class="footer-socials">
+      <a href="https://x.com/hulmeheights" target="_blank">X (TWITTER)</a>
+      <a href="https://www.instagram.com/hulmeheights/" target="_blank">INSTAGRAM</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== BUILD SIDE QUESTS (seamless infinite scroll) =====
+  const apps = [
+    { name: 'Vercel', svg: '<svg viewBox="0 0 76 65" fill="#f0efe9"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/></svg>' },
+    { name: 'Supabase', svg: '<svg viewBox="0 0 109 113" fill="#3ecf8e"><path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill-opacity="0.6"/><path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.04075L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z"/></svg>' },
+    { name: 'GitHub', svg: '<svg viewBox="0 0 98 96" fill="#f0efe9"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>' },
+    { name: 'TradingView', svg: '<svg viewBox="0 0 36 28" fill="none"><path d="M14 22H7l8-18h7L14 22z" fill="#2962FF"/><path d="M28 22h-7l-4-8h7l4 8z" fill="#2962FF"/><path d="M18 10h-7l3-6h7l-3 6z" fill="#2962FF" fill-opacity="0.6"/></svg>' },
+    { name: 'Wix', svg: '<svg viewBox="0 0 24 24" fill="#0C6EFC"><path d="M21.7 3.6H2.3A2.3 2.3 0 0 0 0 5.9v12.2a2.3 2.3 0 0 0 2.3 2.3h19.4a2.3 2.3 0 0 0 2.3-2.3V5.9a2.3 2.3 0 0 0-2.3-2.3zM12 16.5l-6-4.5 6-4.5v9z"/></svg>' },
+    { name: 'Square', svg: '<svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="#f0efe9" stroke-width="1.5" fill="none"/><path d="M12 7l-1.2 3.6H7.2l2.9 2.1-1.1 3.4L12 14l3 2.1-1.1-3.4 2.9-2.1h-3.6L12 7z" fill="#f0efe9"/></svg>' },
+    { name: 'Bitcoin', svg: '<svg viewBox="0 0 24 24" fill="#f7931a"><path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.243 14.9.358c6.43 1.605 10.342 8.115 8.738 14.546zm-6.35-4.613c.24-1.59-.974-2.45-2.64-3.03l.54-2.153-1.315-.33-.526 2.107c-.345-.087-.7-.168-1.053-.25l.53-2.12-1.313-.33-.54 2.153c-.286-.065-.567-.13-.84-.2l.002-.008-1.813-.453-.35 1.407s.975.224.955.238c.535.136.63.492.614.776l-.614 2.466c.037.01.085.024.138.046l-.14-.036-.86 3.45c-.065.162-.23.406-.6.313.013.02-.956-.239-.956-.239l-.652 1.514 1.71.427c.318.08.63.164.937.243l-.545 2.19 1.313.328.54-2.164c.36.098.708.188 1.05.273l-.538 2.155 1.315.33.545-2.184c2.24.424 3.926.253 4.636-1.774.57-1.637-.03-2.58-1.217-3.196.865-.2 1.517-.77 1.69-1.95z"/></svg>' },
+    { name: 'ClawdBot', svg: '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e8600a" stroke-width="1.5"/><circle cx="9.5" cy="9.5" r="1.5" fill="#e8600a"/><circle cx="14.5" cy="9.5" r="1.5" fill="#e8600a"/><path d="M8.5 14.5s1.5 2 3.5 2 3.5-2 3.5-2" stroke="#e8600a" stroke-width="1.5" stroke-linecap="round"/></svg>' },
+  ];
+
+  (function buildApps() {
+    const track = document.getElementById('appsTrack');
+    let html = '';
+    for (let i = 0; i < 4; i++) {
+      apps.forEach(a => {
+        html += '<div class="app-chip"><div class="app-chip-icon">' + a.svg + '</div><span>' + a.name + '</span></div>';
+      });
+    }
+    track.innerHTML = html;
+  })();
+
+  // ===== CLOCK =====
+  function updateClock() {
+    const now = new Date();
+    const ukTime = now.toLocaleTimeString('en-GB', {
+      timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    }).toUpperCase();
+    const ukStr = now.toLocaleString('en-US', { timeZone: 'Europe/London', timeZoneName: 'short' });
+    const tzLabel = ukStr.includes('BST') ? 'BST' : 'GMT';
+    document.getElementById('heroTime').textContent = ukTime;
+    document.getElementById('heroTz').textContent = '(' + tzLabel + ')';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // ===== NAV =====
+  function toggleNav() {
+    document.getElementById('navOverlay').classList.toggle('open');
+    document.getElementById('menuBtn').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('navOverlay').classList.contains('open') ? 'hidden' : '';
+  }
+  function closeNav() {
+    document.getElementById('navOverlay').classList.remove('open');
+    document.getElementById('menuBtn').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // ===== SCROLL ANIMATIONS =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  // ===== DAILY TRANSMISSION — 365 QUOTES =====
+  const quotes = [
+    {q:"The only way to do great work is to love what you do.",a:"Steve Jobs"},
+    {q:"Reality is merely an illusion, albeit a very persistent one.",a:"Albert Einstein"},
+    {q:"The mind is everything. What you think you become.",a:"Buddha"},
+    {q:"In the middle of difficulty lies opportunity.",a:"Albert Einstein"},
+    {q:"What you seek is seeking you.",a:"Rumi"},
+    {q:"The universe is not outside of you. Look inside yourself; everything that you want, you already are.",a:"Rumi"},
+    {q:"Be the change you wish to see in the world.",a:"Gandhi"},
+    {q:"Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.",a:"Rumi"},
+    {q:"Knowing yourself is the beginning of all wisdom.",a:"Aristotle"},
+    {q:"The wound is the place where the Light enters you.",a:"Rumi"},
+    {q:"Do not go where the path may lead, go instead where there is no path and leave a trail.",a:"Ralph Waldo Emerson"},
+    {q:"Your task is not to seek for love, but merely to seek and find all the barriers within yourself that you have built against it.",a:"Rumi"},
+    {q:"The only true wisdom is in knowing you know nothing.",a:"Socrates"},
+    {q:"Everything you can imagine is real.",a:"Pablo Picasso"},
+    {q:"He who has a why to live can bear almost any how.",a:"Friedrich Nietzsche"},
+    {q:"Silence is the language of god, all else is poor translation.",a:"Rumi"},
+    {q:"The obstacle is the way.",a:"Marcus Aurelius"},
+    {q:"We suffer more in imagination than in reality.",a:"Seneca"},
+    {q:"The best time to plant a tree was 20 years ago. The second best time is now.",a:"Chinese Proverb"},
+    {q:"I am not what happened to me, I am what I choose to become.",a:"Carl Jung"},
+    {q:"The cosmos is within us. We are made of star-stuff.",a:"Carl Sagan"},
+    {q:"Waste no more time arguing about what a good man should be. Be one.",a:"Marcus Aurelius"},
+    {q:"Out beyond ideas of wrongdoing and rightdoing there is a field. I'll meet you there.",a:"Rumi"},
+    {q:"Don't let the noise of others' opinions drown out your own inner voice.",a:"Steve Jobs"},
+    {q:"The unexamined life is not worth living.",a:"Socrates"},
+    {q:"You must be the change you wish to see in the world.",a:"Mahatma Gandhi"},
+    {q:"Wherever you go, go with all your heart.",a:"Confucius"},
+    {q:"It is not the strongest of the species that survives, nor the most intelligent. It is the one most adaptable to change.",a:"Charles Darwin"},
+    {q:"When I let go of what I am, I become what I might be.",a:"Lao Tzu"},
+    {q:"The meaning of life is to find your gift. The purpose of life is to give it away.",a:"Pablo Picasso"},
+    {q:"Energy and persistence conquer all things.",a:"Benjamin Franklin"},
+    {q:"The soul always knows what to do to heal itself. The challenge is to silence the mind.",a:"Caroline Myss"},
+    {q:"You are not a drop in the ocean. You are the entire ocean in a drop.",a:"Rumi"},
+    {q:"The privilege of a lifetime is to become who you truly are.",a:"Carl Jung"},
+    {q:"Respond; don't react. Listen; don't talk. Think; don't assume.",a:"Raji Lukkoor"},
+    {q:"The only impossible journey is the one you never begin.",a:"Tony Robbins"},
+    {q:"What lies behind us and what lies before us are tiny matters compared to what lies within us.",a:"Ralph Waldo Emerson"},
+    {q:"The desire to reach for the stars is ambitious. The desire to reach hearts is wise.",a:"Maya Angelou"},
+    {q:"The mind, once stretched by a new idea, never returns to its original dimensions.",a:"Oliver Wendell Holmes"},
+    {q:"If the doors of perception were cleansed everything would appear as it is: infinite.",a:"William Blake"},
+    {q:"No man is free who is not master of himself.",a:"Epictetus"},
+    {q:"The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate.",a:"Ralph Waldo Emerson"},
+    {q:"Absorb what is useful, discard what is useless and add what is specifically your own.",a:"Bruce Lee"},
+    {q:"We are what we repeatedly do. Excellence, then, is not an act, but a habit.",a:"Aristotle"},
+    {q:"The quieter you become, the more you can hear.",a:"Ram Dass"},
+    {q:"Man cannot discover new oceans unless he has the courage to lose sight of the shore.",a:"André Gide"},
+    {q:"In the depth of winter, I finally learned that within me there lay an invincible summer.",a:"Albert Camus"},
+    {q:"The secret of getting ahead is getting started.",a:"Mark Twain"},
+    {q:"Life shrinks or expands in proportion to one's courage.",a:"Anaïs Nin"},
+    {q:"If you are irritated by every rub, how will your mirror be polished?",a:"Rumi"},
+    {q:"Consciousness is the greatest movie-making machine ever invented.",a:"Deepak Chopra"},
+    {q:"The measure of intelligence is the ability to change.",a:"Albert Einstein"},
+    {q:"It is during our darkest moments that we must focus to see the light.",a:"Aristotle"},
+    {q:"The only person you are destined to become is the person you decide to be.",a:"Ralph Waldo Emerson"},
+    {q:"An unexamined life is not worth living.",a:"Socrates"},
+    {q:"Fortune favours the bold.",a:"Virgil"},
+    {q:"To think is easy. To act is hard. But the hardest thing in the world is to act in accordance with your thinking.",a:"Goethe"},
+    {q:"The present moment is filled with joy and happiness. If you are attentive, you will see it.",a:"Thich Nhat Hanh"},
+    {q:"We cannot solve our problems with the same thinking we used when we created them.",a:"Albert Einstein"},
+    {q:"Mastering others is strength. Mastering yourself is true power.",a:"Lao Tzu"},
+    {q:"The best revenge is massive success.",a:"Frank Sinatra"},
+    {q:"Your vision will become clear only when you can look into your own heart.",a:"Carl Jung"},
+    {q:"Nothing ever goes away until it teaches us what we need to know.",a:"Pema Chödrön"},
+    {q:"The two most important days in your life are the day you are born and the day you find out why.",a:"Mark Twain"},
+    {q:"What we achieve inwardly will change outer reality.",a:"Plutarch"},
+    {q:"Not all those who wander are lost.",a:"J.R.R. Tolkien"},
+    {q:"The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.",a:"Albert Einstein"},
+    {q:"Stop acting so small. You are the universe in ecstatic motion.",a:"Rumi"},
+    {q:"Hardships often prepare ordinary people for an extraordinary destiny.",a:"C.S. Lewis"},
+    {q:"Tension is who you think you should be. Relaxation is who you are.",a:"Chinese Proverb"},
+    {q:"A ship in harbor is safe, but that is not what ships are built for.",a:"John A. Shedd"},
+    {q:"Let yourself be silently drawn by the strange pull of what you really love.",a:"Rumi"},
+    {q:"He who fears he shall suffer, already suffers what he fears.",a:"Montaigne"},
+    {q:"The only limit to our realization of tomorrow will be our doubts of today.",a:"Franklin D. Roosevelt"},
+    {q:"What you think, you become. What you feel, you attract. What you imagine, you create.",a:"Buddha"},
+    {q:"Act as if what you do makes a difference. It does.",a:"William James"},
+    {q:"The successful warrior is the average man, with laser-like focus.",a:"Bruce Lee"},
+    {q:"You cannot swim for new horizons until you have courage to lose sight of the shore.",a:"William Faulkner"},
+    {q:"Don't judge each day by the harvest you reap but by the seeds that you plant.",a:"Robert Louis Stevenson"},
+    {q:"The impediment to action advances action. What stands in the way becomes the way.",a:"Marcus Aurelius"},
+    {q:"Before you speak, let your words pass through three gates: Is it true? Is it necessary? Is it kind?",a:"Rumi"},
+    {q:"We are shaped by our thoughts; we become what we think.",a:"Buddha"},
+    {q:"Turn your wounds into wisdom.",a:"Oprah Winfrey"},
+    {q:"The truth is, everyone is going to hurt you. You just got to find the ones worth suffering for.",a:"Bob Marley"},
+    {q:"Simplicity is the ultimate sophistication.",a:"Leonardo da Vinci"},
+    {q:"You have power over your mind — not outside events. Realize this, and you will find strength.",a:"Marcus Aurelius"},
+    {q:"Everything has beauty, but not everyone sees it.",a:"Confucius"},
+    {q:"Be where you are, not where you think you should be.",a:"Unknown"},
+    {q:"The way out is through.",a:"Robert Frost"},
+    {q:"Don't explain your philosophy. Embody it.",a:"Epictetus"},
+    {q:"It always seems impossible until it's done.",a:"Nelson Mandela"},
+    {q:"Who looks outside, dreams; who looks inside, awakes.",a:"Carl Jung"},
+    {q:"The cave you fear to enter holds the treasure you seek.",a:"Joseph Campbell"},
+    {q:"Knowledge speaks, but wisdom listens.",a:"Jimi Hendrix"},
+    {q:"The greatest glory in living lies not in never falling, but in rising every time we fall.",a:"Nelson Mandela"},
+    {q:"Do what you can, with what you have, where you are.",a:"Theodore Roosevelt"},
+    {q:"Life is what happens when you're busy making other plans.",a:"John Lennon"},
+    {q:"Raise your words, not voice. It is rain that grows flowers, not thunder.",a:"Rumi"},
+    {q:"In a gentle way, you can shake the world.",a:"Mahatma Gandhi"},
+    {q:"The universe is under no obligation to make sense to you.",a:"Neil deGrasse Tyson"},
+    {q:"There is nothing either good or bad, but thinking makes it so.",a:"Shakespeare"},
+    {q:"Stay hungry, stay foolish.",a:"Steve Jobs"},
+    {q:"We do not see things as they are, we see them as we are.",a:"Anaïs Nin"},
+    {q:"With the new day comes new strength and new thoughts.",a:"Eleanor Roosevelt"},
+    {q:"Imagination is more important than knowledge.",a:"Albert Einstein"},
+    {q:"The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.",a:"Albert Camus"},
+    {q:"I think therefore I am.",a:"René Descartes"},
+    {q:"The noblest pleasure is the joy of understanding.",a:"Leonardo da Vinci"},
+    {q:"As above, so below. As within, so without.",a:"Hermes Trismegistus"},
+    {q:"Argue for your limitations, and sure enough they're yours.",a:"Richard Bach"},
+    {q:"Believe you can and you're halfway there.",a:"Theodore Roosevelt"},
+    {q:"The art of being wise is the art of knowing what to overlook.",a:"William James"},
+    {q:"No one can make you feel inferior without your consent.",a:"Eleanor Roosevelt"},
+    {q:"The greatest weapon against stress is our ability to choose one thought over another.",a:"William James"},
+    {q:"If you want to find the secrets of the universe, think in terms of energy, frequency and vibration.",a:"Nikola Tesla"},
+    {q:"Where there is ruin, there is hope for a treasure.",a:"Rumi"},
+    {q:"Be patient. Everything comes to you in the right moment.",a:"Buddha"},
+    {q:"The only thing we have to fear is fear itself.",a:"Franklin D. Roosevelt"},
+    {q:"Our lives begin to end the day we become silent about things that matter.",a:"Martin Luther King Jr."},
+    {q:"I have not failed. I've just found 10,000 ways that won't work.",a:"Thomas Edison"},
+    {q:"The journey of a thousand miles begins with one step.",a:"Lao Tzu"},
+    {q:"Be yourself; everyone else is already taken.",a:"Oscar Wilde"},
+    {q:"Happiness is not something ready made. It comes from your own actions.",a:"Dalai Lama"},
+    {q:"The only real prison is fear, and the only real freedom is freedom from fear.",a:"Aung San Suu Kyi"},
+    {q:"You miss 100% of the shots you don't take.",a:"Wayne Gretzky"},
+    {q:"I cannot teach anybody anything. I can only make them think.",a:"Socrates"},
+    {q:"What we know is a drop, what we don't know is an ocean.",a:"Isaac Newton"},
+    {q:"The more that you read, the more things you will know. The more that you learn, the more places you'll go.",a:"Dr. Seuss"},
+    {q:"If you don't stand for something you will fall for anything.",a:"Gordon A. Eadie"},
+    {q:"The future belongs to those who believe in the beauty of their dreams.",a:"Eleanor Roosevelt"},
+    {q:"Strive not to be a success, but rather to be of value.",a:"Albert Einstein"},
+    {q:"Whether you think you can or you think you can't, you're right.",a:"Henry Ford"},
+    {q:"The true sign of intelligence is not knowledge but imagination.",a:"Albert Einstein"},
+    {q:"Darkness cannot drive out darkness: only light can do that.",a:"Martin Luther King Jr."},
+    {q:"The mind is its own place, and in itself can make a heaven of hell, a hell of heaven.",a:"John Milton"},
+    {q:"Your time is limited, don't waste it living someone else's life.",a:"Steve Jobs"},
+    {q:"Appear weak when you are strong, and strong when you are weak.",a:"Sun Tzu"},
+    {q:"Every saint has a past, and every sinner has a future.",a:"Oscar Wilde"},
+    {q:"The things you think about determine the quality of your mind.",a:"Marcus Aurelius"},
+    {q:"One day or day one. You decide.",a:"Paulo Coelho"},
+    {q:"Life is really simple, but we insist on making it complicated.",a:"Confucius"},
+    {q:"The only person you should try to be better than is the person you were yesterday.",a:"Unknown"},
+    {q:"What is necessary to change a person is to change his awareness of himself.",a:"Abraham Maslow"},
+    {q:"Man is not worried by real problems so much as by his imagined anxieties about real problems.",a:"Epictetus"},
+    {q:"All that we are is the result of what we have thought.",a:"Buddha"},
+    {q:"In three words I can sum up everything I've learned about life: it goes on.",a:"Robert Frost"},
+    {q:"Let go of who you think you're supposed to be; embrace who you are.",a:"Brené Brown"},
+    {q:"The ego is not master in its own house.",a:"Sigmund Freud"},
+    {q:"Nothing is permanent in this wicked world, not even our troubles.",a:"Charlie Chaplin"},
+    {q:"Don't let yesterday take up too much of today.",a:"Will Rogers"},
+    {q:"The lion doesn't concern himself with the opinion of sheep.",a:"George R.R. Martin"},
+    {q:"Everything you've ever wanted is on the other side of fear.",a:"George Addair"},
+    {q:"Genius is one percent inspiration and ninety-nine percent perspiration.",a:"Thomas Edison"},
+    {q:"You were born with wings, why prefer to crawl through life?",a:"Rumi"},
+    {q:"The mind is not a vessel to be filled, but a fire to be kindled.",a:"Plutarch"},
+    {q:"Don't count the days, make the days count.",a:"Muhammad Ali"},
+    {q:"The world breaks everyone, and afterward, some are strong at the broken places.",a:"Ernest Hemingway"},
+    {q:"Success is not final, failure is not fatal: it is the courage to continue that counts.",a:"Winston Churchill"},
+    {q:"Fall seven times, stand up eight.",a:"Japanese Proverb"},
+    {q:"Peace comes from within. Do not seek it without.",a:"Buddha"},
+    {q:"May you live all the days of your life.",a:"Jonathan Swift"},
+    {q:"Discipline equals freedom.",a:"Jocko Willink"},
+    {q:"The only way to make sense out of change is to plunge into it, move with it, and join the dance.",a:"Alan Watts"},
+    {q:"The greatest discovery of all time is that a person can change their future by merely changing their attitude.",a:"Oprah Winfrey"},
+    {q:"Stars can't shine without darkness.",a:"D.H. Sidebottom"},
+    {q:"In the end, it's not the years in your life that count. It's the life in your years.",a:"Abraham Lincoln"},
+    {q:"Try not to become a man of success. Rather become a man of value.",a:"Albert Einstein"},
+    {q:"Courage is not the absence of fear but the triumph over it.",a:"Nelson Mandela"},
+    {q:"Work hard in silence. Let your success be the noise.",a:"Frank Ocean"},
+    {q:"The way to get started is to quit talking and begin doing.",a:"Walt Disney"},
+    {q:"Well done is better than well said.",a:"Benjamin Franklin"},
+    {q:"If you want to go fast, go alone. If you want to go far, go together.",a:"African Proverb"},
+    {q:"Study the past if you would define the future.",a:"Confucius"},
+    {q:"I am the master of my fate, I am the captain of my soul.",a:"William Ernest Henley"},
+    {q:"The best way to predict the future is to create it.",a:"Peter Drucker"},
+    {q:"To live is the rarest thing in the world. Most people exist, that is all.",a:"Oscar Wilde"},
+    {q:"Logic will get you from A to Z; imagination will get you everywhere.",a:"Albert Einstein"},
+    {q:"What you do speaks so loudly that I cannot hear what you say.",a:"Ralph Waldo Emerson"},
+    {q:"Keep your face always toward the sunshine, and shadows will fall behind you.",a:"Walt Whitman"},
+    {q:"Those who dare to fail miserably can achieve greatly.",a:"John F. Kennedy"},
+    {q:"A man who dares to waste one hour of time has not discovered the value of life.",a:"Charles Darwin"},
+    {q:"Don't be satisfied with stories, how things have gone with others. Unfold your own myth.",a:"Rumi"},
+    {q:"The only thing standing between you and your goal is the story you keep telling yourself.",a:"Jordan Belfort"},
+    {q:"All truths are easy to understand once they are discovered; the point is to discover them.",a:"Galileo"},
+    {q:"Change your thoughts and you change your world.",a:"Norman Vincent Peale"},
+    {q:"It does not matter how slowly you go as long as you do not stop.",a:"Confucius"},
+    {q:"A reader lives a thousand lives before he dies. The man who never reads lives only one.",a:"George R.R. Martin"},
+    {q:"The most common way people give up their power is by thinking they don't have any.",a:"Alice Walker"},
+    {q:"Begin at once to live, and count each separate day as a separate life.",a:"Seneca"},
+    {q:"There is no greater agony than bearing an untold story inside you.",a:"Maya Angelou"},
+    {q:"He who conquers himself is the mightiest warrior.",a:"Confucius"},
+    {q:"The only thing I know is that I know nothing.",a:"Socrates"},
+    {q:"Impossible is just a big word thrown around by small men.",a:"Muhammad Ali"},
+    {q:"Shallow men believe in luck. Strong men believe in cause and effect.",a:"Ralph Waldo Emerson"},
+    {q:"The best preparation for tomorrow is doing your best today.",a:"H. Jackson Brown Jr."},
+    {q:"Awareness is the greatest agent for change.",a:"Eckhart Tolle"},
+    {q:"What worries you, masters you.",a:"John Locke"},
+    {q:"When you realize nothing is lacking, the whole world belongs to you.",a:"Lao Tzu"},
+    {q:"A thousand-mile journey starts beneath one's feet.",a:"Lao Tzu"},
+    {q:"Think lightly of yourself and deeply of the world.",a:"Miyamoto Musashi"},
+    {q:"Doubt is the origin of wisdom.",a:"René Descartes"},
+    {q:"The price of anything is the amount of life you exchange for it.",a:"Henry David Thoreau"},
+    {q:"Nature does not hurry, yet everything is accomplished.",a:"Lao Tzu"},
+    {q:"With our thoughts, we make the world.",a:"Buddha"},
+    {q:"The doors will be opened to those who are bold enough to knock.",a:"Tony Gaskins"},
+    {q:"Destiny is not a matter of chance; it is a matter of choice.",a:"William Jennings Bryan"},
+    {q:"Every moment is a fresh beginning.",a:"T.S. Eliot"},
+    {q:"Knowing is not enough, we must apply. Willing is not enough, we must do.",a:"Goethe"},
+    {q:"If you hear a voice within you say 'you cannot paint,' then by all means paint and that voice will be silenced.",a:"Vincent Van Gogh"},
+    {q:"To be great is to be misunderstood.",a:"Ralph Waldo Emerson"},
+    {q:"I destroy my enemies when I make them my friends.",a:"Abraham Lincoln"},
+    {q:"He who is not courageous enough to take risks will accomplish nothing in life.",a:"Muhammad Ali"},
+    {q:"The key to immortality is first living a life worth remembering.",a:"Bruce Lee"},
+    {q:"Every exit is an entry somewhere else.",a:"Tom Stoppard"},
+    {q:"There are no limitations to the mind except those we acknowledge.",a:"Napoleon Hill"},
+    {q:"Men's natures are alike; it is their habits that carry them far apart.",a:"Confucius"},
+    {q:"We generate fears while we sit. We overcome them by action.",a:"Dr. Henry Link"},
+    {q:"It is never too late to be what you might have been.",a:"George Eliot"},
+    {q:"The only journey is the journey within.",a:"Rainer Maria Rilke"},
+    {q:"Make your life a masterpiece; imagine no limitations on what you can be, have, or do.",a:"Brian Tracy"},
+    {q:"Love the life you live. Live the life you love.",a:"Bob Marley"},
+    {q:"The whole secret of existence is to have no fear.",a:"Buddha"},
+    {q:"What comes easy won't last. What lasts won't come easy.",a:"Unknown"},
+    {q:"First they ignore you, then they ridicule you, then they fight you, and then you win.",a:"Mahatma Gandhi"},
+    {q:"Wise men speak because they have something to say; fools because they have to say something.",a:"Plato"},
+    {q:"A smooth sea never made a skilled sailor.",a:"Franklin D. Roosevelt"},
+    {q:"The successful man will profit from his mistakes and try again in a different way.",a:"Dale Carnegie"},
+    {q:"Dream big and dare to fail.",a:"Norman Vaughan"},
+    {q:"Real knowledge is to know the extent of one's ignorance.",a:"Confucius"},
+    {q:"The greatest teacher, failure is.",a:"Yoda"},
+    {q:"Limitations live only in our minds. But if we use our imaginations, our possibilities become limitless.",a:"Jamie Paolinetti"},
+    {q:"The energy of the mind is the essence of life.",a:"Aristotle"},
+    {q:"What we think, we become.",a:"Buddha"},
+    {q:"When one door of happiness closes, another opens.",a:"Helen Keller"},
+    {q:"If you look at what you have in life, you'll always have more.",a:"Oprah Winfrey"},
+    {q:"The only thing we never get enough of is love; and the only thing we never give enough of is love.",a:"Henry Miller"},
+    {q:"Security is mostly a superstition. Life is either a daring adventure, or nothing.",a:"Helen Keller"},
+    {q:"Strong minds discuss ideas, average minds discuss events, weak minds discuss people.",a:"Socrates"},
+    {q:"Not how long, but how well you have lived is the main thing.",a:"Seneca"},
+    {q:"The greatest accomplishment is not in never falling, but in rising again after you fall.",a:"Vince Lombardi"},
+    {q:"We become what we think about most of the time.",a:"Earl Nightingale"},
+    {q:"Opportunity is missed by most people because it is dressed in overalls and looks like work.",a:"Thomas Edison"},
+    {q:"Never let the fear of striking out keep you from playing the game.",a:"Babe Ruth"},
+    {q:"Create the highest, grandest vision possible for your life, because you become what you believe.",a:"Oprah Winfrey"},
+    {q:"Whatever the mind can conceive and believe, it can achieve.",a:"Napoleon Hill"},
+    {q:"People who are crazy enough to think they can change the world, are the ones who do.",a:"Rob Siltanen"},
+    {q:"Be so good they can't ignore you.",a:"Steve Martin"},
+    {q:"Either write something worth reading or do something worth writing.",a:"Benjamin Franklin"},
+    {q:"What the caterpillar calls the end of the world, the master calls a butterfly.",a:"Richard Bach"},
+    {q:"The more you know, the more you realize you don't know.",a:"Aristotle"},
+    {q:"Until you make the unconscious conscious, it will direct your life and you will call it fate.",a:"Carl Jung"},
+    {q:"Defeat is a state of mind; no one is ever defeated until defeat has been accepted as a reality.",a:"Bruce Lee"},
+    {q:"You can't use up creativity. The more you use, the more you have.",a:"Maya Angelou"},
+    {q:"When you change the way you look at things, the things you look at change.",a:"Wayne Dyer"},
+    {q:"Be water, my friend.",a:"Bruce Lee"},
+    {q:"Life isn't about finding yourself. Life is about creating yourself.",a:"George Bernard Shaw"},
+    {q:"The man who moves a mountain begins by carrying away small stones.",a:"Confucius"},
+    {q:"Don't wait for the perfect moment. Take the moment and make it perfect.",a:"Zoey Sayward"},
+    {q:"Every artist was first an amateur.",a:"Ralph Waldo Emerson"},
+    {q:"What is real cannot be threatened. What is unreal does not exist.",a:"A Course in Miracles"},
+    {q:"The struggle you're in today is developing the strength you need for tomorrow.",a:"Robert Tew"},
+    {q:"If not now, when?",a:"Hillel the Elder"},
+    {q:"The beginning is always today.",a:"Mary Shelley"},
+    {q:"Small daily improvements are the key to staggering long-term results.",a:"Unknown"},
+    {q:"He who would learn to fly one day must first learn to walk and run and climb and dance.",a:"Friedrich Nietzsche"},
+    {q:"To know the road ahead, ask those coming back.",a:"Chinese Proverb"},
+    {q:"The bamboo that bends is stronger than the oak that resists.",a:"Japanese Proverb"},
+    {q:"What we fear doing most is usually what we most need to do.",a:"Tim Ferriss"},
+    {q:"The world is full of magic things, patiently waiting for our senses to grow sharper.",a:"W.B. Yeats"},
+    {q:"Comparison is the thief of joy.",a:"Theodore Roosevelt"},
+    {q:"If your actions inspire others to dream more, learn more, do more, you are a leader.",a:"John Quincy Adams"},
+    {q:"Leap and the net will appear.",a:"John Burroughs"},
+    {q:"Those who know do not speak. Those who speak do not know.",a:"Lao Tzu"},
+    {q:"To see a world in a grain of sand and a heaven in a wild flower, hold infinity in the palm of your hand and eternity in an hour.",a:"William Blake"},
+    {q:"The master has failed more times than the beginner has even tried.",a:"Stephen McCranie"},
+    {q:"Your beliefs become your thoughts, your thoughts become your words, your words become your actions.",a:"Mahatma Gandhi"},
+    {q:"The day you decide to do it is your lucky day.",a:"Japanese Proverb"},
+    {q:"Nothing great was ever achieved without enthusiasm.",a:"Ralph Waldo Emerson"},
+    {q:"To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.",a:"Ralph Waldo Emerson"},
+    {q:"If you correct your mind, the rest of your life will fall into place.",a:"Lao Tzu"},
+    {q:"What counts can't always be counted; what can be counted doesn't always count.",a:"William Bruce Cameron"},
+    {q:"Watch your thoughts, they become your destiny.",a:"Lao Tzu"},
+    {q:"The fool doth think he is wise, but the wise man knows himself to be a fool.",a:"Shakespeare"},
+    {q:"Difficulties strengthen the mind, as labor does the body.",a:"Seneca"},
+    {q:"The secret of change is to focus all of your energy not on fighting the old, but on building the new.",a:"Socrates"},
+    {q:"Attention is the rarest and purest form of generosity.",a:"Simone Weil"},
+    {q:"There is nothing impossible to him who will try.",a:"Alexander the Great"},
+    {q:"To understand everything is to forgive everything.",a:"Buddha"},
+    {q:"The soul becomes dyed with the color of its thoughts.",a:"Marcus Aurelius"},
+    {q:"Don't wish it were easier. Wish you were better.",a:"Jim Rohn"},
+    {q:"The secret of happiness is not in doing what one likes, but in liking what one does.",a:"James M. Barrie"},
+    {q:"Your life is your message to the world. Make sure it's inspiring.",a:"Lorrin L. Lee"},
+    {q:"Permanence, perseverance and persistence in spite of all obstacles: it is this that distinguishes the strong soul from the weak.",a:"Thomas Carlyle"},
+    {q:"We are not human beings having a spiritual experience. We are spiritual beings having a human experience.",a:"Pierre Teilhard de Chardin"},
+    {q:"The best fighter is never angry.",a:"Lao Tzu"},
+    {q:"At the center of your being you have the answer; you know who you are and you know what you want.",a:"Lao Tzu"},
+    {q:"Silence is a source of great strength.",a:"Lao Tzu"},
+    {q:"The only thing that makes life possible is permanent, intolerable uncertainty.",a:"Ursula K. Le Guin"},
+    {q:"Vision without execution is hallucination.",a:"Thomas Edison"},
+    {q:"You will never be entirely comfortable. This is the truth behind the champion.",a:"Julien Smith"},
+    {q:"Wisdom is not a product of schooling but of the lifelong attempt to acquire it.",a:"Albert Einstein"},
+    {q:"Be kind, for everyone you meet is fighting a hard battle.",a:"Plato"},
+    {q:"Only the educated are free.",a:"Epictetus"},
+    {q:"The path to success is to take massive determined action.",a:"Tony Robbins"},
+    {q:"Emancipate yourselves from mental slavery, none but ourselves can free our minds.",a:"Bob Marley"},
+    {q:"Stop looking outside for help. You're sourced and fuelled and funded by a renewable resource, which is within you.",a:"Michael Beckwith"},
+    {q:"They did not know it was impossible so they did it.",a:"Mark Twain"},
+    {q:"Those who cannot change their minds cannot change anything.",a:"George Bernard Shaw"},
+    {q:"Rule your mind or it will rule you.",a:"Horace"},
+    {q:"Everything in the universe is within you. Ask all from yourself.",a:"Rumi"},
+    {q:"Great things are done by a series of small things brought together.",a:"Vincent Van Gogh"},
+    {q:"A mind that is stretched by a new experience can never go back to its old dimensions.",a:"Oliver Wendell Holmes"},
+    {q:"The measure of who we are is what we do with what we have.",a:"Vince Lombardi"},
+    {q:"No pressure, no diamonds.",a:"Thomas Carlyle"},
+    {q:"What you are is what you have been. What you'll be is what you do now.",a:"Buddha"},
+    {q:"If you want something you've never had, you must be willing to do something you've never done.",a:"Thomas Jefferson"},
+    {q:"It is not enough to have a good mind; the main thing is to use it well.",a:"René Descartes"},
+    {q:"Man is what he believes.",a:"Anton Chekhov"},
+    {q:"The greatest mistake you can make in life is to continually fear you will make one.",a:"Elbert Hubbard"},
+    {q:"Nothing can dim the light that shines from within.",a:"Maya Angelou"},
+    {q:"First say to yourself what you would be; and then do what you have to do.",a:"Epictetus"},
+    {q:"The breeze at dawn has secrets to tell you. Don't go back to sleep.",a:"Rumi"},
+    {q:"Forget safety. Live where you fear to live. Destroy your reputation. Be notorious.",a:"Rumi"},
+  ];
+
+  (function setDailyQuote() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const dayOfYear = Math.floor((now - start) / 86400000);
+    const idx = dayOfYear % quotes.length;
+    const q = quotes[idx];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    document.getElementById('transmissionDay').textContent = 'Day ' + (dayOfYear) + ' · ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+    document.getElementById('transmissionQuote').textContent = '"' + q.q + '"';
+    document.getElementById('transmissionAuthor').textContent = '— ' + q.a;
+  })();
+
+  // ===== FLOATING PARTICLES =====
+  (function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (15 + Math.random() * 25) + 's';
+      p.style.animationDelay = (Math.random() * 20) + 's';
+      p.style.width = (1 + Math.random() * 2) + 'px';
+      p.style.height = p.style.width;
+      container.appendChild(p);
+    }
+  })();
+
+  // ===== PROJECT CARD CLICKS =====
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    });
+  });
+
+  document.querySelectorAll('.project-cta').forEach(cta => {
+    cta.addEventListener('click', function(e) {
+      e.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    });
+  });
+</script>
