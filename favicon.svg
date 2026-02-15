@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
+  <text x="16" y="24" font-family="Arial Black,sans-serif" font-size="26" font-weight="900" fill="#e8600a" text-anchor="middle">H</text>
+</svg>
+```
+
+Commit. Then edit `index.html` → **Cmd+F** → search for `<title>Haydon Hulme</title>` → add this line directly **above** it:
+```
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
