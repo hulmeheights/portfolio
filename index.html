@@ -871,6 +871,53 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
+  /* ===== LARKFOLD SHOWCASE ===== */
+  .lk-noselect, #lkModal { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  .lk-station { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+  .lk-pipe { font-family: var(--font-mono); font-size: 9px; color: #8b93d8; }
+  .lk-pipe .r { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; border-bottom: 1px dashed #1b2152; letter-spacing: .08em; }
+  .lk-pipe .r b { color: #ffd35c; font-weight: 500; font-size: 11px; transition: color .3s; }
+  .lk-pipe .r b.up { color: #5cff9d; }
+  .lk-feed { font-family: var(--font-mono); font-size: 8px; line-height: 1.7; color: #5cff9d; text-align: left; height: 100%; overflow: hidden; }
+  .lk-feed div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: .9; }
+  .lk-feed div i { color: #ffd35c; font-style: normal; }
+  #lkModal { position: fixed; inset: 0; z-index: 9999; display: none; background: rgba(3,4,12,.92); backdrop-filter: blur(6px); overflow: auto; padding: 24px 16px; }
+  #lkModal.on { display: block; }
+  #lkModal .lk-box { max-width: 980px; margin: 0 auto; }
+  #lkModal .lk-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  #lkModal h3 { font-family: var(--font-display); font-size: 40px; letter-spacing: .04em; }
+  #lkModal .lk-x { background: none; border: 1px solid #333; color: var(--fg); font-family: var(--font-mono); padding: 8px 14px; cursor: pointer; }
+  #lkModal .lk-stage { position: relative; border: 1px solid #1b2152; background: #06081a; aspect-ratio: 16/9; }
+  #lkModal .lk-stage canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+  #lkModal .lk-wm { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: .4em; color: rgba(255,255,255,.05); }
+  #lkModal .lk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  #lkModal .lk-grid > div { border: 1px solid #1b2152; background: #070a1f; padding: 14px; min-height: 170px; }
+  #lkModal .lk-grid .lk-pipe { font-size: 11px; } #lkModal .lk-grid .lk-feed { font-size: 10px; }
+  #lkModal p.lk-copy { color: var(--fg-dim); margin: 16px 0 6px; line-height: 1.6; max-width: 720px; }
+  #lkModal .lk-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  #lkModal .lk-chips span { font-family: var(--font-mono); font-size: 10px; border: 1px solid #2a2f5a; padding: 4px 8px; color: #8b93d8; }
+  @media (max-width: 700px) { #lkModal .lk-grid { grid-template-columns: 1fr; } #lkModal h3 { font-size: 30px; } }
+
+  /* ===== WEBSITES ===== */
+  .hh-sites { padding: 60px 28px 40px; }
+  .hh-lede { color: var(--fg-dim); font-size: 18px; line-height: 1.6; max-width: 680px; margin: 8px 0 28px; }
+  .hh-proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 28px; }
+  .hh-proof div { background: var(--bg); padding: 18px; }
+  .hh-proof b { display: block; font-family: var(--font-display); font-size: 40px; color: var(--accent); letter-spacing: .02em; }
+  .hh-proof span { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); text-transform: uppercase; letter-spacing: .08em; }
+  .hh-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .hh-tier { border: 1px solid var(--card-border); background: var(--card-bg); padding: 24px; transition: transform .3s, border-color .3s; }
+  .hh-tier:hover { transform: translateY(-4px); border-color: #333; }
+  .hh-tier.hh-hot { border-color: var(--accent); }
+  .hh-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: var(--accent); }
+  .hh-price { font-family: var(--font-display); font-size: 56px; margin-top: 8px; line-height: 1; }
+  .hh-sub { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); margin-bottom: 14px; }
+  .hh-tier ul { list-style: none; } .hh-tier li { padding: 7px 0; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 14px; }
+  .hh-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+  .hh-steps span { font-family: var(--font-mono); color: var(--accent); font-size: 12px; } .hh-steps b { display: block; font-size: 18px; margin: 6px 0; } .hh-steps p { color: var(--fg-dim); font-size: 14px; line-height: 1.5; }
+  .hh-cta { display: inline-block; background: var(--accent); color: #fff; font-family: var(--font-mono); letter-spacing: .1em; padding: 16px 26px; font-size: 13px; transition: background .2s; }
+  .hh-cta:hover { background: var(--accent-light); }
+  @media (max-width: 800px) { .hh-tiers, .hh-steps { grid-template-columns: 1fr; } .hh-proof { grid-template-columns: repeat(2, 1fr); } .hh-price { font-size: 48px; } }
 </style>
 </head>
 <body>
@@ -885,6 +932,7 @@
 <div class="nav-overlay" id="navOverlay">
   <a href="#" onclick="closeNav()">HOME</a>
   <a href="#projects" onclick="closeNav()">PROJECTS</a>
+  <a href="#websites" onclick="closeNav()">WEBSITES</a>
   <a href="#contact" onclick="closeNav()">CONTACT</a>
   <div class="nav-socials">
     <a href="https://x.com/hulmeheights" target="_blank">X (TWITTER)</a>
@@ -1043,47 +1091,22 @@
     </div>
   </div>
 
-  <!-- OMNAI -->
-  <div class="project-card fade-up">
+  <!-- LARKFOLD STATION (demo animation only: no real code, data or keys ship with this page) -->
+  <div class="project-card fade-up lk-card" onclick="lkOpen()">
     <div class="project-info-col">
       <div class="project-meta">
         <div>
-          <div class="project-title">BLACK BOX OS</div>
-          <div class="project-subtitle">Gamified Personal Development / Personal</div>
+          <div class="project-title">LARKFOLD STATION</div>
+          <div class="project-subtitle">Autonomous AI Product Studio / Personal</div>
         </div>
         <div class="project-number">03</div>
       </div>
-      <a href="#" class="project-cta" onclick="event.stopPropagation()">View Project →</a>
+      <a href="#" class="project-cta" onclick="event.preventDefault();event.stopPropagation();lkOpen()">Watch It Work →</a>
     </div>
-    <div class="project-images">
-      <div class="project-img project-preview" style="background: linear-gradient(135deg, #050a05 0%, #0a150a 100%);">
-        <div class="preview-content">
-          <div style="font-family: var(--font-display); font-size: 28px; letter-spacing: 0.08em; color: #00ff41;">BLACK BOX OS</div>
-          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; color: #1a4a1a; margin-top: 4px;">GAMIFIED DEVELOPMENT SYSTEM</div>
-          <div style="margin-top: 10px; font-family: var(--font-mono); font-size: 8px; color: #0a3a0a;">████████░░ 82%</div>
-        </div>
-      </div>
-      <div class="project-img project-preview" style="background: #060d06;">
-        <div class="preview-content">
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">ORACLE</div>
-            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">XP SYSTEM</div>
-            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">PHASES</div>
-            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">QUESTS</div>
-          </div>
-          <div style="font-family: var(--font-mono); font-size: 8px; color: #0a3a0a; margin-top: 8px;">CHARACTER PROGRESSION ENGINE</div>
-        </div>
-      </div>
-      <div class="project-img project-preview" style="background: #050a05;">
-        <div class="preview-content">
-          <div style="font-family: var(--font-mono); font-size: 9px; color: #00ff41; letter-spacing: 0.1em;">[ MATRIX UI ]</div>
-          <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 7px; color: #0a3a0a; line-height: 1.6;">
-            > init_protocol<br>
-            > track_progress<br>
-            > level_up
-          </div>
-        </div>
-      </div>
+    <div class="project-images lk-noselect">
+      <div class="project-img project-preview" style="background:#06081a;padding:0;overflow:hidden"><canvas class="lk-station" aria-label="Animated preview of AI agents moving between rooms in the station"></canvas></div>
+      <div class="project-img project-preview" style="background:#070a1f"><div class="preview-content lk-pipe" style="width:100%"></div></div>
+      <div class="project-img project-preview" style="background:#05071a"><div class="preview-content lk-feed" style="width:100%"></div></div>
     </div>
   </div>
 
@@ -1140,6 +1163,38 @@
   </div>
 </section>
 
+<!-- WEBSITES FOR LOCAL BUSINESSES -->
+<section class="hh-sites" id="websites">
+  <div class="section-header fade-up"><h2>WEBSITES THAT WORK</h2><span class="arrow">↓</span></div>
+  <p class="hh-lede fade-up">Fast, modern websites for Manchester businesses. Built in days, not months. Designed to turn the people searching for you on Google into calls and bookings.</p>
+  <div class="hh-proof fade-up">
+    <div><b>&lt;1s</b><span>load time on mobile</span></div>
+    <div><b>100</b><span>target Lighthouse score</span></div>
+    <div><b>7 days</b><span>typical launch</span></div>
+    <div><b>0</b><span>tech for you to manage</span></div>
+  </div>
+  <div class="hh-tiers fade-up">
+    <div class="hh-tier">
+      <div class="hh-tag">STARTER</div><div class="hh-price">£795</div><div class="hh-sub">+ £39/month care plan</div>
+      <ul><li>Up to 4 pages, mobile first</li><li>Click-to-call, map and enquiry form</li><li>Google Business Profile set up</li><li>Hosting, SSL, updates included</li></ul>
+    </div>
+    <div class="hh-tier hh-hot">
+      <div class="hh-tag">BUSINESS · MOST CHOSEN</div><div class="hh-price">£1,495</div><div class="hh-sub">+ £59/month care plan</div>
+      <ul><li>Up to 10 pages, custom design</li><li>Local SEO for every area you cover</li><li>Reviews, gallery and service pages</li><li>Copywriting done for you</li></ul>
+    </div>
+    <div class="hh-tier">
+      <div class="hh-tag">PREMIUM</div><div class="hh-price">£2,995+</div><div class="hh-sub">+ £99/month care plan</div>
+      <ul><li>Online booking or payments</li><li>Client portals and AI assistants</li><li>Animation and brand system</li><li>Priority support</li></ul>
+    </div>
+  </div>
+  <div class="hh-steps fade-up">
+    <div><span>01</span><b>Free homepage mock-up</b><p>See your new site before you spend a penny.</p></div>
+    <div><span>02</span><b>Build</b><p>Fixed price, agreed up front. Usually live within 7 days.</p></div>
+    <div><span>03</span><b>Grow</b><p>Hosting, changes and Google visibility handled every month.</p></div>
+  </div>
+  <a href="#contact" class="hh-cta fade-up">GET MY FREE MOCK-UP →</a>
+</section>
+
 <!-- SERVICES MARQUEE -->
 <section class="services">
   <div class="services-track">
@@ -1163,7 +1218,7 @@
   <div class="status-bar-inner">
     <div class="status-dot"></div>
     <span class="status-label">Currently building:</span>
-    <span class="status-text">Black Box OS v7 — Oracle Protocol expansion & character visualisation system</span>
+    <span class="status-text">Larkfold Station — an AI crew that researches, builds and lists products by itself</span>
   </div>
 </div>
 
@@ -1183,7 +1238,7 @@
   <div class="contact-inner">
     <div class="section-label">CONTACT</div>
     <h2>LET'S BUILD SOMETHING</h2>
-    <p>Got an idea, a project, or just want to connect? Drop a message and let's see what we can create together.</p>
+    <p>Want a free homepage mock-up for your business, or have a project in mind? Tell me your business name and what you do, and I'll come back within 24 hours.</p>
     <div class="form-group">
       <label>Name *</label>
       <input type="text" placeholder="Your name">
@@ -1718,4 +1773,46 @@ async function submitContact(e) {
     setTimeout(() => t.classList.remove('show'), 2500);
   }
 
+  // ===== LARKFOLD STATION SHOWCASE =====
+  // A self-contained demo animation. It carries no real station code, data, names of products or keys: nothing here can be used to rebuild or reach the real system.
+  (function(){
+    const ROOMS=[{n:'LAB',x:.04,y:.08,w:.28,h:.38,c:'#3b2f7a'},{n:'STUDIO',x:.36,y:.08,w:.28,h:.38,c:'#1f4f7a'},{n:'CHECK',x:.68,y:.08,w:.28,h:.38,c:'#6a2f4f'},{n:'COPY',x:.04,y:.54,w:.28,h:.38,c:'#2f6a4f'},{n:'RENDER',x:.36,y:.54,w:.28,h:.38,c:'#6a5a2f'},{n:'DISPATCH',x:.68,y:.54,w:.28,h:.38,c:'#2f3f6a'}];
+    const AG=[['COMPASS','#ffd35c'],['STENCIL','#5cc8ff'],['THORN','#ff6b8b'],['INKWELL','#b98cff'],['TAG','#5cff9d'],['LOUPE','#ffa45c'],['SCOUT','#8bf0ff']];
+    const LINES=[['Scout','scanned 40 rising searches, 6 passed the gate'],['Compass','planned a 12-print botanical wall set'],['Stencil','built all 8 sections'],['Thorn','fact-checked 120 answers, passed 96/100'],['Inkwell','drew 12 artworks in one style'],['Thorn','redrawing 2 designs with stray text'],['Tag','wrote title, 13 tags, description'],['Loupe','laid out a 24-page print-ready PDF'],['Shelf','Etsy draft ready for review'],['Abacus','today: 41p spent of the daily cap'],['Finder','checked 60 local businesses, 4 strong fits'],['Kage','retried a timed-out job, fixed']];
+    const STAGES=['IDEAS','BUILDING','FACT CHECK','ARTWORK','WRITING','DESIGNING','YOUR OK','LIVE'];
+    function station(cv){const ctx=cv.getContext('2d');let W,H;const ag=AG.map((a,i)=>({n:a[0],c:a[1],r:i%6,x:0,y:0,tx:0,ty:0,t:Math.random()*3,bub:0}));
+      const fit=()=>{const r=cv.getBoundingClientRect();W=cv.width=Math.max(200,Math.round(r.width/2));H=cv.height=Math.max(120,Math.round(r.height/2));ag.forEach(a=>{const p=spot(a.r);a.x=a.tx=p[0];a.y=a.ty=p[1];});};
+      const spot=r=>{const R=ROOMS[r];return [(R.x+.06+Math.random()*(R.w-.12))*W,(R.y+.12+Math.random()*(R.h-.2))*H];};
+      fit();addEventListener('resize',fit);
+      let last=performance.now();
+      (function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;
+        if(!cv.isConnected)return;
+        ctx.fillStyle='#06081a';ctx.fillRect(0,0,W,H);
+        ROOMS.forEach(R=>{const x=R.x*W,y=R.y*H,w=R.w*W,h=R.h*H;ctx.fillStyle=R.c+'55';ctx.fillRect(x,y,w,h);ctx.strokeStyle=R.c;ctx.lineWidth=2;ctx.strokeRect(x+1,y+1,w-2,h-2);
+          for(let i=0;i<3;i++){ctx.fillStyle='#0b1030';ctx.fillRect(x+w*(.12+i*.28),y+h*.62,w*.18,h*.12);ctx.fillStyle=(Math.sin(now/400+i+R.x*9)>0)?'#5cff9d':'#1d6b44';ctx.fillRect(x+w*(.15+i*.28),y+h*.58,w*.1,h*.05);}
+          ctx.fillStyle='rgba(255,255,255,.55)';ctx.font=Math.max(6,Math.round(H/26))+'px monospace';ctx.fillText(R.n,x+4,y+Math.max(8,H/22));});
+        ag.forEach(a=>{a.t-=dt;if(a.t<=0){a.r=Math.random()<.5?(a.r+1)%6:Math.floor(Math.random()*6);const p=spot(a.r);a.tx=p[0];a.ty=p[1];a.t=2+Math.random()*3;a.bub=1.4;}
+          const dx=a.tx-a.x,dy=a.ty-a.y,d=Math.hypot(dx,dy),sp=W*.12*dt;if(d>sp){a.x+=dx/d*sp;a.y+=dy/d*sp;}else{a.x=a.tx;a.y=a.ty;}
+          const s=Math.max(3,Math.round(H/40)),bob=d>sp?Math.round(Math.sin(now/80)*1):0;
+          ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(a.x-s,a.y+s*1.6,s*2,s*.5);
+          ctx.fillStyle=a.c;ctx.fillRect(a.x-s,a.y-s+bob,s*2,s*2.4);ctx.fillStyle='#f3d2b0';ctx.fillRect(a.x-s*.8,a.y-s*2+bob,s*1.6,s*1.2);
+          if(a.bub>0){a.bub-=dt;ctx.fillStyle='rgba(255,255,255,.85)';ctx.font=Math.max(5,Math.round(H/30))+'px monospace';ctx.fillText(a.n,a.x-s*2,a.y-s*2.6);}});
+        requestAnimationFrame(loop);})(last);}
+    function pipe(el){const n=[3,2,1,2,1,1,4,21];const draw=(k)=>{el.innerHTML=STAGES.map((s,i)=>'<div class="r"><span>'+s+'</span><b'+(i===k?' class="up"':'')+'>'+n[i]+'</b></div>').join('');};draw(-1);
+      setInterval(()=>{const i=Math.floor(Math.random()*7);if(n[i]>0){n[i]--;n[i+1]++;}if(Math.random()<.4)n[0]++;draw(i+1);},1400);}
+    function feed(el,max){let k=0;const add=()=>{const L=LINES[k++%LINES.length],t=new Date();const d=document.createElement('div');d.innerHTML='<i>'+t.toTimeString().slice(0,5)+' '+L[0]+'</i> '+L[1];el.appendChild(d);while(el.children.length>max)el.removeChild(el.firstChild);};for(let i=0;i<max-2;i++)add();setInterval(add,1700);}
+    document.querySelectorAll('.lk-card .lk-station').forEach(station);document.querySelectorAll('.lk-card .lk-pipe').forEach(pipe);document.querySelectorAll('.lk-card .lk-feed').forEach(e=>feed(e,9));
+    const m=document.createElement('div');m.id='lkModal';m.setAttribute('role','dialog');m.setAttribute('aria-label','Larkfold Station demo');
+    m.innerHTML='<div class="lk-box"><div class="lk-top"><h3>LARKFOLD STATION</h3><button class="lk-x" onclick="lkClose()">CLOSE ✕</button></div>'+
+      '<div class="lk-stage"><canvas aria-label="Animated demo of the AI crew at work"></canvas><div class="lk-wm">DEMO · HULMEHEIGHTS</div></div>'+
+      '<div class="lk-grid"><div><div class="lk-pipe"></div></div><div><div class="lk-feed"></div></div></div>'+
+      '<p class="lk-copy">A crew of AI agents that runs an online print shop end to end: it researches what is selling, plans products, writes and fact-checks them, draws the artwork, lays out print-ready files, writes the listings and prepares them for sale, with a human approving every product before it goes live. Spend is capped daily and every step is logged.</p>'+
+      '<p class="lk-copy" style="font-size:13px">This is a demonstration with sample activity. The live system and its data are private.</p>'+
+      '<div class="lk-chips"><span>Multi-agent pipeline</span><span>Live trend research</span><span>Automated QA</span><span>Image generation</span><span>PDF + spreadsheet engine</span><span>Etsy + print-on-demand integration</span><span>Cost controls</span></div></div>';
+    document.body.appendChild(m);let built=false;
+    window.lkOpen=()=>{m.classList.add('on');document.body.style.overflow='hidden';if(!built){built=true;station(m.querySelector('canvas'));pipe(m.querySelector('.lk-pipe'));feed(m.querySelector('.lk-feed'),10);}};
+    window.lkClose=()=>{m.classList.remove('on');document.body.style.overflow='';};
+    m.addEventListener('click',e=>{if(e.target===m)lkClose();});addEventListener('keydown',e=>{if(e.key==='Escape')lkClose();});
+    ['contextmenu','dragstart','copy'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('.lk-card,#lkModal'))e.preventDefault();}));
+  })();
 </script>
