@@ -873,7 +873,7 @@
   }
   /* ===== LARKFOLD SHOWCASE ===== */
   .lk-noselect, #lkModal { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-  .lk-station { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+  .lk-station { width: 100%; height: 100%; display: block; }
   .lk-pipe { font-family: var(--font-mono); font-size: 9px; color: #8b93d8; }
   .lk-pipe .r { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; border-bottom: 1px dashed #1b2152; letter-spacing: .08em; }
   .lk-pipe .r b { color: #ffd35c; font-weight: 500; font-size: 11px; transition: color .3s; }
@@ -888,7 +888,7 @@
   #lkModal h3 { font-family: var(--font-display); font-size: 40px; letter-spacing: .04em; }
   #lkModal .lk-x { background: none; border: 1px solid #333; color: var(--fg); font-family: var(--font-mono); padding: 8px 14px; cursor: pointer; }
   #lkModal .lk-stage { position: relative; border: 1px solid #1b2152; background: #06081a; aspect-ratio: 16/9; }
-  #lkModal .lk-stage canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+  #lkModal .lk-stage canvas { width: 100%; height: 100%; display: block; }
   #lkModal .lk-wm { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: .4em; color: rgba(255,255,255,.05); }
   #lkModal .lk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
   #lkModal .lk-grid > div { border: 1px solid #1b2152; background: #070a1f; padding: 14px; min-height: 170px; }
@@ -917,6 +917,8 @@
   .hh-steps span { font-family: var(--font-mono); color: var(--accent); font-size: 12px; } .hh-steps b { display: block; font-size: 18px; margin: 6px 0; } .hh-steps p { color: var(--fg-dim); font-size: 14px; line-height: 1.5; }
   .hh-cta { display: inline-block; background: var(--accent); color: #fff; font-family: var(--font-mono); letter-spacing: .1em; padding: 16px 26px; font-size: 13px; transition: background .2s; }
   .hh-cta:hover { background: var(--accent-light); }
+  .hh-hero-cta { margin-top: 22px; font-size: 12px; padding: 14px 20px; }
+  .hh-faq { margin-top: 34px; max-width: 760px; } .hh-faq details { border-top: 1px solid var(--border); padding: 16px 0; } .hh-faq summary { cursor: pointer; font-size: 17px; list-style: none; } .hh-faq summary::after { content: '+'; float: right; color: var(--accent); font-family: var(--font-mono); } .hh-faq details[open] summary::after { content: '–'; } .hh-faq p { color: var(--fg-dim); margin-top: 10px; line-height: 1.6; }
   @media (max-width: 800px) { .hh-tiers, .hh-steps { grid-template-columns: 1fr; } .hh-proof { grid-template-columns: repeat(2, 1fr); } .hh-price { font-size: 48px; } }
 </style>
 </head>
@@ -956,6 +958,7 @@
   </div>
   <div class="hero-bottom fade-up">
     <div class="hero-tagline"><strong>Build in silence. Ship with intention.</strong> <span>Consciousness meets code — crafting systems that evolve.</span></div>
+    <a href="#websites" class="hh-cta hh-hero-cta">FREE WEBSITE MOCK-UP FOR YOUR BUSINESS →</a>
   </div>
 </section>
 
@@ -1036,61 +1039,6 @@
     </div>
   </div>
 
-  <!-- INTEL TRACKER -->
-  <div class="project-card fade-up" onclick="window.open('https://www.marketintelpro.io/', '_blank')">
-    <div class="project-info-col">
-      <div class="project-meta">
-        <div>
-          <div class="project-title">INTEL TRACKER</div>
-          <div class="project-subtitle">B2B SaaS + Dashboard / Work</div>
-        </div>
-        <div class="project-number">02</div>
-      </div>
-      <a href="https://www.marketintelpro.io/" target="_blank" class="project-cta">View Project →</a>
-    </div>
-    <div class="project-images">
-      <div class="project-img project-preview" style="background: linear-gradient(135deg, #091018 0%, #0d1a2a 100%);">
-        <div class="preview-content">
-          <div style="font-family: var(--font-display); font-size: 24px; letter-spacing: 0.05em; color: #f0efe9;">COMPETITIVE INTEL</div>
-          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; color: #555; margin-top: 4px;">REAL-TIME MONITORING DASHBOARD</div>
-          <div style="margin-top: 12px; display: flex; gap: 6px;">
-            <div style="padding: 3px 8px; background: rgba(46,204,113,0.15); border: 1px solid rgba(46,204,113,0.3); border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #2ecc71;">LIVE</div>
-            <div style="padding: 3px 8px; background: rgba(232,96,10,0.15); border: 1px solid rgba(232,96,10,0.3); border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #e8600a;">24 SIGNALS</div>
-          </div>
-        </div>
-      </div>
-      <div class="project-img project-preview" style="background: #0a1018;">
-        <div class="preview-content">
-          <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 40px; gap: 3px; padding: 0 8px;">
-            <div style="width: 12%; height: 45%; background: rgba(232,96,10,0.6); border-radius: 2px 2px 0 0;"></div>
-            <div style="width: 12%; height: 65%; background: rgba(232,96,10,0.7); border-radius: 2px 2px 0 0;"></div>
-            <div style="width: 12%; height: 35%; background: rgba(232,96,10,0.5); border-radius: 2px 2px 0 0;"></div>
-            <div style="width: 12%; height: 80%; background: rgba(232,96,10,0.8); border-radius: 2px 2px 0 0;"></div>
-            <div style="width: 12%; height: 55%; background: rgba(232,96,10,0.6); border-radius: 2px 2px 0 0;"></div>
-            <div style="width: 12%; height: 90%; background: var(--accent); border-radius: 2px 2px 0 0;"></div>
-          </div>
-          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">COMPETITOR ANALYSIS</div>
-        </div>
-      </div>
-      <div class="project-img project-preview" style="background: #091018;">
-        <div class="preview-content">
-          <div style="font-family: var(--font-mono); font-size: 9px; color: #2ecc71; letter-spacing: 0.1em;">▲ ALERTS</div>
-          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
-            <div style="display: flex; gap: 6px; align-items: center;">
-              <div style="width: 5px; height: 5px; border-radius: 50%; background: #2ecc71;"></div>
-              <div style="height: 2px; flex: 1; background: #162030; border-radius: 1px;"></div>
-            </div>
-            <div style="display: flex; gap: 6px; align-items: center;">
-              <div style="width: 5px; height: 5px; border-radius: 50%; background: #e8600a;"></div>
-              <div style="height: 2px; flex: 1; background: #162030; border-radius: 1px;"></div>
-            </div>
-          </div>
-          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">PRICE • FEATURE • STRATEGY</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- LARKFOLD STATION (demo animation only: no real code, data or keys ship with this page) -->
   <div class="project-card fade-up lk-card" onclick="lkOpen()">
     <div class="project-info-col">
@@ -1099,7 +1047,7 @@
           <div class="project-title">LARKFOLD STATION</div>
           <div class="project-subtitle">Autonomous AI Product Studio / Personal</div>
         </div>
-        <div class="project-number">03</div>
+        <div class="project-number">02</div>
       </div>
       <a href="#" class="project-cta" onclick="event.preventDefault();event.stopPropagation();lkOpen()">Watch It Work →</a>
     </div>
@@ -1107,6 +1055,50 @@
       <div class="project-img project-preview" style="background:#06081a;padding:0;overflow:hidden"><canvas class="lk-station" aria-label="Animated preview of AI agents moving between rooms in the station"></canvas></div>
       <div class="project-img project-preview" style="background:#070a1f"><div class="preview-content lk-pipe" style="width:100%"></div></div>
       <div class="project-img project-preview" style="background:#05071a"><div class="preview-content lk-feed" style="width:100%"></div></div>
+    </div>
+  </div>
+
+  <!-- OMNAI -->
+  <div class="project-card fade-up">
+    <div class="project-info-col">
+      <div class="project-meta">
+        <div>
+          <div class="project-title">BLACK BOX OS</div>
+          <div class="project-subtitle">Gamified Personal Development / Personal</div>
+        </div>
+        <div class="project-number">03</div>
+      </div>
+      <a href="#" class="project-cta" onclick="event.stopPropagation()">View Project →</a>
+    </div>
+    <div class="project-images">
+      <div class="project-img project-preview" style="background: linear-gradient(135deg, #050a05 0%, #0a150a 100%);">
+        <div class="preview-content">
+          <div style="font-family: var(--font-display); font-size: 28px; letter-spacing: 0.08em; color: #00ff41;">BLACK BOX OS</div>
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; color: #1a4a1a; margin-top: 4px;">GAMIFIED DEVELOPMENT SYSTEM</div>
+          <div style="margin-top: 10px; font-family: var(--font-mono); font-size: 8px; color: #0a3a0a;">████████░░ 82%</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #060d06;">
+        <div class="preview-content">
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">ORACLE</div>
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">XP SYSTEM</div>
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">PHASES</div>
+            <div style="padding: 3px 8px; border: 1px solid #0a3a0a; border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #1a6a1a;">QUESTS</div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #0a3a0a; margin-top: 8px;">CHARACTER PROGRESSION ENGINE</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #050a05;">
+        <div class="preview-content">
+          <div style="font-family: var(--font-mono); font-size: 9px; color: #00ff41; letter-spacing: 0.1em;">[ MATRIX UI ]</div>
+          <div style="margin-top: 8px; font-family: var(--font-mono); font-size: 7px; color: #0a3a0a; line-height: 1.6;">
+            > init_protocol<br>
+            > track_progress<br>
+            > level_up
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1161,6 +1153,62 @@
       </div>
     </div>
   </div>
+
+  <!-- INTEL TRACKER -->
+  <div class="project-card fade-up" onclick="window.open('https://www.marketintelpro.io/', '_blank')">
+    <div class="project-info-col">
+      <div class="project-meta">
+        <div>
+          <div class="project-title">INTEL TRACKER</div>
+          <div class="project-subtitle">B2B SaaS + Dashboard / Work</div>
+        </div>
+        <div class="project-number">05</div>
+      </div>
+      <a href="https://www.marketintelpro.io/" target="_blank" class="project-cta">View Project →</a>
+    </div>
+    <div class="project-images">
+      <div class="project-img project-preview" style="background: linear-gradient(135deg, #091018 0%, #0d1a2a 100%);">
+        <div class="preview-content">
+          <div style="font-family: var(--font-display); font-size: 24px; letter-spacing: 0.05em; color: #f0efe9;">COMPETITIVE INTEL</div>
+          <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; color: #555; margin-top: 4px;">REAL-TIME MONITORING DASHBOARD</div>
+          <div style="margin-top: 12px; display: flex; gap: 6px;">
+            <div style="padding: 3px 8px; background: rgba(46,204,113,0.15); border: 1px solid rgba(46,204,113,0.3); border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #2ecc71;">LIVE</div>
+            <div style="padding: 3px 8px; background: rgba(232,96,10,0.15); border: 1px solid rgba(232,96,10,0.3); border-radius: 4px; font-family: var(--font-mono); font-size: 8px; color: #e8600a;">24 SIGNALS</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #0a1018;">
+        <div class="preview-content">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 40px; gap: 3px; padding: 0 8px;">
+            <div style="width: 12%; height: 45%; background: rgba(232,96,10,0.6); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 65%; background: rgba(232,96,10,0.7); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 35%; background: rgba(232,96,10,0.5); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 80%; background: rgba(232,96,10,0.8); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 55%; background: rgba(232,96,10,0.6); border-radius: 2px 2px 0 0;"></div>
+            <div style="width: 12%; height: 90%; background: var(--accent); border-radius: 2px 2px 0 0;"></div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">COMPETITOR ANALYSIS</div>
+        </div>
+      </div>
+      <div class="project-img project-preview" style="background: #091018;">
+        <div class="preview-content">
+          <div style="font-family: var(--font-mono); font-size: 9px; color: #2ecc71; letter-spacing: 0.1em;">▲ ALERTS</div>
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <div style="width: 5px; height: 5px; border-radius: 50%; background: #2ecc71;"></div>
+              <div style="height: 2px; flex: 1; background: #162030; border-radius: 1px;"></div>
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <div style="width: 5px; height: 5px; border-radius: 50%; background: #e8600a;"></div>
+              <div style="height: 2px; flex: 1; background: #162030; border-radius: 1px;"></div>
+            </div>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 8px; color: #444; margin-top: 8px;">PRICE • FEATURE • STRATEGY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- WEBSITES FOR LOCAL BUSINESSES -->
@@ -1175,15 +1223,15 @@
   </div>
   <div class="hh-tiers fade-up">
     <div class="hh-tier">
-      <div class="hh-tag">STARTER</div><div class="hh-price">£795</div><div class="hh-sub">+ £39/month care plan</div>
+      <div class="hh-tag">STARTER</div><div class="hh-price">£495</div><div class="hh-sub">+ £39/month care plan<br>or £0 upfront at £79/month (12 months)</div>
       <ul><li>Up to 4 pages, mobile first</li><li>Click-to-call, map and enquiry form</li><li>Google Business Profile set up</li><li>Hosting, SSL, updates included</li></ul>
     </div>
     <div class="hh-tier hh-hot">
-      <div class="hh-tag">BUSINESS · MOST CHOSEN</div><div class="hh-price">£1,495</div><div class="hh-sub">+ £59/month care plan</div>
+      <div class="hh-tag">BUSINESS · MOST CHOSEN</div><div class="hh-price">£995</div><div class="hh-sub">+ £49/month care plan</div>
       <ul><li>Up to 10 pages, custom design</li><li>Local SEO for every area you cover</li><li>Reviews, gallery and service pages</li><li>Copywriting done for you</li></ul>
     </div>
     <div class="hh-tier">
-      <div class="hh-tag">PREMIUM</div><div class="hh-price">£2,995+</div><div class="hh-sub">+ £99/month care plan</div>
+      <div class="hh-tag">PREMIUM</div><div class="hh-price">£2,495+</div><div class="hh-sub">+ £89/month care plan</div>
       <ul><li>Online booking or payments</li><li>Client portals and AI assistants</li><li>Animation and brand system</li><li>Priority support</li></ul>
     </div>
   </div>
@@ -1193,6 +1241,13 @@
     <div><span>03</span><b>Grow</b><p>Hosting, changes and Google visibility handled every month.</p></div>
   </div>
   <a href="#contact" class="hh-cta fade-up">GET MY FREE MOCK-UP →</a>
+  <div class="hh-faq fade-up">
+    <details><summary>Do I own the website?</summary><p>Yes. Your domain, your words and your photos are yours. If you ever leave, you get the full site files to take wherever you like.</p></details>
+    <details><summary>What if I don't like the mock-up?</summary><p>Then you don't pay anything. The mock-up is free and there is no obligation.</p></details>
+    <details><summary>What does the monthly plan cover?</summary><p>Fast hosting, security certificate, backups, small text and photo changes, and keeping your Google Business Profile up to date. No contracts beyond the first 12 months on the £0-upfront option.</p></details>
+    <details><summary>How quickly can it go live?</summary><p>Most sites are live within 7 days of you approving the mock-up.</p></details>
+    <details><summary>I already have a domain and email. Is that a problem?</summary><p>Not at all. Your email stays exactly as it is; only the website part is pointed at the new site.</p></details>
+  </div>
 </section>
 
 <!-- SERVICES MARQUEE -->
@@ -1781,7 +1836,7 @@ async function submitContact(e) {
     const LINES=[['Scout','scanned 40 rising searches, 6 passed the gate'],['Compass','planned a 12-print botanical wall set'],['Stencil','built all 8 sections'],['Thorn','fact-checked 120 answers, passed 96/100'],['Inkwell','drew 12 artworks in one style'],['Thorn','redrawing 2 designs with stray text'],['Tag','wrote title, 13 tags, description'],['Loupe','laid out a 24-page print-ready PDF'],['Shelf','Etsy draft ready for review'],['Abacus','today: 41p spent of the daily cap'],['Finder','checked 60 local businesses, 4 strong fits'],['Kage','retried a timed-out job, fixed']];
     const STAGES=['IDEAS','BUILDING','FACT CHECK','ARTWORK','WRITING','DESIGNING','YOUR OK','LIVE'];
     function station(cv){const ctx=cv.getContext('2d');let W,H;const ag=AG.map((a,i)=>({n:a[0],c:a[1],r:i%6,x:0,y:0,tx:0,ty:0,t:Math.random()*3,bub:0}));
-      const fit=()=>{const r=cv.getBoundingClientRect();W=cv.width=Math.max(200,Math.round(r.width/2));H=cv.height=Math.max(120,Math.round(r.height/2));ag.forEach(a=>{const p=spot(a.r);a.x=a.tx=p[0];a.y=a.ty=p[1];});};
+      const fit=()=>{const r=cv.getBoundingClientRect(),dp=Math.min(2,window.devicePixelRatio||1);W=cv.width=Math.max(320,Math.round(r.width*dp));H=cv.height=Math.max(180,Math.round(r.height*dp));ag.forEach(a=>{const p=spot(a.r);a.x=a.tx=p[0];a.y=a.ty=p[1];});};
       const spot=r=>{const R=ROOMS[r];return [(R.x+.06+Math.random()*(R.w-.12))*W,(R.y+.12+Math.random()*(R.h-.2))*H];};
       fit();addEventListener('resize',fit);
       let last=performance.now();
@@ -1790,13 +1845,13 @@ async function submitContact(e) {
         ctx.fillStyle='#06081a';ctx.fillRect(0,0,W,H);
         ROOMS.forEach(R=>{const x=R.x*W,y=R.y*H,w=R.w*W,h=R.h*H;ctx.fillStyle=R.c+'55';ctx.fillRect(x,y,w,h);ctx.strokeStyle=R.c;ctx.lineWidth=2;ctx.strokeRect(x+1,y+1,w-2,h-2);
           for(let i=0;i<3;i++){ctx.fillStyle='#0b1030';ctx.fillRect(x+w*(.12+i*.28),y+h*.62,w*.18,h*.12);ctx.fillStyle=(Math.sin(now/400+i+R.x*9)>0)?'#5cff9d':'#1d6b44';ctx.fillRect(x+w*(.15+i*.28),y+h*.58,w*.1,h*.05);}
-          ctx.fillStyle='rgba(255,255,255,.55)';ctx.font=Math.max(6,Math.round(H/26))+'px monospace';ctx.fillText(R.n,x+4,y+Math.max(8,H/22));});
+          ctx.fillStyle='rgba(255,255,255,.55)';ctx.font='600 '+Math.max(10,Math.round(H/24))+'px "DM Mono",monospace';ctx.fillText(R.n,x+4,y+Math.max(8,H/22));});
         ag.forEach(a=>{a.t-=dt;if(a.t<=0){a.r=Math.random()<.5?(a.r+1)%6:Math.floor(Math.random()*6);const p=spot(a.r);a.tx=p[0];a.ty=p[1];a.t=2+Math.random()*3;a.bub=1.4;}
           const dx=a.tx-a.x,dy=a.ty-a.y,d=Math.hypot(dx,dy),sp=W*.12*dt;if(d>sp){a.x+=dx/d*sp;a.y+=dy/d*sp;}else{a.x=a.tx;a.y=a.ty;}
           const s=Math.max(3,Math.round(H/40)),bob=d>sp?Math.round(Math.sin(now/80)*1):0;
           ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(a.x-s,a.y+s*1.6,s*2,s*.5);
           ctx.fillStyle=a.c;ctx.fillRect(a.x-s,a.y-s+bob,s*2,s*2.4);ctx.fillStyle='#f3d2b0';ctx.fillRect(a.x-s*.8,a.y-s*2+bob,s*1.6,s*1.2);
-          if(a.bub>0){a.bub-=dt;ctx.fillStyle='rgba(255,255,255,.85)';ctx.font=Math.max(5,Math.round(H/30))+'px monospace';ctx.fillText(a.n,a.x-s*2,a.y-s*2.6);}});
+          if(a.bub>0){a.bub-=dt;ctx.fillStyle='rgba(255,255,255,.85)';ctx.font='500 '+Math.max(9,Math.round(H/30))+'px "DM Mono",monospace';ctx.fillText(a.n,a.x-s*2,a.y-s*2.6);}});
         requestAnimationFrame(loop);})(last);}
     function pipe(el){const n=[3,2,1,2,1,1,4,21];const draw=(k)=>{el.innerHTML=STAGES.map((s,i)=>'<div class="r"><span>'+s+'</span><b'+(i===k?' class="up"':'')+'>'+n[i]+'</b></div>').join('');};draw(-1);
       setInterval(()=>{const i=Math.floor(Math.random()*7);if(n[i]>0){n[i]--;n[i+1]++;}if(Math.random()<.4)n[0]++;draw(i+1);},1400);}
