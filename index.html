@@ -924,6 +924,8 @@
   .hh-ownbox h3 { font-family: var(--font-display); font-size: 32px; letter-spacing: .03em; margin: 8px 0 14px; }
   .hh-ownbox ol { padding-left: 20px; color: var(--fg-dim); line-height: 1.6; } .hh-ownbox li { margin-bottom: 10px; } .hh-ownbox b { color: var(--fg); }
   .hh-ownbox p { color: var(--fg-dim); line-height: 1.6; margin: 10px 0 18px; }
+  .hh-rates { border: 1px solid var(--border); margin: -4px 0 12px; } .hh-rates div { display: flex; justify-content: space-between; gap: 12px; padding: 9px 12px; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 14px; } .hh-rates div:first-child { border-top: 0; } .hh-rates b { color: var(--fg); font-family: var(--font-mono); font-weight: 500; white-space: nowrap; }
+  .hh-ownbox { max-height: 92vh; overflow: auto; }
   .hh-ownbox button { background: var(--accent); color: #fff; border: 0; font-family: var(--font-mono); letter-spacing: .1em; padding: 12px 20px; cursor: pointer; }
   .hh-two { grid-template-columns: repeat(2, 1fr); max-width: 980px; }
   .hh-addons { max-width: 980px; margin-top: 18px; border: 1px solid var(--card-border); background: var(--card-bg); padding: 20px 24px; }
@@ -1235,7 +1237,9 @@
     <li><b>Free hosting.</b> We set your site up on a free hosting account in your name. Most small business sites never pay a penny for it.</li>
     <li><b>We connect it all.</b> One short call and your site is live. You don't need to touch any settings.</li>
   </ol>
-  <p>The only difference: changes, backups and Google updates aren't included. If you ever need an update, it's a one-off £35, or you can switch to the monthly plan at any time.</p>
+  <p>The only difference: changes, backups and Google updates aren't included. When you need something, you pay a fixed price, shown here in full:</p>
+  <div class="hh-rates"><div><span>Small update (text, photos, prices, opening hours)</span><b>£50</b></div><div><span>New section or new page</span><b>£95</b></div><div><span>Bigger changes (new features, redesigns)</span><b>£45 per hour</b></div></div>
+  <p style="font-size:13px">For bigger changes you always get the total in writing before any work starts. You can also switch to the monthly plan at any time.</p>
   <button onclick="document.getElementById('hhOwnM').classList.remove('on')">GOT IT</button>
 </div></div>
 <!-- SERVICES MARQUEE -->
