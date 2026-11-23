@@ -917,6 +917,14 @@
   .hh-steps span { font-family: var(--font-mono); color: var(--accent); font-size: 12px; } .hh-steps b { display: block; font-size: 18px; margin: 6px 0; } .hh-steps p { color: var(--fg-dim); font-size: 14px; line-height: 1.5; }
   .hh-cta { display: inline-block; background: var(--accent); color: #fff; font-family: var(--font-mono); letter-spacing: .1em; padding: 16px 26px; font-size: 13px; transition: background .2s; }
   .hh-cta:hover { background: var(--accent-light); }
+  .hh-own { color: var(--fg-dim); } .hh-own a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .hh-ownm { position: fixed; inset: 0; z-index: 9998; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.8); backdrop-filter: blur(4px); padding: 16px; }
+  .hh-ownm.on { display: flex; }
+  .hh-ownbox { max-width: 520px; background: var(--card-bg); border: 1px solid var(--accent); padding: 26px; }
+  .hh-ownbox h3 { font-family: var(--font-display); font-size: 32px; letter-spacing: .03em; margin: 8px 0 14px; }
+  .hh-ownbox ol { padding-left: 20px; color: var(--fg-dim); line-height: 1.6; } .hh-ownbox li { margin-bottom: 10px; } .hh-ownbox b { color: var(--fg); }
+  .hh-ownbox p { color: var(--fg-dim); line-height: 1.6; margin: 10px 0 18px; }
+  .hh-ownbox button { background: var(--accent); color: #fff; border: 0; font-family: var(--font-mono); letter-spacing: .1em; padding: 12px 20px; cursor: pointer; }
   .hh-two { grid-template-columns: repeat(2, 1fr); max-width: 980px; }
   .hh-addons { max-width: 980px; margin-top: 18px; border: 1px solid var(--card-border); background: var(--card-bg); padding: 20px 24px; }
   .hh-addon { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 14px; }
@@ -1219,6 +1227,17 @@
 
 </section>
 
+<div id="hhOwnM" class="hh-ownm" onclick="if(event.target===this)this.classList.remove('on')"><div class="hh-ownbox">
+  <div class="hh-tag">HOSTING IT YOURSELF</div>
+  <h3>No monthly fee. Here's all it involves.</h3>
+  <ol>
+    <li><b>Your web address.</b> You buy it in your own name, usually £10 to £15 a year. We'll tell you exactly which one to pick.</li>
+    <li><b>Free hosting.</b> We set your site up on a free hosting account in your name. Most small business sites never pay a penny for it.</li>
+    <li><b>We connect it all.</b> One short call and your site is live. You don't need to touch any settings.</li>
+  </ol>
+  <p>The only difference: changes, backups and Google updates aren't included. If you ever need an update, it's a one-off £35, or you can switch to the monthly plan at any time.</p>
+  <button onclick="document.getElementById('hhOwnM').classList.remove('on')">GOT IT</button>
+</div></div>
 <!-- SERVICES MARQUEE -->
 <section class="services">
   <div class="services-track">
@@ -1249,11 +1268,11 @@
   </div>
   <div class="hh-tiers hh-two fade-up">
     <div class="hh-tier">
-      <div class="hh-tag">STARTER</div><div class="hh-price">£579</div><div class="hh-sub">then £39 a month, all looked after</div>
+      <div class="hh-tag">STARTER</div><div class="hh-price">£579</div><div class="hh-sub">then £39 a month and we look after everything<br><span class="hh-own">or £0 a month if you host it yourself · <a href="#" onclick="hhOwn(event)">how simple is that?</a></span></div>
       <ul><li>A professional website, up to 4 pages</li><li>Looks great on phones, tablets and computers</li><li>Customers can call, message or find you in one tap</li><li>Shows up properly on Google and Google Maps</li><li>Your web address (.co.uk or .com) included</li><li>Hosting, security and small changes included</li></ul>
     </div>
     <div class="hh-tier hh-hot">
-      <div class="hh-tag">COMPLETE · BEST VALUE</div><div class="hh-price">£1,690</div><div class="hh-sub">then £59 a month, all looked after</div>
+      <div class="hh-tag">COMPLETE · BEST VALUE</div><div class="hh-price">£1,690</div><div class="hh-sub">then £59 a month and we look after everything<br><span class="hh-own">or £0 a month if you host it yourself · <a href="#" onclick="hhOwn(event)">how simple is that?</a></span></div>
       <ul><li>Everything in Starter, plus:</li><li>Up to 12 pages with a fully custom design</li><li>All the wording written for you</li><li>A page for every service and every area you cover</li><li>Reviews, photo gallery and quote request form</li><li>Online booking or enquiries straight to your phone</li><li>Monthly check-up on how many people find you</li></ul>
     </div>
   </div>
@@ -1274,7 +1293,7 @@
   <div class="hh-faq fade-up">
     <details><summary>Do I own the website?</summary><p>Yes. Your domain, your words and your photos are yours. If you ever leave, you get the full site files to take wherever you like.</p></details>
     <details><summary>What if I don't like the mock-up?</summary><p>Then you don't pay anything. The mock-up is free and there is no obligation.</p></details>
-    <details><summary>What does the monthly plan cover?</summary><p>Your web address, hosting, security, backups, small text and photo changes, and keeping your Google listing up to date. One bill, nothing else to think about. Cancel any time with 30 days' notice.</p></details>
+    <details><summary>What does the monthly plan cover?</summary><p>Your web address, hosting, security, backups, small text and photo changes, and keeping your Google listing up to date. One bill, nothing else to think about. Cancel any time with 30 days' notice. Would rather look after it yourself? That's fine too: there's no monthly fee and we hand everything over.</p></details>
     <details><summary>How quickly can it go live?</summary><p>Most sites are live within 7 days of you approving the mock-up.</p></details>
     <details><summary>I already have a domain and email. Is that a problem?</summary><p>Not at all. If you already own a web address we use it, and your email keeps working exactly as it does now. If you don't have one, we get one for you and it is included.</p></details>
   </div>
@@ -1887,4 +1906,6 @@ async function submitContact(e) {
     m.addEventListener('click',e=>{if(e.target===m)lkClose();});addEventListener('keydown',e=>{if(e.key==='Escape')lkClose();});
     ['contextmenu','dragstart','copy'].forEach(ev=>document.addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('.lk-card,#lkModal'))e.preventDefault();}));
   })();
+
+  window.hhOwn=e=>{e.preventDefault();document.getElementById('hhOwnM').classList.add('on');};
 </script>
