@@ -3,7 +3,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const API_KEY = 're_URPqETB7_JE2chzFcbSVHXFngdzZPnE4h';
+  const API_KEY = process.env.RESEND_API_KEY;
+  if (!API_KEY) return res.status(500).json({ error: 'Email is not configured' });
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const { name, email, message, type } = req.body;
 
   if (type === 'contact') {
@@ -16,8 +18,9 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: 'Haydon <haydon@hulmeheights.xyz>',
         to: 'hulmeheights@gmail.com',
-        subject: `New message from ${name}`,
-        html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`,
+        subject: `New website enquiry from ${String(name || '').slice(0, 80)}`,
+        reply_to: email,
+        html: `<p><strong>Name:</strong> ${esc(name)}</p><p><strong>Email:</strong> ${esc(email)}</p><p><strong>Message:</strong> ${esc(message)}</p>`,
       }),
     });
 

@@ -917,6 +917,14 @@
   .hh-steps span { font-family: var(--font-mono); color: var(--accent); font-size: 12px; } .hh-steps b { display: block; font-size: 18px; margin: 6px 0; } .hh-steps p { color: var(--fg-dim); font-size: 14px; line-height: 1.5; }
   .hh-cta { display: inline-block; background: var(--accent); color: #fff; font-family: var(--font-mono); letter-spacing: .1em; padding: 16px 26px; font-size: 13px; transition: background .2s; }
   .hh-cta:hover { background: var(--accent-light); }
+  .hh-two { grid-template-columns: repeat(2, 1fr); max-width: 980px; }
+  .hh-addons { max-width: 980px; margin-top: 18px; border: 1px solid var(--card-border); background: var(--card-bg); padding: 20px 24px; }
+  .hh-addon { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 14px; }
+  .hh-addon b { color: var(--fg); font-family: var(--font-mono); font-weight: 500; white-space: nowrap; }
+  .hh-rev .services-track { animation-direction: reverse; animation-duration: 26s; }
+  .hh-rev .services-item { color: var(--fg-muted); font-size: clamp(18px, 2.4vw, 28px); }
+  @media (max-width: 800px) { .hh-two { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) { .status-bar-inner { flex-direction: column; align-items: flex-start; gap: 8px; } .status-bar-inner .status-dot { display: none; } .status-label::before { content: '\25CF  '; color: var(--accent); } }
   .hh-hero-cta { margin-top: 22px; font-size: 12px; padding: 14px 20px; }
   .hh-faq { margin-top: 34px; max-width: 760px; } .hh-faq details { border-top: 1px solid var(--border); padding: 16px 0; } .hh-faq summary { cursor: pointer; font-size: 17px; list-style: none; } .hh-faq summary::after { content: '+'; float: right; color: var(--accent); font-family: var(--font-mono); } .hh-faq details[open] summary::after { content: '–'; } .hh-faq p { color: var(--fg-dim); margin-top: 10px; line-height: 1.6; }
   @media (max-width: 800px) { .hh-tiers, .hh-steps { grid-template-columns: 1fr; } .hh-proof { grid-template-columns: repeat(2, 1fr); } .hh-price { font-size: 48px; } }
@@ -1211,45 +1219,6 @@
 
 </section>
 
-<!-- WEBSITES FOR LOCAL BUSINESSES -->
-<section class="hh-sites" id="websites">
-  <div class="section-header fade-up"><h2>WEBSITES THAT WORK</h2><span class="arrow">↓</span></div>
-  <p class="hh-lede fade-up">Fast, modern websites for Manchester businesses. Built in days, not months. Designed to turn the people searching for you on Google into calls and bookings.</p>
-  <div class="hh-proof fade-up">
-    <div><b>&lt;1s</b><span>load time on mobile</span></div>
-    <div><b>100</b><span>target Lighthouse score</span></div>
-    <div><b>7 days</b><span>typical launch</span></div>
-    <div><b>0</b><span>tech for you to manage</span></div>
-  </div>
-  <div class="hh-tiers fade-up">
-    <div class="hh-tier">
-      <div class="hh-tag">STARTER</div><div class="hh-price">£495</div><div class="hh-sub">+ £39/month care plan<br>or £0 upfront at £79/month (12 months)</div>
-      <ul><li>Up to 4 pages, mobile first</li><li>Click-to-call, map and enquiry form</li><li>Google Business Profile set up</li><li>Hosting, SSL, updates included</li></ul>
-    </div>
-    <div class="hh-tier hh-hot">
-      <div class="hh-tag">BUSINESS · MOST CHOSEN</div><div class="hh-price">£995</div><div class="hh-sub">+ £49/month care plan</div>
-      <ul><li>Up to 10 pages, custom design</li><li>Local SEO for every area you cover</li><li>Reviews, gallery and service pages</li><li>Copywriting done for you</li></ul>
-    </div>
-    <div class="hh-tier">
-      <div class="hh-tag">PREMIUM</div><div class="hh-price">£2,495+</div><div class="hh-sub">+ £89/month care plan</div>
-      <ul><li>Online booking or payments</li><li>Client portals and AI assistants</li><li>Animation and brand system</li><li>Priority support</li></ul>
-    </div>
-  </div>
-  <div class="hh-steps fade-up">
-    <div><span>01</span><b>Free homepage mock-up</b><p>See your new site before you spend a penny.</p></div>
-    <div><span>02</span><b>Build</b><p>Fixed price, agreed up front. Usually live within 7 days.</p></div>
-    <div><span>03</span><b>Grow</b><p>Hosting, changes and Google visibility handled every month.</p></div>
-  </div>
-  <a href="#contact" class="hh-cta fade-up">GET MY FREE MOCK-UP →</a>
-  <div class="hh-faq fade-up">
-    <details><summary>Do I own the website?</summary><p>Yes. Your domain, your words and your photos are yours. If you ever leave, you get the full site files to take wherever you like.</p></details>
-    <details><summary>What if I don't like the mock-up?</summary><p>Then you don't pay anything. The mock-up is free and there is no obligation.</p></details>
-    <details><summary>What does the monthly plan cover?</summary><p>Fast hosting, security certificate, backups, small text and photo changes, and keeping your Google Business Profile up to date. No contracts beyond the first 12 months on the £0-upfront option.</p></details>
-    <details><summary>How quickly can it go live?</summary><p>Most sites are live within 7 days of you approving the mock-up.</p></details>
-    <details><summary>I already have a domain and email. Is that a problem?</summary><p>Not at all. Your email stays exactly as it is; only the website part is pointed at the new site.</p></details>
-  </div>
-</section>
-
 <!-- SERVICES MARQUEE -->
 <section class="services">
   <div class="services-track">
@@ -1267,6 +1236,51 @@
     <div class="services-item">BRAND STRATEGY <span class="dot"></span></div>
   </div>
 </section>
+
+<!-- WEBSITES FOR LOCAL BUSINESSES -->
+<section class="hh-sites" id="websites">
+  <div class="section-header fade-up"><h2>WEBSITES THAT WORK</h2><span class="arrow">↓</span></div>
+  <p class="hh-lede fade-up">Professional websites for Manchester businesses. You see a free design first, it goes live within a week, and everything is looked after for one simple monthly fee. No tech to deal with, ever.</p>
+  <div class="hh-proof fade-up">
+    <div><b>7 days</b><span>from yes to live</span></div>
+    <div><b>£0</b><span>for your mock-up</span></div>
+    <div><b>1 bill</b><span>web address, hosting, updates</span></div>
+    <div><b>100%</b><span>yours to keep</span></div>
+  </div>
+  <div class="hh-tiers hh-two fade-up">
+    <div class="hh-tier">
+      <div class="hh-tag">STARTER</div><div class="hh-price">£579</div><div class="hh-sub">then £39 a month, all looked after</div>
+      <ul><li>A professional website, up to 4 pages</li><li>Looks great on phones, tablets and computers</li><li>Customers can call, message or find you in one tap</li><li>Shows up properly on Google and Google Maps</li><li>Your web address (.co.uk or .com) included</li><li>Hosting, security and small changes included</li></ul>
+    </div>
+    <div class="hh-tier hh-hot">
+      <div class="hh-tag">COMPLETE · BEST VALUE</div><div class="hh-price">£1,690</div><div class="hh-sub">then £59 a month, all looked after</div>
+      <ul><li>Everything in Starter, plus:</li><li>Up to 12 pages with a fully custom design</li><li>All the wording written for you</li><li>A page for every service and every area you cover</li><li>Reviews, photo gallery and quote request form</li><li>Online booking or enquiries straight to your phone</li><li>Monthly check-up on how many people find you</li></ul>
+    </div>
+  </div>
+  <div class="hh-addons fade-up">
+    <div class="hh-tag" style="margin-bottom:10px">OPTIONAL EXTRAS</div>
+    <div class="hh-addon"><span>AI assistant that answers customer questions 24/7</span><b>+£295</b></div>
+    <div class="hh-addon"><span>Take payments or sell products online</span><b>+£395</b></div>
+    <div class="hh-addon"><span>Logo and brand colours</span><b>+£195</b></div>
+    <div class="hh-addon"><span>Extra pages</span><b>£75 each</b></div>
+    <div class="hh-addon"><span>Business email (you@yourbusiness.co.uk)</span><b>+£5/month</b></div>
+  </div>
+  <div class="hh-steps fade-up">
+    <div><span>01</span><b>Free homepage mock-up</b><p>See your new site before you spend a penny.</p></div>
+    <div><span>02</span><b>Build</b><p>Fixed price, agreed up front. Usually live within 7 days.</p></div>
+    <div><span>03</span><b>Grow</b><p>Hosting, changes and Google visibility handled every month.</p></div>
+  </div>
+  <a href="#contact" class="hh-cta fade-up">GET MY FREE MOCK-UP →</a>
+  <div class="hh-faq fade-up">
+    <details><summary>Do I own the website?</summary><p>Yes. Your domain, your words and your photos are yours. If you ever leave, you get the full site files to take wherever you like.</p></details>
+    <details><summary>What if I don't like the mock-up?</summary><p>Then you don't pay anything. The mock-up is free and there is no obligation.</p></details>
+    <details><summary>What does the monthly plan cover?</summary><p>Your web address, hosting, security, backups, small text and photo changes, and keeping your Google listing up to date. One bill, nothing else to think about. Cancel any time with 30 days' notice.</p></details>
+    <details><summary>How quickly can it go live?</summary><p>Most sites are live within 7 days of you approving the mock-up.</p></details>
+    <details><summary>I already have a domain and email. Is that a problem?</summary><p>Not at all. If you already own a web address we use it, and your email keeps working exactly as it does now. If you don't have one, we get one for you and it is included.</p></details>
+  </div>
+</section>
+
+
 
 <!-- CURRENTLY BUILDING -->
 <div class="status-bar fade-up">
@@ -1287,6 +1301,9 @@
     <div class="transmission-refresh">refreshes every 24 hours</div>
   </div>
 </section>
+
+<!-- WHO WE BUILD FOR (reverse marquee) -->
+<section class="services hh-rev"><div class="services-track"><div class="services-item">PLUMBERS <span class="dot"></span></div><div class="services-item">ELECTRICIANS <span class="dot"></span></div><div class="services-item">SALONS <span class="dot"></span></div><div class="services-item">CAFES <span class="dot"></span></div><div class="services-item">BUILDERS <span class="dot"></span></div><div class="services-item">CLINICS <span class="dot"></span></div><div class="services-item">GARDENERS <span class="dot"></span></div><div class="services-item">BARBERS <span class="dot"></span></div><div class="services-item">DOG GROOMERS <span class="dot"></span></div><div class="services-item">PERSONAL TRAINERS <span class="dot"></span></div><div class="services-item">FLORISTS <span class="dot"></span></div><div class="services-item">ESTATE AGENTS <span class="dot"></span></div><div class="services-item">PLUMBERS <span class="dot"></span></div><div class="services-item">ELECTRICIANS <span class="dot"></span></div><div class="services-item">SALONS <span class="dot"></span></div><div class="services-item">CAFES <span class="dot"></span></div><div class="services-item">BUILDERS <span class="dot"></span></div><div class="services-item">CLINICS <span class="dot"></span></div><div class="services-item">GARDENERS <span class="dot"></span></div><div class="services-item">BARBERS <span class="dot"></span></div><div class="services-item">DOG GROOMERS <span class="dot"></span></div><div class="services-item">PERSONAL TRAINERS <span class="dot"></span></div><div class="services-item">FLORISTS <span class="dot"></span></div><div class="services-item">ESTATE AGENTS <span class="dot"></span></div></div></section>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
