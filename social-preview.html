@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Social preview · Larkfold + HulmeHeights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
+body{background:#111;color:#eee;font:16px/1.5 'Instrument Sans',system-ui,sans-serif}
+header{padding:48px max(5vw,18px) 10px;max-width:1300px;margin:auto}
+header h1{font:600 clamp(30px,4vw,46px)/1.05 'Instrument Sans';letter-spacing:-.01em}
+header p{color:#9a9a92;max-width:760px;margin-top:10px}
+section{padding:34px max(5vw,18px);max-width:1300px;margin:auto}
+h2{font:600 26px/1.2 'Instrument Sans';margin-bottom:6px}
+.lead{color:#9a9a92;margin-bottom:22px;max-width:760px}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:26px}
+.item h3{font:600 17px 'Instrument Sans';margin:14px 0 4px}
+.item p{color:#9a9a92;font-size:14.5px}
+.cap{background:#1a1a1a;border:1px solid #262626;border-radius:12px;padding:12px 14px;margin-top:10px;font-size:14px;color:#cfcfc8;white-space:pre-line}
+.cap b{color:#fff}
+/* phone */
+.phone{container-type:inline-size;position:relative;width:100%;max-width:330px;aspect-ratio:9/16;border-radius:30px;overflow:hidden;background:#000;box-shadow:0 0 0 8px #222,0 20px 50px rgba(0,0,0,.6);margin:8px auto 0;cursor:pointer}
+.stage{position:absolute;inset:0}
+.sc{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+.sc.on{opacity:1}
+.bgimg{position:absolute;inset:-10%;background-size:cover;background-position:center;filter:blur(22px) brightness(.55)}
+.fg{position:absolute;inset:0;background-size:contain;background-repeat:no-repeat;background-position:center 42%}
+.sc.on .zoom{animation:kb 3.4s ease-out forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.ui{position:absolute;inset:0;pointer-events:none;z-index:5}
+.ui .side{position:absolute;right:3.5cqw;bottom:24cqw;display:flex;flex-direction:column;gap:5cqw;align-items:center}
+.ui .side i{display:block;width:9cqw;height:9cqw;border-radius:50%;background:rgba(255,255,255,.85)}
+.ui .who{position:absolute;left:4cqw;bottom:7cqw;right:18cqw;font-size:3.6cqw;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.ui .who b{display:block;font-size:4cqw;margin-bottom:1cqw}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:rgba(255,255,255,.85);z-index:6;width:0}
+.paused::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff;background:rgba(0,0,0,.35);z-index:7}
+/* larkfold look */
+.lk .hook{position:absolute;left:7cqw;right:7cqw;top:16cqw;font:600 9cqw/1.05 Fraunces,serif;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.lk .pill{position:absolute;left:7cqw;top:20cqw;background:#f6f1ea;color:#2a2622;font:600 4.6cqw 'Instrument Sans';padding:2.2cqw 4cqw;border-radius:99px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.lk .num{position:absolute;left:7cqw;top:15cqw;font:600 16cqw/1 Fraunces,serif;color:#f6f1ea;text-shadow:0 4px 18px rgba(0,0,0,.5)}
+.lk .lbl{position:absolute;left:7cqw;right:20cqw;top:34cqw;font:600 5.6cqw/1.15 'Instrument Sans';color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.lk .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.25) 38%,transparent 55%,transparent 75%,rgba(0,0,0,.45) 100%)}
+.lk .end{position:absolute;inset:0;background:#2a2622;color:#f6f1ea;display:flex;flex-direction:column;justify-content:center;padding:0 9cqw;gap:4cqw}
+.lk .end .brand{font:600 4cqw 'Instrument Sans';letter-spacing:.3em}
+.lk .end .big{font:600 9.5cqw/1.05 Fraunces,serif}
+.lk .end .sm{font-size:4.4cqw;color:#cbbfb1}
+.lk .end .btn{align-self:flex-start;background:#f6f1ea;color:#2a2622;font:600 4.4cqw 'Instrument Sans';padding:3cqw 5cqw;border-radius:99px}
+/* hulmeheights look */
+.hh{background:#0a0a0a;font-family:'Instrument Sans'}
+.hh .glow{position:absolute;inset:0;background:radial-gradient(70cqw 50cqw at 85% 5%,rgba(232,96,10,.22),transparent 60%)}
+.hh .t{position:absolute;left:7cqw;right:7cqw;top:16cqw;font:400 14cqw/.9 'Bebas Neue';color:#f0efe9}
+.hh .t em{font-style:normal;color:#e8600a}
+.hh .s{position:absolute;left:7cqw;right:12cqw;font-size:4.8cqw;line-height:1.35;color:#d8d6cf}
+.hh .tag{position:absolute;left:7cqw;top:10cqw;font:400 3.4cqw 'DM Mono';color:#e8600a;letter-spacing:.12em}
+.win{position:absolute;left:6cqw;right:6cqw;border-radius:3cqw;overflow:hidden;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+.win .chrome{height:7cqw;background:#e6e6e6;display:flex;align-items:center;gap:1.4cqw;padding:0 2.5cqw}
+.win .chrome i{width:2cqw;height:2cqw;border-radius:50%;background:#bbb;display:block}
+.old{background:#dfe9f3;color:#003;font-family:'Times New Roman',serif;padding:3cqw;height:72cqw}
+.old .ban{background:linear-gradient(#36c,#039);color:#ff0;text-align:center;font:700 6cqw 'Comic Sans MS','Times New Roman',serif;padding:2cqw}
+.old marquee,.old .mq{display:block;color:#c00;font-size:3.4cqw;margin:2cqw 0;white-space:nowrap}
+.old .cols{display:flex;gap:2cqw;font-size:3.2cqw}
+.old .cols div{flex:1;border:1px solid #99a;background:#fff;padding:1.5cqw;height:36cqw}
+.new{background:#f3efe7;color:#1d1d1b;padding:4cqw;height:72cqw;display:flex;flex-direction:column;gap:2.4cqw}
+.new .nav{display:flex;justify-content:space-between;font:700 3.4cqw 'Instrument Sans'}
+.new .nav span:last-child{font-weight:400;color:#666}
+.new .hd{font:400 10.5cqw/.9 'Bebas Neue';margin-top:3cqw}
+.new .p{font-size:3.4cqw;color:#555}
+.new .cta{display:flex;gap:2cqw}.new .cta b{background:#e8600a;color:#fff;border-radius:1.6cqw;padding:2.2cqw 3.4cqw;font-size:3.2cqw}.new .cta s{text-decoration:none;border:1.5px solid #1d1d1b;border-radius:1.6cqw;padding:2cqw 3.2cqw;font-size:3.2cqw;font-weight:600}
+.new .rv{display:flex;gap:1.6cqw;margin-top:auto}.new .rv div{flex:1;background:#fff;border-radius:1.6cqw;padding:1.8cqw;font-size:2.8cqw}.new .rv em{color:#e8600a;font-style:normal;display:block}
+.term{position:absolute;left:6cqw;right:6cqw;top:60cqw;background:#06081a;border:1px solid #1c2147;border-radius:3cqw;padding:4cqw;font:400 3.5cqw/1.75 'DM Mono';color:#b9bce8;min-height:70cqw}
+.term .l{opacity:0;transform:translateY(4px);transition:all .3s}.term .l.v{opacity:1;transform:none}
+.k1{color:#e8600a}.k2{color:#8f95ff}.k3{color:#5fd38a}
+.hh .endc{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 8cqw;gap:4cqw}
+.hh .endc .u{font:400 12cqw/.9 'Bebas Neue';color:#e8600a}
+.hh .endc .x{font-size:4.6cqw;color:#d8d6cf}
+.mark{position:absolute;right:4cqw;top:5cqw;font:400 2.8cqw 'DM Mono';color:rgba(255,255,255,.55);z-index:6}
+/* posts */
+.post{background:#fff;color:#1c1e21;border-radius:12px;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:460px}
+.post .hdr{display:flex;gap:10px;align-items:center;padding:12px 14px}
+.post .av{width:40px;height:40px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+.post .nm{font-weight:600;font-size:15px}.post .tm{font-size:12.5px;color:#65676b}
+.post .tx{padding:0 14px 12px;font-size:15px;line-height:1.4;white-space:pre-line}
+.post img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#eee}
+.post .gal{display:grid;grid-template-columns:1fr 1fr;gap:2px}.post .gal img{aspect-ratio:1/1}
+.post .lnk{background:#f0f2f5;padding:10px 14px;font-size:13px;color:#65676b}.post .lnk b{display:block;color:#1c1e21;font-size:15px}
+.post .act{display:flex;justify-content:space-around;border-top:1px solid #e4e6eb;padding:8px 0;color:#65676b;font-size:14px;font-weight:600}
+.gbp{background:#fff;color:#202124;border-radius:12px;overflow:hidden;max-width:460px;font-family:Roboto,system-ui,sans-serif}
+.gbp .h{padding:14px 16px;border-bottom:1px solid #eee}.gbp .h b{font-size:17px}.gbp .h div{font-size:13px;color:#70757a}
+.gbp .st{color:#e37400}
+.gbp img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top}
+.gbp .bd{padding:14px 16px;font-size:14.5px;line-height:1.45}.gbp .bt{display:inline-block;margin-top:10px;color:#1a73e8;font-weight:600}
+.note{color:#76766f;font-size:13.5px;margin-top:28px}
+footer{padding:30px max(5vw,18px) 60px;max-width:1300px;margin:auto;color:#76766f;font-size:14px}
+@media (prefers-reduced-motion:reduce){.sc.on .zoom{animation:none}}
+</style></head><body>
+<header><h1>What your socials would post</h1><p>These are live previews of the automatic videos and posts. Each phone plays on a loop; tap one to pause it. The real thing is rendered to MP4 from these same designs. Every video uses your real Etsy listing photos, so new products get videos automatically.</p></header>
+
+<section><h2>Larkfold Prints: TikTok + Facebook Reels</h2><p class="lead">About one a day. Short, silent-friendly, text on screen, ending on the shop. TikTok adds a trending sound when posted from drafts.</p>
+<div class="row" id="lkrow"></div></section>
+
+<section><h2>HulmeHeights: TikTok + Facebook Reels</h2><p class="lead">Three or four a week. Before-and-after makeovers and build demos, aimed at small business owners.</p>
+<div class="row" id="hhrow"></div></section>
+
+<section><h2>Facebook page posts</h2><p class="lead">Photo posts between the videos. Facebook allows links in page posts, so these point straight to the listing or your site.</p>
+<div class="row" id="fbrow"></div></section>
+
+<section><h2>Google Business Profile</h2><p class="lead">One update a week on your HulmeHeights profile, so it stays active in local search for "web designer Manchester".</p>
+<div class="row" id="gbprow"></div>
+<p class="note">The makeover video uses an invented example business, not a real client. Prices and wording follow what's on your site today.</p></section>
+<footer>Preview only, not public. Nothing has been posted anywhere.</footer>
+
+<script>
+{
+const E=u=>u.replace('il_fullxfull','il_794xN');
+const IM={
+ box:['https://i.etsystatic.com/69199900/r/il/91cb1d/8880926750/il_fullxfull.8880926750_oua6.jpg','https://i.etsystatic.com/69199900/r/il/db95b0/8928701229/il_fullxfull.8928701229_hmjd.jpg','https://i.etsystatic.com/69199900/r/il/e41da8/8928701325/il_fullxfull.8928701325_9gg3.jpg'],
+ scandi:'https://i.etsystatic.com/69199900/r/il/6c4325/8930397445/il_fullxfull.8930397445_dipz.jpg',
+ vintage:'https://i.etsystatic.com/69199900/r/il/9b0817/8930101845/il_fullxfull.8930101845_85el.jpg',
+ home:'https://i.etsystatic.com/69199900/r/il/7be8b0/8913997254/il_fullxfull.8913997254_zxsj.jpg',
+ fir:'https://i.etsystatic.com/69199900/r/il/2d1450/8882611898/il_fullxfull.8882611898_hs3z.jpg',
+ quiz:['https://i.etsystatic.com/69199900/r/il/8d66c8/8926764971/il_fullxfull.8926764971_5e12.jpg','https://i.etsystatic.com/69199900/r/il/4e1af1/8926765033/il_fullxfull.8926765033_8g5l.jpg'],
+ colour:['https://i.etsystatic.com/69199900/r/il/6356e6/8880826758/il_fullxfull.8880826758_3n1r.jpg','https://i.etsystatic.com/69199900/r/il/7963ec/8880826824/il_fullxfull.8880826824_g14o.jpg'],
+ mug:'https://i.etsystatic.com/69199900/r/il/798026/8966233047/il_fullxfull.8966233047_72ls.jpg',
+ dog:'https://i.etsystatic.com/69199900/r/il/99735d/8915178256/il_fullxfull.8915178256_9sgz.jpg',
+ scandiset:['https://i.etsystatic.com/69199900/r/il/e9af07/8961761995/il_fullxfull.8961761995_acee.jpg','https://i.etsystatic.com/69199900/r/il/3deeb1/8913985546/il_fullxfull.8913985546_gze7.jpg','https://i.etsystatic.com/69199900/r/il/4687ab/8913985686/il_fullxfull.8913985686_eyvj.jpg']
+};
+const ph=(u)=>`<div class=bgimg style="background-image:url('${E(u)}')"></div><div class="fg zoom" style="background-image:url('${E(u)}')"></div><div class=shade></div>`;
+const end=(big,sm)=>`<div class=end><div class=brand>LARKFOLD PRINTS</div><div class=big>${big}</div><div class=sm>${sm}</div><div class=btn>Shop on Etsy</div></div>`;
+const tt=(name,cap)=>`<div class=ui><div class=side><i></i><i></i><i></i><i></i></div><div class=who><b>${name}</b>${cap}</div></div>`;
+
+const VIDS={
+ lk:[
+  {title:'Flip-through: one product',desc:'Hook, three listing photos with what each one is, then the shop.',who:'@larkfoldprints',cap:'Christmas Eve box, sorted tonight',
+   scenes:[
+    [2600,ph(IM.box[0])+`<div class=hook>Christmas Eve box,<br>sorted tonight</div>`],
+    [2400,ph(IM.box[1])+`<div class=pill>Lid + contents labels</div>`],
+    [2400,ph(IM.box[2])+`<div class=pill>Open-in-order tags</div>`],
+    [3000,end('Print at home in ten minutes','Instant download. Personal use. A4 and US Letter.')]],
+   post:'<b>Caption:</b> Christmas Eve box, sorted tonight 🎄 Print the labels, fill the box, done. Instant download from our Etsy shop (link in bio).\n#christmaseve #christmaseveboxideas #printables #ukmums'},
+  {title:'Listicle: a few products',desc:'Numbered round-up with a seasonal angle. Built from the best-matching listings each day.',who:'@larkfoldprints',cap:'4 Christmas decorations you can print tonight',
+   scenes:[
+    [2400,ph(IM.scandi)+`<div class=hook>4 Christmas decorations you can print tonight</div>`],
+    [2100,ph(IM.scandi)+`<div class=num>1</div><div class=lbl>Scandi folk paper baubles</div>`],
+    [2100,ph(IM.vintage)+`<div class=num>2</div><div class=lbl>Vintage watercolour ornaments</div>`],
+    [2100,ph(IM.home)+`<div class=num>3</div><div class=lbl>First Christmas in our new home</div>`],
+    [2100,ph(IM.fir)+`<div class=num>4</div><div class=lbl>Minimalist fir prints for the wall</div>`],
+    [2800,end('Which one are you printing?','All four are instant downloads.')]],
+   post:'<b>Caption:</b> No queue, no delivery date. Which one would you hang? 1, 2, 3 or 4? 👇\n#christmasdecor #printablechristmas #scandichristmas #diychristmas'},
+  {title:'Gift idea: aimed at one buyer',desc:'Targets a person (newlyweds, dog walkers, teachers) using the search phrases that are rising.',who:'@larkfoldprints',cap:'Their first Christmas as Mr & Mrs',
+   scenes:[
+    [2600,ph(IM.mug)+`<div class=hook>Married this year?</div>`],
+    [2600,ph(IM.mug)+`<div class=pill>Their first Christmas as Mr &amp; Mrs</div>`],
+    [2600,ph(IM.dog)+`<div class=hook>Or for the dog walker who never misses a day</div>`],
+    [3000,end('Gifts that get a laugh on the day','Printed and posted to your door.')]],
+   post:'<b>Caption:</b> Tag someone who got married this year 💍 Or the friend who walks the dog in any weather.\n#weddinggift #firstchristmasmarried #dogwalker #giftsforher'}
+ ],
+ hh:[
+  {title:'Makeover: before → after',desc:'A dated site rebuilt. Speaks straight to tradespeople and local businesses.',who:'@hulmeheights',cap:'Same plumber. New website.',
+   scenes:[
+    [2600,`<div class=glow></div><div class=tag>WEBSITE MAKEOVER</div><div class=t>IS YOUR SITE<br>COSTING YOU<br><em>CALLS?</em></div>`],
+    [3000,`<div class=glow></div><div class=tag>BEFORE</div><div class=win style="top:28cqw"><div class=chrome><i></i><i></i><i></i></div><div class=old><div class=ban>Welcome to Smith Plumbing!!</div><span class=mq>*** Under construction - call us ***</span><div class=cols><div>Our services<br><br>Boilers<br>Pipes<br>Taps</div><div>Contact us<br><br>Fax:<br>0161 ...</div></div></div></div><div class=s style="top:132cqw">Slow, hard to read on a phone, no way to ask for a quote.</div>`],
+    [3400,`<div class=glow></div><div class=tag>AFTER</div><div class=win style="top:28cqw"><div class=chrome><i></i><i></i><i></i></div><div class=new><div class=nav><span>SMITH PLUMBING</span><span>Services · Reviews</span></div><div class=hd>TRUSTED LOCAL<br>PLUMBERS</div><div class=p>Same-week jobs. Fixed quotes.</div><div class=cta><b>GET A QUOTE</b><s>CALL NOW</s></div><div class=rv><div><em>★★★★★</em>"Sorted in an hour."</div><div><em>★★★★★</em>"Fair and tidy."</div></div></div></div><div class=s style="top:132cqw">Quote button up top. Tap to call. Found on Google.</div>`],
+    [2800,`<div class=glow></div><div class=endc><div class=x>Websites for UK small businesses</div><div class=u>FROM £579</div><div class=x>Free homepage mock-up first. You only pay if you like it.</div><div class=x style="color:#9a9a92">hulmeheights.xyz</div></div>`]],
+   post:'<b>Caption:</b> Same plumber, new website. If your site still looks like the before, I\'ll mock up a new homepage for free. Example business, not a real client.\n#smallbusinessuk #webdesign #tradesmen #manchester'},
+  {title:'Build demo: the AI studio',desc:'Shows what you can build. Good for people looking for custom software or automation.',who:'@hulmeheights',cap:'I built AI agents that run an Etsy shop',
+   scenes:[
+    [2600,`<div class=glow></div><div class=tag>BUILT BY HULMEHEIGHTS</div><div class=t>AI AGENTS<br>THAT RUN<br>A <em>SHOP</em></div>`],
+    [6200,`<div class=glow></div><div class=tag>LIVE LOG</div><div class=t style="font-size:9cqw">FIND · MAKE · CHECK · LIST</div><div class=term><div class=l><span class=k1>SCOUT</span>  testing 32 search phrases</div><div class=l><span class=k1>SCOUT</span>  demand found · 16.4 favs/day</div><div class=l><span class=k2>MAKER</span>  designing the product</div><div class=l><span class=k2>MAKER</span>  rendering mockups 5/5</div><div class=l><span class=k3>QA</span>     checks passed ✓</div><div class=l><span class=k3>COPY</span>   title + 13 tags written</div><div class=l>OWNER  waiting for your OK</div></div>`],
+    [2800,`<div class=glow></div><div class=endc><div class=x>Want something like this for your business?</div><div class=u>HULMEHEIGHTS.XYZ</div><div class=x>Custom software, AI tools and automations. Manchester.</div></div>`]],
+   post:'<b>Caption:</b> I built a team of AI agents that research, design and list products for my Etsy shop, while I sleep. I build tools like this for small businesses too.\n#ai #automation #smallbusiness #buildinpublic'}
+ ]};
+
+function player(v,i,group){
+  const id=`${group}${i}`;
+  const brand=group==='lk'?'lk':'hh';
+  const total=v.scenes.reduce((a,s)=>a+s[0],0);
+  return `<div class=item><div class=phone id="${id}" data-total="${total}"><div class="stage ${brand}">${v.scenes.map((s,k)=>`<div class=sc data-d="${s[0]}">${s[1]}</div>`).join('')}</div>${tt(v.who,v.cap)}<div class=mark>PREVIEW</div><div class=bar></div></div><h3>${v.title}</h3><p>${v.desc}</p><div class=cap>${v.post}</div></div>`;
+}
+document.getElementById('lkrow').innerHTML=VIDS.lk.map((v,i)=>player(v,i,'lk')).join('');
+document.getElementById('hhrow').innerHTML=VIDS.hh.map((v,i)=>player(v,i,'hh')).join('');
+
+function run(el){
+  const scs=[...el.querySelectorAll('.sc')],bar=el.querySelector('.bar');const total=+el.dataset.total;
+  let k=0,t0=performance.now(),elapsedBefore=0,paused=false,pauseAt=0,timer;
+  function show(n){scs.forEach((s,j)=>s.classList.toggle('on',j===n));const s=scs[n];
+    s.querySelectorAll('.l').forEach(l=>l.classList.remove('v'));
+    s.querySelectorAll('.zoom').forEach(z=>{z.style.animation='none';z.offsetHeight;z.style.animation=''});
+    s.querySelectorAll('.l').forEach((l,j)=>setTimeout(()=>l.classList.add('v'),300+j*700));}
+  function step(){show(k);timer=setTimeout(()=>{elapsedBefore+=+scs[k].dataset.d;k=(k+1)%scs.length;if(k===0)elapsedBefore=0;t0=performance.now();step()},+scs[k].dataset.d)}
+  function tick(){if(!paused){const p=(elapsedBefore+performance.now()-t0)/total;bar.style.width=Math.min(100,p*100)+'%'}requestAnimationFrame(tick)}
+  el.addEventListener('click',()=>{if(paused){paused=false;el.classList.remove('paused');k=0;elapsedBefore=0;t0=performance.now();step()}else{paused=true;clearTimeout(timer);el.classList.add('paused')}});
+  step();tick();
+}
+document.querySelectorAll('.phone').forEach(run);
+
+const fb=[
+ {av:'#2a2622',ini:'L',nm:'Larkfold Prints',tx:'Hosting Christmas Day? Six rounds, 60 questions, answers included. Print it, pass the pens round, and watch the family argue over round four 😅\n\n🎄 Christmas Quiz 2026, instant download',imgs:IM.quiz,lnk:['ETSY.COM','Christmas Quiz 2026 Printable · 60 Questions & Answers']},
+ {av:'#2a2622',ini:'L',nm:'Larkfold Prints',tx:'Keep the little ones busy while the dinner cooks. 20 festive colouring pages, two detail levels for ages 3 to 8.',imgs:IM.colour,lnk:['ETSY.COM','Christmas Colouring Pages for Kids · 20 Printable Sheets']},
+ {av:'#e8600a',ini:'H',nm:'HulmeHeights',tx:'Most small business websites lose people in the first few seconds: slow, hard to use on a phone, no obvious way to get a quote.\n\nIf that sounds like yours, I\'ll mock up a new homepage for free. You only pay if you like it.',img:'https://hulmeheights.xyz/pins/site.jpg',lnk:['HULMEHEIGHTS.XYZ','Websites for UK small businesses · Manchester']}
+];
+document.getElementById('fbrow').innerHTML=fb.map(p=>`<div class=item><div class=post><div class=hdr><div class=av style="background:${p.av}">${p.ini}</div><div><div class=nm>${p.nm}</div><div class=tm>Just now · 🌐</div></div></div><div class=tx>${p.tx}</div>${p.imgs?`<div class=gal>${p.imgs.map(u=>`<img src="${E(u)}" alt="">`).join('')}</div>`:`<img src="${p.img}" alt="" style="aspect-ratio:2/3;max-height:520px">`}<div class=lnk>${p.lnk[0]}<b>${p.lnk[1]}</b></div><div class=act><span>Like</span><span>Comment</span><span>Share</span></div></div></div>`).join('');
+
+const gbp=[
+ {img:'https://hulmeheights.xyz/pins/price.jpg',tx:'Clear website prices for local businesses: Starter £579 or Complete £1,690, with hosting and updates looked after, or £0 a month if you host it yourself. Free homepage mock-up first.',bt:'Learn more'},
+ {img:'https://hulmeheights.xyz/pins/auto.jpg',tx:'Spending evenings on quotes and invoices? I build simple tools that answer enquiries, book jobs into your calendar and send review requests automatically.',bt:'Call now'}
+];
+document.getElementById('gbprow').innerHTML=gbp.map(p=>`<div class=item><div class=gbp><div class=h><b>HulmeHeights</b><div>Website designer · Manchester</div></div><img src="${p.img}" alt=""><div class=bd>${p.tx}<br><span class=bt>${p.bt}</span></div></div></div>`).join('');
+}
+</script></body></html>
