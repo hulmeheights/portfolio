@@ -37,9 +37,9 @@ h2{font:600 26px/1.2 'Instrument Sans';margin-bottom:6px}
 /* larkfold look: designed for the phone screen, product photos shown as framed cards */
 .lk{background:#1f3a2c;font-family:'Instrument Sans'}
 .lk .glow{position:absolute;inset:0;background:radial-gradient(90cqw 70cqw at 80% 0%,rgba(246,241,234,.10),transparent 60%),radial-gradient(80cqw 60cqw at 0% 100%,rgba(201,164,92,.12),transparent 60%)}
-.lk .lab{position:absolute;left:8cqw;top:15cqw;font:600 3.4cqw 'Instrument Sans';letter-spacing:.22em;color:#c9a45c}
-.lk .hl{position:absolute;left:8cqw;right:8cqw;top:22cqw;font:600 10.5cqw/1.04 Fraunces,serif;color:#f6f1ea}
-.lk .hl.sm{font-size:7.6cqw;top:12cqw}
+.lk .lab{position:absolute;left:8cqw;top:10cqw;font:600 3.4cqw 'Instrument Sans';letter-spacing:.22em;color:#c9a45c}
+.lk .hl{position:absolute;left:8cqw;right:8cqw;top:17cqw;font:600 10.5cqw/1.04 Fraunces,serif;color:#f6f1ea}
+.lk .hl.sm{font-size:7.6cqw;top:17cqw}
 .lk .w{display:inline-block;opacity:0}
 .sc.on .w{animation:up .55s cubic-bezier(.2,.8,.2,1) both}
 @keyframes up{from{opacity:0;transform:translateY(3cqw)}to{opacity:1;transform:none}}
@@ -173,14 +173,14 @@ const VIDS={
     [2400,G+num(4,'Minimal fir prints for the wall')+card(IM.fir,2)],
     [2800,G+end('Which one are you printing?')]],
    post:'<b>Caption:</b> No queue, no delivery date. Which one would you hang? 1, 2, 3 or 4? 👇\n#christmasdecor #printablechristmas #scandichristmas #diychristmas'},
-  {title:'Gift idea: aimed at one buyer',desc:'Speaks to a specific person (newlyweds, dog walkers, teachers) using the gift searches that are rising.',who:'@larkfoldprints',cap:'Married this year?',
+  {title:'Gift idea: aimed at one buyer',desc:'Speaks to a specific person (new homeowners, parents of little ones, teachers) using the gift searches that are rising.',who:'@larkfoldprints',cap:'Moved house this year?',
    scenes:[
-    [2400,G+lab('GIFT IDEAS')+hl('Know someone who got married this year?')+card(IM.mug,3,'low')],
-    [3000,G+hl('Their first Christmas as Mr &amp; Mrs','sm')+card(IM.mug,-2)],
-    [2400,G+lab('OR')+hl('The dog walker who goes out in any weather')+card(IM.dog,-3,'low')],
-    [3000,G+hl('Dog walked, toes frozen, kettle on','sm')+card(IM.dog,2)],
-    [2800,G+end('Gifts that get a laugh on the day','Printed and posted to the door.')]],
-   post:'<b>Caption:</b> Tag someone who got married this year 💍 Or the friend who walks the dog in any weather.\n#weddinggift #firstchristmasmarried #dogwalkergift #christmasgiftideas'},
+    [2400,G+lab('GIFT IDEAS')+hl('Know someone who moved house this year?')+card(IM.home,3,'low')],
+    [3000,G+hl('Their first Christmas in the new home','sm')+card(IM.home,-2)],
+    [2400,G+lab('OR')+hl('Little ones who need keeping busy on the day')+card(IM.colour[0],-3,'low')],
+    [3000,G+hl('Twenty festive colouring pages','sm')+card(IM.colour[1],2)],
+    [2800,G+end('Small gifts that feel thought about')]],
+   post:'<b>Caption:</b> Tag someone spending their first Christmas in a new home 🏡 Or the parent who needs an hour of peace on the 25th.\n#newhomegift #firstchristmasnewhome #christmascolouring #christmasgiftideas'},
   {title:'Problem → fix: hosting',desc:'Starts with a moment the buyer is in (hosting Christmas Day) and shows the product as the answer.',who:'@larkfoldprints',cap:'Hosting Christmas Day?',
    scenes:[
     [2600,G+lab('HOSTING CHRISTMAS DAY?')+hl('After dinner, everyone just stares at their phone.')+card(IM.quiz[0],3,'low')],
@@ -201,7 +201,7 @@ const VIDS={
    scenes:[
     [2600,`<div class=glow></div><div class=tag>BUILT BY HULMEHEIGHTS</div><div class=t>AI AGENTS<br>THAT RUN<br>A <em>SHOP</em></div>`],
     [6200,`<div class=glow></div><div class=tag>LIVE LOG</div><div class=t style="font-size:9cqw">FIND · MAKE · CHECK · LIST</div><div class=term><div class=l><span class=k1>SCOUT</span>  testing 32 search phrases</div><div class=l><span class=k1>SCOUT</span>  demand found · 16.4 favs/day</div><div class=l><span class=k2>MAKER</span>  designing the product</div><div class=l><span class=k2>MAKER</span>  rendering mockups 5/5</div><div class=l><span class=k3>QA</span>     checks passed ✓</div><div class=l><span class=k3>COPY</span>   title + 13 tags written</div><div class=l>OWNER  waiting for your OK</div></div>`],
-    [2800,`<div class=glow></div><div class=endc><div class=x>Want something like this for your business?</div><div class=u>HULMEHEIGHTS.XYZ</div><div class=x>Custom software, AI tools and automations. Manchester.</div></div>`]],
+    [2800,`<div class=glow></div><div class=endc><div class=x>Want something like this for your business?</div><div class=u>HULMEHEIGHTS.XYZ</div><div class=x>Custom software, AI tools and automations. Cheshire.</div></div>`]],
    post:'<b>Caption:</b> I built a team of AI agents that research, design and list products for my Etsy shop, while I sleep. I build tools like this for small businesses too.\n#ai #automation #smallbusiness #buildinpublic'}
  ]};
 
@@ -231,7 +231,7 @@ document.querySelectorAll('.phone').forEach(run);
 const fb=[
  {av:'#2a2622',ini:'L',nm:'Larkfold Prints',tx:'Hosting Christmas Day? Six rounds, 60 questions, answers included. Print it, pass the pens round, and watch the family argue over round four 😅\n\n🎄 Christmas Quiz 2026, instant download',imgs:IM.quiz,lnk:['ETSY.COM','Christmas Quiz 2026 Printable · 60 Questions & Answers']},
  {av:'#2a2622',ini:'L',nm:'Larkfold Prints',tx:'Keep the little ones busy while the dinner cooks. 20 festive colouring pages, two detail levels for ages 3 to 8.',imgs:IM.colour,lnk:['ETSY.COM','Christmas Colouring Pages for Kids · 20 Printable Sheets']},
- {av:'#e8600a',ini:'H',nm:'HulmeHeights',tx:'Most small business websites lose people in the first few seconds: slow, hard to use on a phone, no obvious way to get a quote.\n\nIf that sounds like yours, I\'ll mock up a new homepage for free. You only pay if you like it.',img:'https://hulmeheights.xyz/pins/fb-site.jpg',lnk:['HULMEHEIGHTS.XYZ','Websites for UK small businesses · Manchester']}
+ {av:'#e8600a',ini:'H',nm:'HulmeHeights',tx:'Most small business websites lose people in the first few seconds: slow, hard to use on a phone, no obvious way to get a quote.\n\nIf that sounds like yours, I\'ll mock up a new homepage for free. You only pay if you like it.',img:'https://hulmeheights.xyz/pins/fb-site.jpg',lnk:['HULMEHEIGHTS.XYZ','Websites for UK small businesses · Cheshire']}
 ];
 document.getElementById('fbrow').innerHTML=fb.map(p=>`<div class=item><div class=post><div class=hdr><div class=av style="background:${p.av}">${p.ini}</div><div><div class=nm>${p.nm}</div><div class=tm>Just now · 🌐</div></div></div><div class=tx>${p.tx}</div>${p.imgs?`<div class=gal>${p.imgs.map(u=>`<img src="${E(u)}" alt="">`).join('')}</div>`:`<img src="${p.img}" alt="">`}<div class=lnk>${p.lnk[0]}<b>${p.lnk[1]}</b></div><div class=act><span>Like</span><span>Comment</span><span>Share</span></div></div></div>`).join('');
 
@@ -239,6 +239,6 @@ const gbp=[
  {img:'https://hulmeheights.xyz/pins/gbp-price.jpg',tx:'Clear website prices for local businesses: Starter £579 or Complete £1,690, with hosting and updates looked after, or £0 a month if you host it yourself. Free homepage mock-up first.',bt:'Learn more'},
  {img:'https://hulmeheights.xyz/pins/gbp-auto.jpg',tx:'Spending evenings on quotes and invoices? I build simple tools that answer enquiries, book jobs into your calendar and send review requests automatically.',bt:'Call now'}
 ];
-document.getElementById('gbprow').innerHTML=gbp.map(p=>`<div class=item><div class=gbp><div class=h><b>HulmeHeights</b><div>Website designer · Manchester</div></div><img src="${p.img}" alt=""><div class=bd>${p.tx}<br><span class=bt>${p.bt}</span></div></div></div>`).join('');
+document.getElementById('gbprow').innerHTML=gbp.map(p=>`<div class=item><div class=gbp><div class=h><b>HulmeHeights</b><div>Website designer · Cheshire</div></div><img src="${p.img}" alt=""><div class=bd>${p.tx}<br><span class=bt>${p.bt}</span></div></div></div>`).join('');
 }
 </script></body></html>
