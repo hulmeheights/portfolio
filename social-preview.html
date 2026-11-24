@@ -34,17 +34,37 @@ h2{font:600 26px/1.2 'Instrument Sans';margin-bottom:6px}
 .ui .who b{display:block;font-size:4cqw;margin-bottom:1cqw}
 .bar{position:absolute;left:0;bottom:0;height:3px;background:rgba(255,255,255,.85);z-index:6;width:0}
 .paused::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff;background:rgba(0,0,0,.35);z-index:7}
-/* larkfold look */
-.lk .hook{position:absolute;left:7cqw;right:7cqw;top:16cqw;font:600 9cqw/1.05 Fraunces,serif;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5)}
-.lk .pill{position:absolute;left:7cqw;top:20cqw;background:#f6f1ea;color:#2a2622;font:600 4.6cqw 'Instrument Sans';padding:2.2cqw 4cqw;border-radius:99px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
-.lk .num{position:absolute;left:7cqw;top:15cqw;font:600 16cqw/1 Fraunces,serif;color:#f6f1ea;text-shadow:0 4px 18px rgba(0,0,0,.5)}
-.lk .lbl{position:absolute;left:7cqw;right:20cqw;top:34cqw;font:600 5.6cqw/1.15 'Instrument Sans';color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-.lk .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.25) 38%,transparent 55%,transparent 75%,rgba(0,0,0,.45) 100%)}
-.lk .end{position:absolute;inset:0;background:#2a2622;color:#f6f1ea;display:flex;flex-direction:column;justify-content:center;padding:0 9cqw;gap:4cqw}
-.lk .end .brand{font:600 4cqw 'Instrument Sans';letter-spacing:.3em}
-.lk .end .big{font:600 9.5cqw/1.05 Fraunces,serif}
-.lk .end .sm{font-size:4.4cqw;color:#cbbfb1}
-.lk .end .btn{align-self:flex-start;background:#f6f1ea;color:#2a2622;font:600 4.4cqw 'Instrument Sans';padding:3cqw 5cqw;border-radius:99px}
+/* larkfold look: designed for the phone screen, product photos shown as framed cards */
+.lk{background:#1f3a2c;font-family:'Instrument Sans'}
+.lk .glow{position:absolute;inset:0;background:radial-gradient(90cqw 70cqw at 80% 0%,rgba(246,241,234,.10),transparent 60%),radial-gradient(80cqw 60cqw at 0% 100%,rgba(201,164,92,.12),transparent 60%)}
+.lk .lab{position:absolute;left:8cqw;top:15cqw;font:600 3.4cqw 'Instrument Sans';letter-spacing:.22em;color:#c9a45c}
+.lk .hl{position:absolute;left:8cqw;right:8cqw;top:22cqw;font:600 10.5cqw/1.04 Fraunces,serif;color:#f6f1ea}
+.lk .hl.sm{font-size:7.6cqw;top:12cqw}
+.lk .w{display:inline-block;opacity:0}
+.sc.on .w{animation:up .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(3cqw)}to{opacity:1;transform:none}}
+.lk .card{position:absolute;left:46%;top:40cqw;width:76cqw;margin-left:-38cqw;background:#fff;padding:2cqw;border-radius:2.4cqw;box-shadow:0 4cqw 10cqw rgba(0,0,0,.45);opacity:0}
+.lk .card img{display:block;width:100%;max-height:96cqw;object-fit:contain;border-radius:1.2cqw;background:#eee}
+.sc.on .card{animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14cqw) rotate(var(--r,0deg)) scale(.96)}to{opacity:1;transform:rotate(var(--r,0deg))}}
+.lk .card.b{top:48cqw;width:66cqw;margin-left:-30cqw}
+.lk .card.a{width:66cqw;margin-left:-36cqw;top:34cqw}
+.lk .card.low{top:68cqw;width:70cqw;margin-left:-35cqw}
+.lk .card.low img{max-height:62cqw}
+.lk .card.mini{top:106cqw;width:46cqw;margin-left:-23cqw}
+.lk .card.mini img{max-height:30cqw;object-fit:cover}
+.lk .bignum{position:absolute;left:8cqw;top:10cqw;font:600 22cqw/1 Fraunces,serif;color:#c9a45c}
+.lk .nlab{position:absolute;left:34cqw;right:8cqw;top:15cqw;font:600 6.4cqw/1.12 Fraunces,serif;color:#f6f1ea}
+.lk .chk{position:absolute;left:8cqw;right:8cqw;top:46cqw;display:flex;flex-direction:column;gap:3.4cqw}
+.lk .chk .l{display:flex;gap:3.4cqw;align-items:center;font:600 5.2cqw/1.2 'Instrument Sans';color:#f6f1ea;opacity:0;transform:translateY(4px);transition:all .35s}
+.lk .chk .l.v{opacity:1;transform:none}
+.lk .chk .l i{flex:none;width:7cqw;height:7cqw;border-radius:50%;background:#c9a45c;color:#1f3a2c;font:700 4cqw/7cqw 'Instrument Sans';text-align:center;font-style:normal}
+.lk .foot2{position:absolute;left:8cqw;right:8cqw;top:96cqw;font-size:4.2cqw;color:#cbd5c9}
+.lk .end{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 9cqw 20cqw;gap:4.4cqw;color:#f6f1ea}
+.lk .end .brand{font:600 3.8cqw 'Instrument Sans';letter-spacing:.32em;color:#c9a45c}
+.lk .end .big{font:600 10cqw/1.05 Fraunces,serif}
+.lk .end .sm{font-size:4.4cqw;color:#cbd5c9}
+.lk .end .btn{align-self:flex-start;background:#f6f1ea;color:#1f3a2c;font:600 4.4cqw 'Instrument Sans';padding:3cqw 5.4cqw;border-radius:99px}
 /* hulmeheights look */
 .hh{background:#0a0a0a;font-family:'Instrument Sans'}
 .hh .glow{position:absolute;inset:0;background:radial-gradient(70cqw 50cqw at 85% 5%,rgba(232,96,10,.22),transparent 60%)}
@@ -87,13 +107,13 @@ h2{font:600 26px/1.2 'Instrument Sans';margin-bottom:6px}
 .gbp{background:#fff;color:#202124;border-radius:12px;overflow:hidden;max-width:460px;font-family:Roboto,system-ui,sans-serif}
 .gbp .h{padding:14px 16px;border-bottom:1px solid #eee}.gbp .h b{font-size:17px}.gbp .h div{font-size:13px;color:#70757a}
 .gbp .st{color:#e37400}
-.gbp img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top}
+.gbp img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
 .gbp .bd{padding:14px 16px;font-size:14.5px;line-height:1.45}.gbp .bt{display:inline-block;margin-top:10px;color:#1a73e8;font-weight:600}
 .note{color:#76766f;font-size:13.5px;margin-top:28px}
 footer{padding:30px max(5vw,18px) 60px;max-width:1300px;margin:auto;color:#76766f;font-size:14px}
 @media (prefers-reduced-motion:reduce){.sc.on .zoom{animation:none}}
 </style></head><body>
-<header><h1>What your socials would post</h1><p>These are live previews of the automatic videos and posts. Each phone plays on a loop; tap one to pause it. The real thing is rendered to MP4 from these same designs. Every video uses your real Etsy listing photos, so new products get videos automatically.</p></header>
+<header><h1>What your socials would post</h1><p>These are live previews of the automatic videos and posts. Each phone plays on a loop; tap one to pause it. The real thing is rendered to MP4 from these same designs. The Larkfold videos are built from your real listing photos, so every new product gets its own videos automatically.</p></header>
 
 <section><h2>Larkfold Prints: TikTok + Facebook Reels</h2><p class="lead">About one a day. Short, silent-friendly, text on screen, ending on the shop. TikTok adds a trending sound when posted from drafts.</p>
 <div class="row" id="lkrow"></div></section>
@@ -125,34 +145,49 @@ const IM={
  scandiset:['https://i.etsystatic.com/69199900/r/il/e9af07/8961761995/il_fullxfull.8961761995_acee.jpg','https://i.etsystatic.com/69199900/r/il/3deeb1/8913985546/il_fullxfull.8913985546_gze7.jpg','https://i.etsystatic.com/69199900/r/il/4687ab/8913985686/il_fullxfull.8913985686_eyvj.jpg']
 };
 const ph=(u)=>`<div class=bgimg style="background-image:url('${E(u)}')"></div><div class="fg zoom" style="background-image:url('${E(u)}')"></div><div class=shade></div>`;
-const end=(big,sm)=>`<div class=end><div class=brand>LARKFOLD PRINTS</div><div class=big>${big}</div><div class=sm>${sm}</div><div class=btn>Shop on Etsy</div></div>`;
+const end=(big,sm='Instant download on Etsy')=>`<div class=end><div class=brand>LARKFOLD PRINTS</div><div class=big>${big}</div><div class=sm>${sm}</div><div class=btn>Search Larkfold Prints on Etsy</div></div>`;
 const tt=(name,cap)=>`<div class=ui><div class=side><i></i><i></i><i></i><i></i></div><div class=who><b>${name}</b>${cap}</div></div>`;
 
+const G='<div class=glow></div>';
+const lab=t=>`<div class=lab>${t}</div>`;
+const hl=(t,c='')=>`<div class="hl ${c}">${t.split(' ').map((w,i)=>`<span class=w style="animation-delay:${120+i*90}ms">${w}</span>`).join(' ')}</div>`;
+const card=(u,r=0,c='')=>`<div class="card ${c}" style="--r:${r}deg;animation-delay:${c==='b'?'.35s':c==='low'?'.7s':c==='mini'?'1.6s':'.15s'}"><img src="${E(u)}" alt=""></div>`;
+const num=(n,t)=>`<div class=bignum>${n}</div><div class=nlab>${t}</div>`;
+const chk=items=>`<div class=chk>${items.map(t=>`<div class=l><i>✓</i>${t}</div>`).join('')}</div>`;
 const VIDS={
  lk:[
-  {title:'Flip-through: one product',desc:'Hook, three listing photos with what each one is, then the shop.',who:'@larkfoldprints',cap:'Christmas Eve box, sorted tonight',
+  {title:'Flip-through: one product',desc:'Hook, the product as framed cards, what you get, then the shop. Text is set fresh on the video, never on top of the listing photo.',who:'@larkfoldprints',cap:'Christmas Eve box, sorted tonight',
    scenes:[
-    [2600,ph(IM.box[0])+`<div class=hook>Christmas Eve box,<br>sorted tonight</div>`],
-    [2400,ph(IM.box[1])+`<div class=pill>Lid + contents labels</div>`],
-    [2400,ph(IM.box[2])+`<div class=pill>Open-in-order tags</div>`],
-    [3000,end('Print at home in ten minutes','Instant download. Personal use. A4 and US Letter.')]],
+    [2600,G+lab('CHRISTMAS EVE')+hl('The Christmas Eve box, sorted tonight.')+card(IM.box[0],3,'low')],
+    [3000,G+hl('Lid and contents labels','sm')+card(IM.box[0],-2)],
+    [3200,G+hl('Open-in-order tags and a packing planner','sm')+card(IM.box[1],-5,'a')+card(IM.box[2],4,'b')],
+    [3400,G+lab('WHAT YOU GET')+hl('Everything for the box','sm')+chk(['Lid label','Contents labels','Open-in-order tags','Packing planner'])+`<div class=foot2>Instant download · print at home</div>`+card(IM.box[2],-2,'mini')],
+    [2800,G+end('Print it tonight, fill it on the 24th.')]],
    post:'<b>Caption:</b> Christmas Eve box, sorted tonight 🎄 Print the labels, fill the box, done. Instant download from our Etsy shop (link in bio).\n#christmaseve #christmaseveboxideas #printables #ukmums'},
-  {title:'Listicle: a few products',desc:'Numbered round-up with a seasonal angle. Built from the best-matching listings each day.',who:'@larkfoldprints',cap:'4 Christmas decorations you can print tonight',
+  {title:'Countdown: a few products',desc:'Numbered round-up with a seasonal angle, picked from the listings that match what is trending that day.',who:'@larkfoldprints',cap:'4 Christmas decorations you can print tonight',
    scenes:[
-    [2400,ph(IM.scandi)+`<div class=hook>4 Christmas decorations you can print tonight</div>`],
-    [2100,ph(IM.scandi)+`<div class=num>1</div><div class=lbl>Scandi folk paper baubles</div>`],
-    [2100,ph(IM.vintage)+`<div class=num>2</div><div class=lbl>Vintage watercolour ornaments</div>`],
-    [2100,ph(IM.home)+`<div class=num>3</div><div class=lbl>First Christmas in our new home</div>`],
-    [2100,ph(IM.fir)+`<div class=num>4</div><div class=lbl>Minimalist fir prints for the wall</div>`],
-    [2800,end('Which one are you printing?','All four are instant downloads.')]],
+    [2600,G+lab('NO DELIVERY NEEDED')+hl('4 Christmas decorations you can print tonight')+card(IM.vintage,-3,'low')],
+    [2400,G+num(1,'Scandi folk paper baubles')+card(IM.scandi,-2)],
+    [2400,G+num(2,'Vintage watercolour ornaments')+card(IM.vintage,2)],
+    [2400,G+num(3,'First Christmas in our new home')+card(IM.home,-2)],
+    [2400,G+num(4,'Minimal fir prints for the wall')+card(IM.fir,2)],
+    [2800,G+end('Which one are you printing?')]],
    post:'<b>Caption:</b> No queue, no delivery date. Which one would you hang? 1, 2, 3 or 4? 👇\n#christmasdecor #printablechristmas #scandichristmas #diychristmas'},
-  {title:'Gift idea: aimed at one buyer',desc:'Targets a person (newlyweds, dog walkers, teachers) using the search phrases that are rising.',who:'@larkfoldprints',cap:'Their first Christmas as Mr & Mrs',
+  {title:'Gift idea: aimed at one buyer',desc:'Speaks to a specific person (newlyweds, dog walkers, teachers) using the gift searches that are rising.',who:'@larkfoldprints',cap:'Married this year?',
    scenes:[
-    [2600,ph(IM.mug)+`<div class=hook>Married this year?</div>`],
-    [2600,ph(IM.mug)+`<div class=pill>Their first Christmas as Mr &amp; Mrs</div>`],
-    [2600,ph(IM.dog)+`<div class=hook>Or for the dog walker who never misses a day</div>`],
-    [3000,end('Gifts that get a laugh on the day','Printed and posted to your door.')]],
-   post:'<b>Caption:</b> Tag someone who got married this year 💍 Or the friend who walks the dog in any weather.\n#weddinggift #firstchristmasmarried #dogwalker #giftsforher'}
+    [2400,G+lab('GIFT IDEAS')+hl('Know someone who got married this year?')+card(IM.mug,3,'low')],
+    [3000,G+hl('Their first Christmas as Mr &amp; Mrs','sm')+card(IM.mug,-2)],
+    [2400,G+lab('OR')+hl('The dog walker who goes out in any weather')+card(IM.dog,-3,'low')],
+    [3000,G+hl('Dog walked, toes frozen, kettle on','sm')+card(IM.dog,2)],
+    [2800,G+end('Gifts that get a laugh on the day','Printed and posted to the door.')]],
+   post:'<b>Caption:</b> Tag someone who got married this year 💍 Or the friend who walks the dog in any weather.\n#weddinggift #firstchristmasmarried #dogwalkergift #christmasgiftideas'},
+  {title:'Problem → fix: hosting',desc:'Starts with a moment the buyer is in (hosting Christmas Day) and shows the product as the answer.',who:'@larkfoldprints',cap:'Hosting Christmas Day?',
+   scenes:[
+    [2600,G+lab('HOSTING CHRISTMAS DAY?')+hl('After dinner, everyone just stares at their phone.')+card(IM.quiz[0],3,'low')],
+    [3000,G+hl('Not this year.','sm')+card(IM.quiz[0],-2)],
+    [3600,G+lab('THE CHRISTMAS QUIZ 2026')+hl('Six rounds, sixty questions','sm')+chk(['Host guide and score sheets','Six rounds of 10 questions','Full answer key','Large print, A4 and US Letter'])+card(IM.quiz[1],-2,'mini')],
+    [2800,G+end('Print it, pass the pens round.')]],
+   post:'<b>Caption:</b> Six rounds, 60 questions, answers included. Who in your family takes the quiz way too seriously? 😅\n#christmasquiz #christmasgames #familychristmas #printables'}
  ],
  hh:[
   {title:'Makeover: before → after',desc:'A dated site rebuilt. Speaks straight to tradespeople and local businesses.',who:'@hulmeheights',cap:'Same plumber. New website.',
@@ -196,13 +231,13 @@ document.querySelectorAll('.phone').forEach(run);
 const fb=[
  {av:'#2a2622',ini:'L',nm:'Larkfold Prints',tx:'Hosting Christmas Day? Six rounds, 60 questions, answers included. Print it, pass the pens round, and watch the family argue over round four 😅\n\n🎄 Christmas Quiz 2026, instant download',imgs:IM.quiz,lnk:['ETSY.COM','Christmas Quiz 2026 Printable · 60 Questions & Answers']},
  {av:'#2a2622',ini:'L',nm:'Larkfold Prints',tx:'Keep the little ones busy while the dinner cooks. 20 festive colouring pages, two detail levels for ages 3 to 8.',imgs:IM.colour,lnk:['ETSY.COM','Christmas Colouring Pages for Kids · 20 Printable Sheets']},
- {av:'#e8600a',ini:'H',nm:'HulmeHeights',tx:'Most small business websites lose people in the first few seconds: slow, hard to use on a phone, no obvious way to get a quote.\n\nIf that sounds like yours, I\'ll mock up a new homepage for free. You only pay if you like it.',img:'https://hulmeheights.xyz/pins/site.jpg',lnk:['HULMEHEIGHTS.XYZ','Websites for UK small businesses · Manchester']}
+ {av:'#e8600a',ini:'H',nm:'HulmeHeights',tx:'Most small business websites lose people in the first few seconds: slow, hard to use on a phone, no obvious way to get a quote.\n\nIf that sounds like yours, I\'ll mock up a new homepage for free. You only pay if you like it.',img:'https://hulmeheights.xyz/pins/fb-site.jpg',lnk:['HULMEHEIGHTS.XYZ','Websites for UK small businesses · Manchester']}
 ];
-document.getElementById('fbrow').innerHTML=fb.map(p=>`<div class=item><div class=post><div class=hdr><div class=av style="background:${p.av}">${p.ini}</div><div><div class=nm>${p.nm}</div><div class=tm>Just now · 🌐</div></div></div><div class=tx>${p.tx}</div>${p.imgs?`<div class=gal>${p.imgs.map(u=>`<img src="${E(u)}" alt="">`).join('')}</div>`:`<img src="${p.img}" alt="" style="aspect-ratio:2/3;max-height:520px">`}<div class=lnk>${p.lnk[0]}<b>${p.lnk[1]}</b></div><div class=act><span>Like</span><span>Comment</span><span>Share</span></div></div></div>`).join('');
+document.getElementById('fbrow').innerHTML=fb.map(p=>`<div class=item><div class=post><div class=hdr><div class=av style="background:${p.av}">${p.ini}</div><div><div class=nm>${p.nm}</div><div class=tm>Just now · 🌐</div></div></div><div class=tx>${p.tx}</div>${p.imgs?`<div class=gal>${p.imgs.map(u=>`<img src="${E(u)}" alt="">`).join('')}</div>`:`<img src="${p.img}" alt="">`}<div class=lnk>${p.lnk[0]}<b>${p.lnk[1]}</b></div><div class=act><span>Like</span><span>Comment</span><span>Share</span></div></div></div>`).join('');
 
 const gbp=[
- {img:'https://hulmeheights.xyz/pins/price.jpg',tx:'Clear website prices for local businesses: Starter £579 or Complete £1,690, with hosting and updates looked after, or £0 a month if you host it yourself. Free homepage mock-up first.',bt:'Learn more'},
- {img:'https://hulmeheights.xyz/pins/auto.jpg',tx:'Spending evenings on quotes and invoices? I build simple tools that answer enquiries, book jobs into your calendar and send review requests automatically.',bt:'Call now'}
+ {img:'https://hulmeheights.xyz/pins/gbp-price.jpg',tx:'Clear website prices for local businesses: Starter £579 or Complete £1,690, with hosting and updates looked after, or £0 a month if you host it yourself. Free homepage mock-up first.',bt:'Learn more'},
+ {img:'https://hulmeheights.xyz/pins/gbp-auto.jpg',tx:'Spending evenings on quotes and invoices? I build simple tools that answer enquiries, book jobs into your calendar and send review requests automatically.',bt:'Call now'}
 ];
 document.getElementById('gbprow').innerHTML=gbp.map(p=>`<div class=item><div class=gbp><div class=h><b>HulmeHeights</b><div>Website designer · Manchester</div></div><img src="${p.img}" alt=""><div class=bd>${p.tx}<br><span class=bt>${p.bt}</span></div></div></div>`).join('');
 }
