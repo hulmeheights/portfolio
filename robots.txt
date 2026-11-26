@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /aura-preview.html
+Disallow: /social-preview.html
+
+Sitemap: https://hulmeheights.xyz/sitemap.xml
