@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Job Quote Generator for UK Trades (Printable, PDF) | HulmeHeights</title>
+<meta name="description" content="Make a clean, professional job quote in a minute: materials, labour, markup and optional VAT. Print it or save as PDF. Free for UK tradespeople, no signup.">
+<link rel="canonical" href="https://hulmeheights.xyz/tools/job-quote/">
+<meta property="og:title" content="Free Job Quote Generator for UK Trades (Printable, PDF) | HulmeHeights"><meta property="og:description" content="Make a clean, professional job quote in a minute: materials, labour, markup and optional VAT. Print it or save as PDF. Free for UK tradespeople, no signup."><meta property="og:url" content="https://hulmeheights.xyz/tools/job-quote/"><meta property="og:type" content="website">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tools/tools.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Job quote generator", "url": "https://hulmeheights.xyz/tools/job-quote/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}, "publisher": {"@type": "Organization", "name": "HulmeHeights", "url": "https://hulmeheights.xyz"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this quote generator free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, completely free with no signup. Your details are only saved in your own browser so they're filled in next time."}}, {"@type": "Question", "name": "How do I save the quote as a PDF?", "acceptedAnswer": {"@type": "Answer", "text": "Press Print or save as PDF, then choose Save as PDF as the printer. On a phone, use Share then Print, then pinch out to save it as a PDF."}}, {"@type": "Question", "name": "Should I add VAT to my quote?", "acceptedAnswer": {"@type": "Answer", "text": "Only if you're VAT registered. Below the \u00a390,000 turnover threshold most sole traders aren't, so they don't charge VAT."}}]}]</script>
+</head><body>
+<header class="top"><a class="logo" href="/"><b>H</b>HULMEHEIGHTS</a><nav><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a></nav></header>
+<main>
+<div class="kicker noprint">Free tool · Quotes</div>
+<h1>Job quote generator</h1>
+<p class="lede">Fill in the job, materials and labour. You get a tidy quote with totals worked out, ready to print or save as a PDF and send to the customer.</p>
+<div class="tool">
+<div class="grid noprint">
+<div><label for="from">Your business name</label><input id="from" placeholder="Hulme Plumbing"></div>
+<div><label for="contact">Your phone / email</label><input id="contact" placeholder="07700 900123"></div>
+<div><label for="to">Customer name</label><input id="to" placeholder="Mrs Smith"></div>
+<div><label for="addr">Job address</label><input id="addr" placeholder="12 High Street, Knutsford"></div>
+<div style="grid-column:1/-1"><label for="job">Job description</label><textarea id="job" rows="2" placeholder="Replace bathroom basin and taps, including removal of old units"></textarea></div>
+</div>
+<div class="noprint" style="margin-top:16px"><label>Materials</label><div id="items"></div><button class="btn ghost" id="add" style="margin-top:8px">+ Add item</button></div>
+<div class="grid noprint" style="margin-top:16px">
+<div><label for="hrs">Labour hours</label><input id="hrs" type="number" value="6"></div>
+<div><label for="rate">Hourly rate (£)</label><input id="rate" type="number" value="45"><div class="hint">Not sure? Use the <a href="/tools/hourly-rate/">hourly rate calculator</a>.</div></div>
+<div><label for="mk">Markup on materials (%)</label><input id="mk" type="number" value="15"></div>
+<div><label for="vat">VAT</label><select id="vat"><option value="0">Not VAT registered</option><option value="20">Add 20% VAT</option><option value="5">Add 5% VAT</option></select></div>
+<div><label for="valid">Quote valid for (days)</label><input id="valid" type="number" value="30"></div>
+</div>
+<div class="err" id="err"></div>
+<div class="result" id="quote" style="background:#fff;color:#111;border-radius:10px;padding:24px;margin-top:20px">
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><div><div id="q_from" style="font:400 30px 'Bebas Neue',sans-serif"></div><div id="q_contact" style="font-size:14px;color:#555"></div></div><div style="text-align:right"><div style="font:400 26px 'Bebas Neue',sans-serif;color:#e8600a">QUOTE</div><div id="q_meta" style="font-size:13px;color:#555"></div></div></div>
+<div style="margin:16px 0;font-size:14px"><b>For:</b> <span id="q_to"></span><br><b>Job:</b> <span id="q_addr"></span></div>
+<div id="q_job" style="font-size:15px;margin-bottom:12px"></div>
+<table style="width:100%;border-collapse:collapse;font-size:14px" id="q_tbl"></table>
+<div id="q_tot" style="margin-top:12px;font-size:15px"></div>
+<div id="q_valid" style="margin-top:16px;font-size:12px;color:#666"></div>
+</div>
+<div class="noprint" style="margin-top:14px"><button class="btn" onclick="window.print()">Print or save as PDF</button></div>
+</div>
+<section class="article">
+<h2>What a good quote includes</h2>
+<ul><li>Your business name and how to contact you.</li><li>The customer's name and the job address.</li><li>A plain description of the work, so there's no argument later about what was included.</li><li>Materials and labour, and whether VAT is included.</li><li>How long the price stands, because material prices change.</li></ul>
+<h3>Quote or estimate?</h3>
+<p>A quote is a fixed price the customer can accept. An estimate is a best guess that can change. If you're giving a fixed price, call it a quote and say what would change it, for example finding rotten joists once the floor is up.</p>
+<h3>Materials markup</h3>
+<p>Most trades add 10–20% to materials to cover collecting them, waste, returns and the risk of price rises. Show the marked-up price, not your trade price.</p>
+</section>
+<script>
+const $=i=>document.getElementById(i),g=n=>'£'+(Math.round(n*100)/100).toFixed(2);let items=[{d:'Basin and pedestal',q:1,p:120},{d:'Mixer taps',q:1,p:65}];
+function drawItems(){$('items').innerHTML=items.map((it,i)=>`<div style="display:grid;grid-template-columns:1fr 70px 100px 36px;gap:6px;margin-bottom:6px"><input value="${(it.d||'').replace(/"/g,'&quot;')}" placeholder="Item" oninput="items[${i}].d=this.value;calc()"><input type="number" value="${it.q}" oninput="items[${i}].q=+this.value;calc()" aria-label="Quantity"><input type="number" value="${it.p}" oninput="items[${i}].p=+this.value;calc()" aria-label="Unit price"><button class="btn ghost" style="padding:0" onclick="items.splice(${i},1);drawItems();calc()" aria-label="Remove">×</button></div>`).join('')}
+function calc(){const mk=(+$('mk').value||0)/100,hrs=+$('hrs').value||0,rate=+$('rate').value||0,vat=+$('vat').value,e=$('err');
+if(hrs<0||rate<0||mk<0){e.textContent="Numbers can't be negative.";return}e.textContent='';
+const esc=s=>(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+let rows='<tr style="border-bottom:1px solid #ddd;text-align:left"><th style="padding:6px 0">Item</th><th>Qty</th><th style="text-align:right">Total</th></tr>',mat=0;
+items.forEach(it=>{const t=(it.q||0)*(it.p||0)*(1+mk);mat+=t;if(it.d||t)rows+=`<tr style="border-bottom:1px solid #eee"><td style="padding:6px 0">${esc(it.d)}</td><td>${it.q||0}</td><td style="text-align:right">${g(t)}</td></tr>`});
+const lab=hrs*rate;rows+=`<tr style="border-bottom:1px solid #eee"><td style="padding:6px 0">Labour (${hrs} hrs)</td><td></td><td style="text-align:right">${g(lab)}</td></tr>`;
+const sub=mat+lab,v=sub*vat/100;$('q_tbl').innerHTML=rows;
+$('q_tot').innerHTML=`<div style="display:flex;justify-content:space-between"><span>Subtotal</span><span>${g(sub)}</span></div>`+(vat?`<div style="display:flex;justify-content:space-between"><span>VAT ${vat}%</span><span>${g(v)}</span></div>`:'')+`<div style="display:flex;justify-content:space-between;font-weight:700;font-size:18px;border-top:2px solid #111;margin-top:6px;padding-top:6px"><span>Total</span><span>${g(sub+v)}</span></div>`+(vat?'':'<div style="font-size:12px;color:#666">No VAT charged.</div>');
+const d=new Date(),days=+$('valid').value||30,u=new Date(d.getTime()+days*864e5),fmt=x=>x.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+$('q_from').textContent=$('from').value||'Your business';$('q_contact').textContent=$('contact').value;$('q_to').textContent=$('to').value||'Customer';$('q_addr').textContent=$('addr').value||'';$('q_job').textContent=$('job').value;
+$('q_meta').textContent='Date: '+fmt(d);$('q_valid').textContent='This quote is valid until '+fmt(u)+'. Any extra work found once the job starts will be agreed with you before it is done.';
+try{localStorage.setItem('hh_quote',JSON.stringify({f:$('from').value,c:$('contact').value,r:$('rate').value,m:$('mk').value,v:$('vat').value}))}catch(x){}}
+$('add').onclick=()=>{items.push({d:'',q:1,p:0});drawItems();calc()};
+['from','contact','to','addr','job','hrs','rate','mk','vat','valid'].forEach(i=>$(i).addEventListener('input',calc));
+try{const s=JSON.parse(localStorage.getItem('hh_quote')||'null');if(s){$('from').value=s.f||'';$('contact').value=s.c||'';if(s.r)$('rate').value=s.r;if(s.m)$('mk').value=s.m;if(s.v)$('vat').value=s.v}}catch(x){}
+drawItems();calc();
+</script><section class="article"><h2>Questions</h2><h3>Is this quote generator free?</h3><p>Yes, completely free with no signup. Your details are only saved in your own browser so they&#x27;re filled in next time.</p><h3>How do I save the quote as a PDF?</h3><p>Press Print or save as PDF, then choose Save as PDF as the printer. On a phone, use Share then Print, then pinch out to save it as a PDF.</p><h3>Should I add VAT to my quote?</h3><p>Only if you&#x27;re VAT registered. Below the £90,000 turnover threshold most sole traders aren&#x27;t, so they don&#x27;t charge VAT.</p></section>
+<section class="cta"><div class="kicker">HulmeHeights</div><h3 style="margin-top:6px">Want customers to find you before they ask for quotes?</h3><p>HulmeHeights builds fast websites for trades that show up on Google and bring in calls. Free look at your current site.</p><a class="btn" href="/#contact">Get a free website check</a></section>
+<h2>More free tools</h2><div class="more"><a href="/tools/hourly-rate/">Hourly rate calculator<small>What to charge per hour as a UK tradesperson</small></a><a href="/tools/google-review-link/">Google review link generator<small>Get your review link and QR code</small></a></div>
+</main>
+<footer><a href="/">HOME</a><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a><a href="/privacy.html">PRIVACY</a><div style="margin-top:10px">©2026 HULMEHEIGHTS · BUILT IN CHESHIRE</div></footer>
+</body></html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hourly Rate Calculator for UK Trades (Self-Employed) | Free | HulmeHeights</title>
+<meta name="description" content="Work out what to charge per hour as a self-employed UK tradesperson. Enter the take-home pay you want and your costs; it adds income tax, National Insurance and time off. Free.">
+<link rel="canonical" href="https://hulmeheights.xyz/tools/hourly-rate/">
+<meta property="og:title" content="Hourly Rate Calculator for UK Trades (Self-Employed) | Free | HulmeHeights"><meta property="og:description" content="Work out what to charge per hour as a self-employed UK tradesperson. Enter the take-home pay you want and your costs; it adds income tax, National Insurance and time off. Free."><meta property="og:url" content="https://hulmeheights.xyz/tools/hourly-rate/"><meta property="og:type" content="website">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tools/tools.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Hourly rate calculator for UK trades", "url": "https://hulmeheights.xyz/tools/hourly-rate/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}, "publisher": {"@type": "Organization", "name": "HulmeHeights", "url": "https://hulmeheights.xyz"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a fair hourly rate for a tradesperson in the UK?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the trade and area, but the rate you need is set by your own costs and the income you want. Use the calculator with your real numbers rather than copying someone else's rate."}}, {"@type": "Question", "name": "Does this include VAT?", "acceptedAnswer": {"@type": "Answer", "text": "No. It assumes you are not VAT registered. If you are, add 20% VAT on top of the rate for customers who are not VAT registered."}}, {"@type": "Question", "name": "Why billable hours and not working hours?", "acceptedAnswer": {"@type": "Answer", "text": "You only get paid for time spent on the job. Travel, quoting, buying materials and paperwork still take time, so they need to be covered by the hours you do bill."}}]}]</script>
+</head><body>
+<header class="top"><a class="logo" href="/"><b>H</b>HULMEHEIGHTS</a><nav><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a></nav></header>
+<main>
+<div class="kicker">Free tool · UK self-employed</div>
+<h1>What should I charge per hour?</h1>
+<p class="lede">Put in what you want to take home and what the business costs you. This works out the hourly and day rate you actually need once tax, National Insurance and time off are covered.</p>
+<div class="tool">
+<div class="grid">
+<div><label for="pay">Take-home pay you want a year (£)</label><input id="pay" type="number" inputmode="decimal" value="35000"><div class="hint">After tax and NI, what lands in your pocket.</div></div>
+<div><label for="cost">Business costs a year (£)</label><input id="cost" type="number" inputmode="decimal" value="9000"><div class="hint">Van, fuel, tools, insurance, phone, software, accountant.</div></div>
+<div><label for="hrs">Billable hours a week</label><input id="hrs" type="number" inputmode="decimal" value="30"><div class="hint">Paid hours only, not travel, quoting or admin.</div></div>
+<div><label for="wks">Working weeks a year</label><input id="wks" type="number" inputmode="decimal" value="46"><div class="hint">52 minus holidays, bank holidays, sick and quiet weeks.</div></div>
+</div>
+<div class="err" id="err"></div>
+<div class="result">
+<label>Charge at least</label><div class="big" id="rate">£0</div>
+<div class="row"><span>Day rate (8 billable hours)</span><b id="day">£0</b></div>
+<div class="row"><span>Turnover needed a year</span><b id="turn">£0</b></div>
+<div class="row"><span>Profit before tax</span><b id="profit">£0</b></div>
+<div class="row"><span>Income tax</span><b id="tax">£0</b></div>
+<div class="row"><span>Class 4 National Insurance</span><b id="ni">£0</b></div>
+<div class="hint" style="margin-top:10px">Uses 2026/27 rates for England, Wales and NI: £12,570 personal allowance, 20% / 40% / 45% income tax, Class 4 NI at 6% then 2%. Not VAT registered. A guide, not tax advice.</div>
+</div></div>
+<section class="article">
+<h2>How the hourly rate is worked out</h2>
+<p>Most self-employed trades undercharge because they divide what they want to earn by 40 hours a week, 52 weeks a year. In reality you lose hours to travel, quoting, buying materials and paperwork, and you lose weeks to holidays, bank holidays, illness and quiet spells.</p>
+<p>This calculator starts from the money you want in your pocket, adds back the income tax and Class 4 National Insurance you'll pay on your profit, adds your business costs, then spreads the total over the hours you can actually bill.</p>
+<h3>Typical numbers</h3>
+<ul><li><b>Billable hours:</b> 25–32 a week is normal for a sole trader once admin and travel are taken out.</li><li><b>Working weeks:</b> 44–47. There are 8 bank holidays plus your own holidays.</li><li><b>Costs:</b> a van alone can be £4,000–£8,000 a year with insurance, fuel and repairs.</li></ul>
+<h3>If the number looks high</h3>
+<p>Check what others in your area charge. If your rate is well above theirs, look at cutting costs or increasing billable hours (for example, quoting by video call instead of driving out). If it's well below what you need, you're paying to work.</p>
+</section><section class="article"><h2>Questions</h2><h3>What is a fair hourly rate for a tradesperson in the UK?</h3><p>It depends on the trade and area, but the rate you need is set by your own costs and the income you want. Use the calculator with your real numbers rather than copying someone else&#x27;s rate.</p><h3>Does this include VAT?</h3><p>No. It assumes you are not VAT registered. If you are, add 20% VAT on top of the rate for customers who are not VAT registered.</p><h3>Why billable hours and not working hours?</h3><p>You only get paid for time spent on the job. Travel, quoting, buying materials and paperwork still take time, so they need to be covered by the hours you do bill.</p></section>
+<section class="cta"><div class="kicker">HulmeHeights</div><h3 style="margin-top:6px">Want a website that brings in calls?</h3><p>HulmeHeights builds fast, simple websites for trades and local businesses in Cheshire and across the UK. Free look at your current site, no obligation.</p><a class="btn" href="/#contact">Get a free website check</a></section>
+<h2>More free tools</h2><div class="more"><a href="/tools/google-review-link/">Google review link generator<small>Get your review link and QR code</small></a><a href="/tools/job-quote/">Job quote generator<small>Make a printable quote in a minute</small></a></div>
+</main>
+<footer><a href="/">HOME</a><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a><a href="/privacy.html">PRIVACY</a><div style="margin-top:10px">©2026 HULMEHEIGHTS · BUILT IN CHESHIRE</div></footer>
+<script>
+const PA=12570,BR=50270,HR=125140;
+function incomeTax(x){let pa=PA;if(x>100000)pa=Math.max(0,PA-(x-100000)/2);const t=Math.max(0,x-pa);const b=Math.min(t,BR-PA),h=Math.min(Math.max(0,t-b),HR-BR),a=Math.max(0,t-b-h);return b*.2+h*.4+a*.45}
+function ni(x){return Math.max(0,Math.min(x,BR)-PA)*.06+Math.max(0,x-BR)*.02}
+function net(x){return x-incomeTax(x)-ni(x)}
+function profitFor(target){let lo=0,hi=1e6;for(let i=0;i<60;i++){const m=(lo+hi)/2;net(m)<target?lo=m:hi=m}return hi}
+const f=n=>'£'+Math.round(n).toLocaleString('en-GB');
+function calc(){const v=id=>parseFloat(document.getElementById(id).value),pay=v('pay'),cost=v('cost'),hrs=v('hrs'),wks=v('wks'),e=document.getElementById('err');
+if(!(pay>=0)||!(cost>=0)||!(hrs>0)||!(wks>0)||hrs>80||wks>52){e.textContent='Check the numbers: hours 1–80, weeks 1–52.';return}e.textContent='';
+const pr=profitFor(pay),turn=pr+cost,rate=turn/(hrs*wks);
+document.getElementById('rate').textContent=f(rate)+' / hour';document.getElementById('day').textContent=f(rate*8);document.getElementById('turn').textContent=f(turn);document.getElementById('profit').textContent=f(pr);document.getElementById('tax').textContent=f(incomeTax(pr));document.getElementById('ni').textContent=f(ni(pr));}
+['pay','cost','hrs','wks'].forEach(i=>document.getElementById(i).addEventListener('input',calc));calc();
+</script></body></html>

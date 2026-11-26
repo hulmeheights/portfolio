@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Review Link Generator + QR Code (Free) | HulmeHeights</title>
+<meta name="description" content="Make a direct link that opens your Google review box, plus a QR code and a printable &#x27;Leave us a review&#x27; card. Free, no signup, for any UK business.">
+<link rel="canonical" href="https://hulmeheights.xyz/tools/google-review-link/">
+<meta property="og:title" content="Google Review Link Generator + QR Code (Free) | HulmeHeights"><meta property="og:description" content="Make a direct link that opens your Google review box, plus a QR code and a printable &#x27;Leave us a review&#x27; card. Free, no signup, for any UK business."><meta property="og:url" content="https://hulmeheights.xyz/tools/google-review-link/"><meta property="og:type" content="website">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tools/tools.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Google review link generator", "url": "https://hulmeheights.xyz/tools/google-review-link/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}, "publisher": {"@type": "Organization", "name": "HulmeHeights", "url": "https://hulmeheights.xyz"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I get a direct link to my Google reviews?", "acceptedAnswer": {"@type": "Answer", "text": "Find your Place ID with Google's Place ID finder, paste it here and the tool builds the link that opens the review box. If Google Business Profile already gave you a share link, paste that instead to get the QR code and card."}}, {"@type": "Question", "name": "Is it free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. No signup, and nothing is stored on our servers. Your details stay in your browser."}}, {"@type": "Question", "name": "Can I give customers a discount for a review?", "acceptedAnswer": {"@type": "Answer", "text": "No. Google doesn't allow incentivised reviews, and it can remove them. Just ask at the right moment and make it one tap."}}]}]</script>
+</head><body>
+<header class="top"><a class="logo" href="/"><b>H</b>HULMEHEIGHTS</a><nav><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a></nav></header>
+<main>
+<div class="kicker">Free tool · Google reviews</div>
+<h1>Google review link and QR code</h1>
+<p class="lede">Customers are far more likely to leave a review when one tap opens the review box. Make your direct link, a QR code for the van or counter, and a printable card.</p>
+<div class="tool">
+<div class="grid">
+<div><label for="biz">Business name</label><input id="biz" placeholder="Ramsden Heating" autocomplete="organization"></div>
+<div><label for="pid">Place ID or your existing review link</label><input id="pid" placeholder="ChIJ… or https://g.page/r/…/review"><div class="hint">Find your Place ID with <a href="https://developers.google.com/maps/documentation/places/web-service/place-id#find-id" target="_blank" rel="noopener">Google's Place ID finder</a>: search your business and copy the code starting ChIJ.</div></div>
+</div>
+<div style="margin-top:14px"><button class="btn" id="go">Make my link</button></div>
+<div class="err" id="err"></div>
+<div class="result" id="res" style="display:none">
+<label>Your review link</label>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><input id="link" readonly style="flex:1;min-width:220px"><button class="btn ghost" id="copy">Copy</button></div>
+<div style="display:flex;gap:22px;flex-wrap:wrap;align-items:center;margin-top:18px">
+<div id="card" style="background:#fff;color:#111;border-radius:10px;padding:18px;width:260px;text-align:center">
+<div style="font:600 13px 'Instrument Sans',sans-serif;letter-spacing:.1em;color:#666">ENJOYED OUR WORK?</div>
+<div id="cname" style="font:400 30px 'Bebas Neue',sans-serif;margin:4px 0 8px"></div>
+<div id="qr" style="display:inline-block"></div>
+<div style="font:500 14px 'Instrument Sans',sans-serif;margin-top:8px">Scan to leave us a Google review</div>
+<div style="color:#f5b400;font-size:18px;letter-spacing:3px">★★★★★</div></div>
+<div class="noprint"><button class="btn" onclick="window.print()">Print card</button><p class="hint" style="margin-top:8px">Or screenshot the QR for your van, invoices and social posts.</p></div>
+</div></div></div>
+<section class="article">
+<h2>Why a direct review link works</h2>
+<p>Asking "could you leave us a Google review?" makes the customer search for you, find the listing and hunt for the button. Most give up. A direct link opens the star rating box straight away, so it takes them about 20 seconds.</p>
+<h3>When to send it</h3>
+<ul><li>Right after the job, while they're happy: by text, not email.</li><li>On your invoice and receipt.</li><li>As a QR code on the van, business cards and the counter.</li></ul>
+<h3>Message you can copy</h3>
+<p>"Thanks again for having us. If you were happy with the work, a quick Google review really helps a small local business: [your link]. Takes 20 seconds."</p>
+<p>Don't offer discounts or gifts for reviews. Google's rules don't allow paid or incentivised reviews.</p>
+</section>
+<script src="/tools/qrcode.min.js"></script>
+<script>
+const $=i=>document.getElementById(i);let qr;
+function make(){const raw=$('pid').value.trim(),e=$('err');e.textContent='';
+let url='';if(/^https?:\/\//i.test(raw))url=raw;else if(/^[A-Za-z0-9_-]{20,}$/.test(raw))url='https://search.google.com/local/writereview?placeid='+raw;
+if(!url){e.textContent='Paste a Place ID (starts with ChIJ) or your existing review link.';return}
+$('link').value=url;$('cname').textContent=$('biz').value.trim()||'Your business';$('qr').innerHTML='';
+qr=new QRCode($('qr'),{text:url,width:170,height:170,correctLevel:QRCode.CorrectLevel.M});$('res').style.display='block';
+try{localStorage.setItem('hh_review',JSON.stringify({b:$('biz').value,p:raw}))}catch(x){}}
+$('go').onclick=make;$('copy').onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText($('link').value);$('copy').textContent='Copied'};
+try{const s=JSON.parse(localStorage.getItem('hh_review')||'null');if(s){$('biz').value=s.b||'';$('pid').value=s.p||''}}catch(x){}
+</script><section class="article"><h2>Questions</h2><h3>How do I get a direct link to my Google reviews?</h3><p>Find your Place ID with Google&#x27;s Place ID finder, paste it here and the tool builds the link that opens the review box. If Google Business Profile already gave you a share link, paste that instead to get the QR code and card.</p><h3>Is it free?</h3><p>Yes. No signup, and nothing is stored on our servers. Your details stay in your browser.</p><h3>Can I give customers a discount for a review?</h3><p>No. Google doesn&#x27;t allow incentivised reviews, and it can remove them. Just ask at the right moment and make it one tap.</p></section>
+<section class="cta"><div class="kicker">HulmeHeights</div><h3 style="margin-top:6px">More reviews, but no one finds your website?</h3><p>HulmeHeights builds fast websites for local businesses that turn Google visitors into calls. Free look at your current site.</p><a class="btn" href="/#contact">Get a free website check</a></section>
+<h2>More free tools</h2><div class="more"><a href="/tools/hourly-rate/">Hourly rate calculator<small>What to charge per hour as a UK tradesperson</small></a><a href="/tools/job-quote/">Job quote generator<small>Make a printable quote in a minute</small></a></div>
+</main>
+<footer><a href="/">HOME</a><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a><a href="/privacy.html">PRIVACY</a><div style="margin-top:10px">©2026 HULMEHEIGHTS · BUILT IN CHESHIRE</div></footer>
+</body></html>
