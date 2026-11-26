@@ -19,7 +19,7 @@
 <div class="tool">
 <div class="grid">
 <div><label for="biz">Business name</label><input id="biz" placeholder="Ramsden Heating" autocomplete="organization"></div>
-<div><label for="pid">Place ID or your existing review link</label><input id="pid" placeholder="ChIJ… or https://g.page/r/…/review"><div class="hint">Find your Place ID with <a href="https://developers.google.com/maps/documentation/places/web-service/place-id#find-id" target="_blank" rel="noopener">Google's Place ID finder</a>: search your business and copy the code starting ChIJ.</div></div>
+<div><label for="pid">Place ID or your existing review link</label><input id="pid" placeholder="ChIJ… or https://g.page/r/…/review"><div class="hint">Easiest: on your Google Business Profile tap <b>Ask for reviews</b>, copy the link it gives you and paste it here. Or find your Place ID with <a href="https://developers.google.com/maps/documentation/places/web-service/place-id#find-id" target="_blank" rel="noopener">Google's Place ID finder</a>: search your business and copy the code starting ChIJ.</div></div>
 </div>
 <div style="margin-top:14px"><button class="btn" id="go">Make my link</button></div>
 <div class="err" id="err"></div>
@@ -48,8 +48,8 @@
 <script>
 const $=i=>document.getElementById(i);let qr;
 function make(){const raw=$('pid').value.trim(),e=$('err');e.textContent='';
-let url='';if(/^https?:\/\//i.test(raw))url=raw;else if(/^[A-Za-z0-9_-]{20,}$/.test(raw))url='https://search.google.com/local/writereview?placeid='+raw;
-if(!url){e.textContent='Paste a Place ID (starts with ChIJ) or your existing review link.';return}
+let url='';if(/^https?:\/\/[^ ]*(google\.|g\.page|goo\.gl)/i.test(raw))url=raw;else if(/^[A-Za-z0-9_-]{20,}$/.test(raw))url='https://search.google.com/local/writereview?placeid='+raw;
+if(!url){e.textContent='That looks like a website, not a review link. Tap Ask for reviews on your Google Business Profile, copy that link and paste it here.';return}
 $('link').value=url;$('cname').textContent=$('biz').value.trim()||'Your business';$('qr').innerHTML='';
 qr=new QRCode($('qr'),{text:url,width:170,height:170,correctLevel:QRCode.CorrectLevel.M});$('res').style.display='block';
 try{localStorage.setItem('hh_review',JSON.stringify({b:$('biz').value,p:raw}))}catch(x){}}
