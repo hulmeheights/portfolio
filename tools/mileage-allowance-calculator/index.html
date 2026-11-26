@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mileage Allowance Calculator 2026/27 (55p) | Free | HulmeHeights</title>
+<meta name="description" content="Work out your HMRC mileage claim for 2026/27 at the new 55p rate, then 25p after 10,000 miles. For self-employed and employees, with the tax you save. Free.">
+<link rel="canonical" href="https://hulmeheights.xyz/tools/mileage-allowance-calculator/">
+<meta property="og:title" content="Mileage Allowance Calculator 2026/27 (55p) | Free | HulmeHeights"><meta property="og:description" content="Work out your HMRC mileage claim for 2026/27 at the new 55p rate, then 25p after 10,000 miles. For self-employed and employees, with the tax you save. Free."><meta property="og:url" content="https://hulmeheights.xyz/tools/mileage-allowance-calculator/"><meta property="og:type" content="website">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tools/tools.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Mileage allowance calculator 2026/27", "url": "https://hulmeheights.xyz/tools/mileage-allowance-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}, "publisher": {"@type": "Organization", "name": "HulmeHeights", "url": "https://hulmeheights.xyz"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the HMRC mileage rate 45p or 55p for 2026/27?", "acceptedAnswer": {"@type": "Answer", "text": "55p. HMRC raised the rate for cars and vans from 45p to 55p per mile for the first 10,000 business miles, backdated to 6 April 2026. Miles over 10,000 in the tax year stay at 25p. Motorcycles are 24p per mile."}}, {"@type": "Question", "name": "Can I claim mileage and fuel for the same van?", "acceptedAnswer": {"@type": "Answer", "text": "No. The mileage rate is meant to cover fuel, insurance, servicing, repairs and wear. If you use it for a vehicle, you do not also claim those running costs or capital allowances for that vehicle. Parking, tolls and congestion charges for business trips can still be claimed on top."}}, {"@type": "Question", "name": "My employer pays less than 55p a mile. Can I claim the difference?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If your employer pays less than the approved amount, you can claim tax relief on the gap through HMRC. You get back the gap multiplied by your income tax rate, not the full gap. If your job expenses are over 2,500 pounds you claim through Self Assessment."}}]}]</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head><body>
+<header class="top"><a class="logo" href="/"><b>H</b>HULMEHEIGHTS</a><nav><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a></nav></header>
+<main>
+<div class="kicker">Free tool · Tax and admin</div>
+<h1>Mileage allowance calculator 2026/27</h1>
+<p class="lede">Enter your business miles and see what you can claim at HMRC's new rate: 55p a mile for the first 10,000 miles, then 25p. It also shows roughly how much tax the claim saves you.</p>
+<div class="tool">
+<div class="grid">
+<div><label for="who">I am</label><select id="who"><option value="se">Self-employed</option><option value="emp">An employee using my own vehicle</option></select></div>
+<div><label for="veh">Vehicle</label><select id="veh"><option value="car">Car or van</option><option value="moto">Motorcycle</option><option value="bike">Bicycle</option></select></div>
+<div><label for="miles">Business miles in this claim</label><input id="miles" type="number" inputmode="decimal" min="0" value="6000"><div class="hint">From your mileage log. A month, a quarter or the whole tax year.</div></div>
+<div><label for="prior">Business miles already claimed this tax year</label><input id="prior" type="number" inputmode="decimal" min="0" value="0"><div class="hint">Same vehicle, since 6 April. Leave at 0 for a full-year claim.</div></div>
+<div><label for="band">Your income tax band</label><select id="band"><option value="none">No tax to pay (under £12,570)</option><option value="basic" selected>Basic rate (20%)</option><option value="higher">Higher rate (40%)</option><option value="add">Additional rate (45%)</option></select></div>
+<div id="paidBox" style="display:none"><label for="paid">Your employer pays (pence per mile)</label><input id="paid" type="number" inputmode="decimal" min="0" value="0"><div class="hint">0 if they pay nothing for mileage.</div></div>
+</div>
+<div class="err" id="err" role="alert"></div>
+<div class="result" id="res">
+<label id="bigLabel">Mileage you can claim</label><div class="big" id="claim">£0</div>
+<div class="row"><span id="r1l">Miles at 55p</span><b id="r1">0</b></div>
+<div class="row" id="r2row"><span>Miles at 25p (over 10,000)</span><b id="r2">0</b></div>
+<div class="row" id="emprow1" style="display:none"><span>Approved amount (HMRC rates)</span><b id="appr">£0</b></div>
+<div class="row" id="emprow2" style="display:none"><span>Paid by your employer</span><b id="paidAmt">£0</b></div>
+<div class="row"><span id="savel">Estimated tax and NI saved</span><b id="save">£0</b></div>
+<div class="row" id="oldrow"><span>Extra compared with the old 45p rate</span><b id="extra">£0</b></div>
+<div class="row"><span>Works out at</span><b id="ppm">0p a mile</b></div>
+<div class="hint" id="note" style="margin-top:10px"></div>
+<div class="noprint" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="copy" type="button">Copy summary</button><button class="btn ghost" type="button" onclick="window.print()">Print</button></div>
+<div class="hint" style="margin-top:10px">Rates for 6 April 2026 to 5 April 2027: cars and vans 55p for the first 10,000 business miles then 25p, motorcycles 24p, bicycles 20p (employees only). Tax saving assumes 2026/27 rates for England, Wales and NI, with Class 4 NI at 6% (basic) or 2% (higher) for the self-employed. A guide, not tax advice.</div>
+</div></div>
+<section class="article">
+<h2>How HMRC mileage claims work in 2026/27</h2>
+<p>If you use your own car or van for work, HMRC lets you claim a flat amount for every business mile instead of adding up fuel, insurance, servicing and wear. For the 2026/27 tax year the rate went up from 45p to 55p a mile for the first 10,000 business miles, backdated to 6 April 2026. After 10,000 miles in the tax year it drops to 25p. Motorcycles are 24p a mile. Plenty of guides and spreadsheets still show 45p, so check yours.</p>
+<h3>Self-employed</h3>
+<p>Sole traders and partners use these as simplified expenses. The claim comes off your profit, so it reduces both income tax and Class 4 National Insurance. A basic rate taxpayer saves roughly 26p for every pound claimed. The 10,000 mile limit is per vehicle, per tax year, which is why the calculator asks how many miles you have already claimed if you work it out month by month.</p>
+<h3>Employees</h3>
+<p>If your employer pays you less than the approved amount, you can claim tax relief on the gap. If they pay more, the extra is taxable. Bicycles at 20p only apply to employees; the self-employed flat rates cover cars, goods vehicles and motorcycles.</p>
+<h3>Typical numbers</h3>
+<ul><li>A trade doing 120 business miles a week for 46 weeks covers 5,520 miles: £3,036 at 55p, £552 more than the old rate.</li><li>At 15,000 miles a year: 10,000 at 55p plus 5,000 at 25p, so £6,750.</li></ul>
+<h3>Mistakes to avoid</h3>
+<ul><li><b>Claiming fuel as well.</b> Use the mileage rate or actual running costs for a vehicle, never both. Once you use the flat rate for a vehicle, keep using it for as long as you have that vehicle, and you can't use it if you've already claimed capital allowances on it.</li><li><b>No log.</b> Keep a record of the date, start and end points, reason and miles for every trip. HMRC can ask for it.</li><li><b>Counting commuting.</b> Travel to a fixed workplace you go to every day isn't business mileage. Trips from your base to customers, sites and suppliers usually are.</li></ul>
+<p>If you'd rather keep mileage, income and expenses together for Self Assessment, the <a href="https://www.etsy.com/listing/4620551170/sole-trader-spreadsheet-uk-202627-self">Sole Trader Bookkeeping 2026/27 spreadsheet</a> is the full version, with a mileage tab that totals your claim through the year. Set its mileage rate to 55p in Settings.</p>
+</section><section class="article"><h2>Questions</h2><h3>Is the HMRC mileage rate 45p or 55p for 2026/27?</h3><p>55p. HMRC raised the rate for cars and vans from 45p to 55p per mile for the first 10,000 business miles, backdated to 6 April 2026. Miles over 10,000 in the tax year stay at 25p. Motorcycles are 24p per mile.</p><h3>Can I claim mileage and fuel for the same van?</h3><p>No. The mileage rate is meant to cover fuel, insurance, servicing, repairs and wear. If you use it for a vehicle, you do not also claim those running costs or capital allowances for that vehicle. Parking, tolls and congestion charges for business trips can still be claimed on top.</p><h3>My employer pays less than 55p a mile. Can I claim the difference?</h3><p>Yes. If your employer pays less than the approved amount, you can claim tax relief on the gap through HMRC. You get back the gap multiplied by your income tax rate, not the full gap. If your job expenses are over £2,500 you claim through Self Assessment.</p></section>
+<section class="cta"><div class="kicker">HulmeHeights</div><h3 style="margin-top:6px">Driving to every job? Make the phone ring for local ones.</h3><p>HulmeHeights builds fast, simple websites that help trades get found on Google by customers nearby, so more of your miles are paid work. Free look at your current site, no obligation.</p><a class="btn" href="/#contact">Get a free website check</a></section>
+<h2>More free tools</h2><div class="more"><a href="/tools/hourly-rate/">Hourly rate calculator<small>What to charge per hour as a UK tradesperson</small></a><a href="/tools/job-quote/">Job quote generator<small>Make a printable quote in a minute</small></a><a href="/tools/google-review-link/">Google review link generator<small>Get your review link and QR code</small></a></div>
+</main>
+<footer><a href="/">HOME</a><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a><a href="/privacy.html">PRIVACY</a><div style="margin-top:10px">©2026 HULMEHEIGHTS · BUILT IN CHESHIRE</div></footer>
+<script>
+const $=id=>document.getElementById(id);
+const IDS=['who','veh','miles','prior','band','paid'];
+const TAX={none:0,basic:.2,higher:.4,add:.45},NI={none:0,basic:.06,higher:.02,add:.02};
+const gbp=n=>'£'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+const num=n=>Math.round(n).toLocaleString('en-GB');
+let summary='';
+function calc(){
+const who=$('who').value,veh=$('veh').value,band=$('band').value,m=parseFloat($('miles').value),p=parseFloat($('prior').value||'0'),pd=parseFloat($('paid').value||'0'),e=$('err');
+$('paidBox').style.display=who==='emp'?'':'none';
+let msg='';
+if(!(m>0))msg='Enter the business miles for this claim (more than 0).';
+else if(m>200000)msg='That is a lot of miles. Check the number (max 200,000).';
+else if(!(p>=0)||p>200000)msg='Miles already claimed must be 0 or more.';
+else if(who==='emp'&&!(pd>=0&&pd<=200))msg='Enter what your employer pays in pence per mile, for example 30.';
+else if(who==='se'&&veh==='bike')msg='Self-employed simplified mileage rates don\'t cover bicycles. Claim the actual costs of the bike instead.';
+e.textContent=msg;$('res').style.opacity=msg?'.35':'1';if(msg)return;
+let m1,m2,r1,claim,old;
+if(veh==='car'){const left=Math.max(0,10000-p);m1=Math.min(m,left);m2=m-m1;r1=.55;claim=m1*.55+m2*.25;old=m1*.45+m2*.25}
+else{m1=m;m2=0;r1=veh==='moto'?.24:.2;claim=m*r1;old=claim}
+$('r1l').textContent='Miles at '+Math.round(r1*100)+'p';$('r1').textContent=num(m1);$('r2').textContent=num(m2);
+$('r2row').style.display=veh==='car'?'':'none';$('oldrow').style.display=veh==='car'?'':'none';
+$('extra').textContent=gbp(claim-old);
+let big=claim,save,note,lines=[];
+if(who==='se'){
+$('bigLabel').textContent='Mileage you can claim';$('emprow1').style.display='none';$('emprow2').style.display='none';
+save=claim*(TAX[band]+NI[band]);$('savel').textContent='Estimated tax and NI saved';
+note='Put this in the vehicle or travel expenses box of your Self Assessment, or in your records for Making Tax Digital.';
+}else{
+const paid=m*pd/100,gap=claim-paid;$('emprow1').style.display='';$('emprow2').style.display='';$('appr').textContent=gbp(claim);$('paidAmt').textContent=gbp(paid);
+$('savel').textContent='Estimated tax relief';
+if(gap>=0){big=gap;$('bigLabel').textContent='Gap you can claim tax relief on';save=gap*TAX[band];note=gap>0?'Claim this through HMRC online or, if your job expenses are over £2,500, through Self Assessment. You get back the gap times your tax rate.':'Your employer pays the full approved amount, so there is nothing extra to claim.'}
+else{big=0;$('bigLabel').textContent='Gap you can claim tax relief on';save=0;note='Your employer pays '+gbp(-gap)+' more than the approved amount. That extra is taxable and should go through payroll or on your P11D.'}
+}
+$('claim').textContent=gbp(big);$('save').textContent=gbp(save);$('ppm').textContent=(claim/m*100).toFixed(1)+'p a mile';$('note').textContent=note;
+summary='Mileage claim 2026/27 ('+new Date().toLocaleDateString('en-GB')+')\n'+$('veh').selectedOptions[0].text+', '+num(m)+' business miles'+(p?' (after '+num(p)+' already claimed)':'')+'\n'+num(m1)+' miles at '+Math.round(r1*100)+'p'+(m2?', '+num(m2)+' miles at 25p':'')+'\n'+(who==='se'?'Claim: '+gbp(claim):'Approved amount: '+gbp(claim)+', employer paid: '+gbp(m*pd/100)+', gap: '+gbp(big))+'\nEstimated saving: '+gbp(save)+'\nhttps://hulmeheights.xyz/tools/mileage-allowance-calculator/';
+try{localStorage.setItem('hh_mileage',JSON.stringify(Object.fromEntries(IDS.map(i=>[i,$(i).value]))))}catch(x){}
+}
+try{const s=JSON.parse(localStorage.getItem('hh_mileage')||'null');if(s)IDS.forEach(i=>{if(s[i]!=null&&s[i]!=='')$(i).value=s[i]})}catch(x){}
+IDS.forEach(i=>{$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});
+$('copy').onclick=()=>{const b=$('copy');const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy summary',1500)};try{navigator.clipboard.writeText(summary).then(done,()=>{prompt('Copy this:',summary)})}catch(x){prompt('Copy this:',summary)}};
+calc();
+</script></body></html>
