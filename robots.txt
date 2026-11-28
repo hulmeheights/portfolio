@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /m/
 Allow: /
 Disallow: /aura-preview.html
 Disallow: /social-preview.html
