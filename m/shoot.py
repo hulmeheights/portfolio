@@ -9,7 +9,7 @@ with sync_playwright() as p:
         pg = b.new_page(viewport={"width": 390, "height": 844}, device_scale_factor=2)
         pg.goto(f"http://127.0.0.1:{port}/m/{s}/", wait_until="networkidle"); pg.wait_for_timeout(800)
         pg.screenshot(path=f"m/{s}/phone.jpg", type="jpeg", quality=78)
-        pg.add_style_tag(content=".bar{display:none!important}header{position:static!important}")
+        pg.add_style_tag(content=".dock{display:none!important}")
         pg.screenshot(path=f"m/{s}/full.jpg", type="jpeg", quality=70, full_page=True)
         print("shot", s, flush=True)
     b.close()

@@ -1,47 +1,82 @@
 <!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Ashworth Autos | Urmston</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="robots" content="noindex,nofollow"><title>Ashworth Autos, Urmston</title>
+<link rel="stylesheet" href="/m/_fonts/fonts.css">
 <style>
-:root{--bg:#0f0f10;--ink:#f4f1ea;--acc:#c8a96a;--soft:#1b1b1d}
-*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}
-a{color:inherit;text-decoration:none}.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.concept{background:var(--acc);color:#fff;font-size:12px;text-align:center;padding:6px 10px;letter-spacing:.02em}
-header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.logo{font:600 20px/1 Fraunces,serif;letter-spacing:-.01em}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff;font-weight:600;padding:12px 18px;border-radius:999px;font-size:15px}
-.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid color-mix(in srgb,var(--ink) 25%,transparent)}
-.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;color:#fff;background:#111 url(/m/_img/hero-mobile-mechanic.jpg) center/cover}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.72))}
-.hero .wrap{position:relative;padding-bottom:56px;padding-top:120px}
-.kick{font-size:13px;text-transform:uppercase;letter-spacing:.14em;opacity:.85}
-h1{font:600 clamp(38px,8vw,72px)/1.02 Fraunces,serif;letter-spacing:-.02em;margin:12px 0 14px;max-width:14ch}
-.lede{font-size:18px;max-width:34ch;opacity:.92}
-.rate{margin-top:16px;font-size:15px}.rate b{color:#ffd36b;letter-spacing:2px}
-.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.5)}
-section{padding:64px 0}h2{font:600 clamp(28px,5vw,40px)/1.1 Fraunces,serif;letter-spacing:-.01em;margin-bottom:22px}
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.svc div{background:var(--soft);border-radius:16px;padding:22px 20px;font-weight:600}.svc small{display:block;font-weight:400;opacity:.7;margin-top:4px}
-.missed{background:var(--ink);color:var(--bg);border-radius:24px;padding:28px;display:grid;gap:14px}
-.missed h3{font:600 26px/1.15 Fraunces,serif}.missed p{opacity:.8}
-.missed form{display:flex;gap:8px;flex-wrap:wrap}.missed input{flex:1 1 200px;padding:14px 16px;border-radius:999px;border:0;font:inherit}
-.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}.why b{display:block;font:600 20px Fraunces,serif;margin-bottom:6px}
-footer{background:var(--soft);padding:40px 0 90px;font-size:15px}footer .wrap{display:grid;gap:8px}
-.bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:8px;padding:10px 12px;background:var(--bg);border-top:1px solid color-mix(in srgb,var(--ink) 12%,transparent);z-index:9}
-.bar a{flex:1;justify-content:center}@media(max-width:480px){.hp{display:none}}@media(min-width:800px){.bar{display:none}footer{padding-bottom:40px}}
+:root{--bg:#17130f;--ink:#efe6d6;--mute:#a89c8a;--acc:#b8935a;--panel:#211b15;--line:#3a3128;--disp:'Big Shoulders Display',Impact,sans-serif;--body:Manrope,system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.w{width:min(1180px,100% - 40px);margin-inline:auto}
+.disp{font-family:var(--disp);font-weight:900;letter-spacing:-.005em;text-transform:uppercase;}
+.concept{font-size:12px;color:var(--mute);text-align:center;padding:8px 16px;border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.nav .mark{font-size:22px;line-height:1}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 22px;font-weight:600;font-size:15px;background:var(--acc);color:#fff;transition:transform .15s}
+.pill:active{transform:scale(.97)}.pill.line{background:transparent;color:inherit;border:1px solid currentColor}
+.hero{position:relative;min-height:min(84svh,860px);display:grid;align-items:end;overflow:hidden;color:#fff;isolation:isolate}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.06);animation:settle 1.6s cubic-bezier(.2,.7,.2,1) forwards}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0) 25%,rgba(23,19,15,.92) 88%)}
+@keyframes settle{to{transform:scale(1)}}
+.hero .w{padding:0 0 clamp(28px,6vw,64px)}
+.name{font-size:clamp(64px,17vw,188px);line-height:.86;max-width:11ch;overflow-wrap:anywhere}
+.sub{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:end;justify-content:space-between;margin-top:clamp(18px,3vw,30px)}
+.sub p{font-size:clamp(18px,2.2vw,22px);max-width:30ch;line-height:1.4}
+.stars{font-size:15px;opacity:.9;margin-top:10px}.stars b{color:#f2c46d;letter-spacing:3px;font-weight:400}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}.hero .pill.line{border-color:rgba(255,255,255,.6)}
+.sec{padding:clamp(64px,10vw,120px) 0}
+.h2{font-size:clamp(40px,7vw,84px);line-height:.95;margin-bottom:clamp(28px,4vw,48px);max-width:14ch}
+.list{border-top:1px solid var(--line)}
+.list a{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:22px 2px;border-bottom:1px solid var(--line)}
+.list .s{font-size:clamp(26px,4.4vw,46px);line-height:1.05}.list .q{font-size:14px;color:var(--mute);white-space:nowrap}
+.list a:hover .s{color:var(--acc)}
+.split{display:grid;gap:clamp(32px,5vw,72px);grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:center}
+.split .copy p{color:var(--mute);max-width:42ch;margin-top:16px}
+.phone{background:var(--panel);border:1px solid var(--line);border-radius:36px;padding:26px 20px 30px;max-width:380px;justify-self:center;width:100%}
+.phone .top{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:22px}
+.msg{background:#fff;color:#1b1b1b;border-radius:20px 20px 20px 6px;padding:14px 16px;font-size:15px;line-height:1.45;box-shadow:0 10px 30px -18px rgba(0,0,0,.35)}
+.msg small{display:block;color:#8a8a8a;font-size:12px;margin-top:6px}
+.missed{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute);margin:0 0 12px 4px}
+.missed:before{content:"";width:8px;height:8px;border-radius:50%;background:#d64545}
+.form{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap}
+.form input{flex:1 1 180px;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:14px 18px;font:inherit}
+.proof{background:var(--ink);color:var(--bg)}
+.big{font-size:clamp(120px,30vw,320px);line-height:.8}
+.proof .split p{color:color-mix(in srgb,var(--bg) 70%,transparent);font-size:clamp(20px,2.6vw,28px);line-height:1.35;max-width:24ch}
+.local{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.local h3{font-size:clamp(26px,3vw,34px);line-height:1.05;margin-bottom:10px}.local p{color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:clamp(56px,8vw,96px) 0 120px}
+footer .tel{font-size:clamp(44px,9vw,112px);line-height:.95;display:block;margin:10px 0 26px}
+footer .meta{display:flex;flex-wrap:wrap;gap:10px 32px;color:var(--mute);font-size:15px}
+.dock{transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}.dock.on{transform:none}.dock{position:fixed;inset:auto 12px 12px;display:flex;gap:8px;padding:8px;border-radius:999px;background:color-mix(in srgb,var(--ink) 92%,transparent);backdrop-filter:blur(10px);z-index:9}
+.dock .pill{flex:1;padding:13px 10px}.dock .pill.line{color:var(--bg)}
+@media(min-width:860px){.dock{display:none}footer{padding-bottom:72px}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none;transform:none}html{scroll-behavior:auto}}
 </style></head><body>
-<div class="concept">Homepage concept made for Ashworth Autos by HulmeHeights</div>
-<header><div class="wrap"><a class="logo" href="#">Ashworth Autos</a><a class="btn" href="tel:07362488203">Call<span class="hp"> 07362 488203</span></a></div></header>
-<div class="hero"><div class="wrap"><div class="kick">Mobile Mechanic · Urmston</div><h1>We come to you. Fixed on the driveway.</h1>
-<p class="lede">Ashworth Autos in Urmston. Get in touch today for a quick, honest quote.</p><div class="rate"><b>★★★★★</b> 5.0 from 132 Google reviews</div><div class="ctas"><a class="btn" href="tel:07362488203">Call now</a><a class="btn ghost" href="#book">Book or get a quote</a></div></div></div>
-<section><div class="wrap"><h2>What we do</h2><div class="svc"><div>Servicing<small>Ask for a price</small></div><div>Brakes<small>Ask for a price</small></div><div>Diagnostics<small>Ask for a price</small></div><div>Clutches<small>Ask for a price</small></div><div>Pre-MOT checks<small>Ask for a price</small></div></div></div></section>
-<section id="book" style="padding-top:0"><div class="wrap"><div class="missed"><h3>Missed our call? We'll text you straight back.</h3>
-<p>Busy with a customer? Leave your number and you'll get a text within minutes, so you're never left waiting.</p>
-<form onsubmit="this.innerHTML='<p><b>Thanks, we&rsquo;ll text you back shortly.</b></p>';return false"><input type="tel" placeholder="Your mobile number" required><button class="btn" type="submit">Text me back</button></form></div></div></section>
-<section style="padding-top:0"><div class="wrap"><h2>Why Urmston picks us</h2><div class="why">
-<div><b>Local to Urmston</b>Quick to get to you, and we know the area.</div>
-<div><b>Rated 5.0 on Google</b>132 reviews from real customers.</div>
-<div><b>Easy to book</b>Call, text or leave your number and we'll come back to you fast.</div></div></div></section>
-<footer><div class="wrap"><div class="logo">Ashworth Autos</div><div>523 Manchester Rd, Astley, Manchester M29 7BG</div><div><a href="tel:07362488203">07362 488203</a></div></div></footer>
-<div class="bar"><a class="btn" href="tel:07362488203">Call</a><a class="btn ghost" href="#book">Text me back</a></div>
+<div class="concept">A homepage idea for Ashworth Autos, made by HulmeHeights</div>
+<header class="w nav"><a class="mark disp" href="#">Ashworth Autos</a><a class="pill" href="tel:07362488203">Call</a></header>
+<section class="hero"><img src="/m/_img/hero-mobile-mechanic.jpg" alt="" fetchpriority="high"><div class="w">
+<h1 class="name disp">Ashworth Autos</h1>
+<div class="sub"><div><p>We come to you. Fixed on the driveway. Mobile mechanic in Urmston.</p><div class="stars"><b>★★★★★</b> 5.0 on Google, 132 reviews</div></div>
+<div class="ctas"><a class="pill" href="tel:07362488203">Call 07362 488203</a><a class="pill line" href="#text">Text me back</a></div></div></div></section>
+<section class="sec"><div class="w"><h2 class="h2 disp">What we do</h2><nav class="list"><a href="#text"><span class="s disp">Servicing</span><span class="q">Ask for a price</span></a><a href="#text"><span class="s disp">Brakes</span><span class="q">Ask for a price</span></a><a href="#text"><span class="s disp">Diagnostics</span><span class="q">Ask for a price</span></a><a href="#text"><span class="s disp">Clutches</span><span class="q">Ask for a price</span></a><a href="#text"><span class="s disp">Pre-MOT checks</span><span class="q">Ask for a price</span></a></nav></div></section>
+<section class="sec" id="text" style="padding-top:0"><div class="w split">
+<div class="copy"><h2 class="h2 disp" style="margin-bottom:0">Missed us? We'll text you back.</h2>
+<p>When we're with a customer and can't get to the phone, you get a text within a minute, so you're never left wondering if anyone got your call.</p>
+<form class="form" onsubmit="this.innerHTML='<p style=&quot;color:var(--ink)&quot;>Got it. You\u2019ll get a text from Ashworth Autos in a minute.</p>';return false">
+<label for="n" style="position:absolute;left:-9999px">Your mobile number</label><input id="n" type="tel" inputmode="tel" placeholder="Your mobile number" required><button class="pill" type="submit">Text me back</button></form></div>
+<div class="phone" aria-hidden="true"><div class="top"><span>Messages</span><span>now</span></div>
+<div class="missed">Missed call from you</div>
+<div class="msg">Hi, it's Ashworth Autos here. Sorry we missed you, we're with a customer. What can we help with? We'll ring you back shortly.<small>Delivered</small></div></div>
+</div></section>
+<section class="sec proof"><div class="w split"><div class="big disp">5.0</div>
+<p>Rated 5.0 out of 5 by 132 customers on Google. Read them before you book. We think you'll like what you see.</p></div></section>
+<section class="sec"><div class="w"><h2 class="h2 disp">Here for Urmston.</h2><div class="local">
+<div><h3 class="disp">Close by</h3><p>Based locally, so we can get to you quickly and we know the area well.</p></div>
+<div><h3 class="disp">Straight answers</h3><p>Clear prices before we start. No surprises at the end.</p></div>
+<div><h3 class="disp">Easy to reach</h3><p>Call, text, or leave your number and we'll come back to you the same day.</p></div></div></div></section>
+<footer><div class="w"><span class="disp" style="font-size:22px">Ashworth Autos</span><a class="tel disp" href="tel:07362488203">07362 488203</a>
+<div class="meta"><span>523 Manchester Rd, Astley M29 7BG</span><span>Urmston</span></div></div></footer>
+<div class="dock" id="dock"><a class="pill" href="tel:07362488203">Call</a><a class="pill line" href="#text">Text me back</a></div>
+<script>new IntersectionObserver(([e])=>document.getElementById('dock').classList.toggle('on',!e.isIntersecting)).observe(document.querySelector('.hero'))</script>
 </body></html>
