@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cleaning Quote Calculator UK | Free | HulmeHeights</title>
+<meta name="description" content="Price a house clean in seconds: regular, deep, end of tenancy or after builders. Rooms, extras, your hourly rate, travel and VAT. Free for UK cleaners.">
+<link rel="canonical" href="https://hulmeheights.xyz/tools/cleaning-quote-calculator/">
+<meta property="og:title" content="Cleaning Quote Calculator UK | Free | HulmeHeights"><meta property="og:description" content="Price a house clean in seconds: regular, deep, end of tenancy or after builders. Rooms, extras, your hourly rate, travel and VAT. Free for UK cleaners."><meta property="og:url" content="https://hulmeheights.xyz/tools/cleaning-quote-calculator/"><meta property="og:type" content="website">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tools/tools.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebApplication", "name": "Cleaning quote calculator", "url": "https://hulmeheights.xyz/tools/cleaning-quote-calculator/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}, "publisher": {"@type": "Organization", "name": "HulmeHeights", "url": "https://hulmeheights.xyz"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long does it take to clean a 3 bedroom house?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the state of the house and how you work. Using this calculator's starting times, a 3 bedroom, 1 bathroom house with one living room comes out at about 2.75 hours for a regular clean, about 5.5 hours for a deep clean and just under 7 hours for an end of tenancy clean before extras like the oven. Time your own cleans and put your real figure in the time box."}}, {"@type": "Question", "name": "Should I charge cleaning by the hour or a fixed price?", "acceptedAnswer": {"@type": "Answer", "text": "Many cleaners charge by the hour for regular cleans, because the customer can see what they are paying for, and a fixed price for one-off deep and end of tenancy cleans, because customers want to know the total before you start. Work the fixed price out from your hourly rate and an honest time estimate, then add travel and products."}}, {"@type": "Question", "name": "Do I have to charge VAT on cleaning?", "acceptedAnswer": {"@type": "Answer", "text": "Only if you are VAT registered. You must register once your taxable turnover goes over 90,000 pounds in any rolling 12 months. Below that most sole trader cleaners do not charge VAT. If you are registered, add 20% to your price and show it on the quote and invoice."}}]}]</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head><body>
+<header class="top"><a class="logo" href="/"><b>H</b>HULMEHEIGHTS</a><nav><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a></nav></header>
+<main>
+<div class="kicker">Free tool · Quotes</div>
+<h1>Cleaning quote calculator</h1>
+<p class="lede">For cleaners pricing a job. Pick the type of clean, enter the rooms and extras, and get an estimated time and a quote that covers your hourly rate, products and travel. Change the time if you know your own.</p>
+<div class="tool">
+<div class="grid">
+<div><label for="type">Type of clean</label><select id="type"><option value="1">Regular clean</option><option value="2">Deep clean</option><option value="2.5">End of tenancy clean</option><option value="3">After builders clean</option></select></div>
+<div id="freqBox"><label for="freq">How often</label><select id="freq"><option value="0">One-off</option><option value="4.333">Weekly</option><option value="2.167">Fortnightly</option><option value="1">Monthly</option></select></div>
+<div><label for="bed">Bedrooms</label><input id="bed" type="number" inputmode="numeric" min="0" max="10" value="3"></div>
+<div><label for="bath">Bathrooms and en suites</label><input id="bath" type="number" inputmode="numeric" min="0" max="8" value="1"></div>
+<div><label for="liv">Living and dining rooms</label><input id="liv" type="number" inputmode="numeric" min="0" max="8" value="1"><div class="hint">The kitchen and hallway are always included.</div></div>
+<div><label for="oven">Oven clean</label><select id="oven"><option value="0">No</option><option value="60">Yes, single oven</option><option value="90">Yes, double oven or range</option></select></div>
+<div><label for="fridge">Inside fridge and freezer</label><select id="fridge"><option value="0">No</option><option value="30">Yes</option></select></div>
+<div><label for="cup">Inside kitchen cupboards</label><select id="cup"><option value="0">No</option><option value="30">Yes</option></select></div>
+<div><label for="win">Windows cleaned inside</label><input id="win" type="number" inputmode="numeric" min="0" max="60" value="0"><div class="hint">Number of windows, about 10 minutes each.</div></div>
+<div><label for="own">Your own time estimate (hours)</label><input id="own" type="number" inputmode="decimal" min="0" step="0.25" placeholder="Leave blank to use ours"><div class="hint">Total cleaner hours. Overrides the estimate.</div></div>
+<div><label for="crew">Cleaners on the job</label><input id="crew" type="number" inputmode="numeric" min="1" max="10" value="1"></div>
+<div><label for="rate">Your rate per cleaner hour (£)</label><input id="rate" type="number" inputmode="decimal" min="0" step="0.5" value="20"></div>
+<div><label for="prod">Products and equipment (£)</label><input id="prod" type="number" inputmode="decimal" min="0" value="5"></div>
+<div><label for="trav">Travel and parking (£)</label><input id="trav" type="number" inputmode="decimal" min="0" value="0"></div>
+<div><label for="min">Minimum charge (£)</label><input id="min" type="number" inputmode="decimal" min="0" value="40"></div>
+<div><label for="vat">VAT registered?</label><select id="vat"><option value="0">No</option><option value="0.2">Yes, add 20%</option></select></div>
+</div>
+<div class="err" id="err" role="alert"></div>
+<div class="result" id="res">
+<label>Suggested quote</label><div class="big" id="total">£0</div>
+<div class="row"><span>Estimated cleaner hours</span><b id="hrs">0</b></div>
+<div class="row"><span>Time on site</span><b id="site">0</b></div>
+<div class="row"><span>Labour</span><b id="lab">£0</b></div>
+<div class="row"><span>Products and travel</span><b id="extras">£0</b></div>
+<div class="row" id="minrow"><span>Raised to your minimum charge</span><b id="minv">£0</b></div>
+<div class="row" id="vatrow"><span>VAT at 20%</span><b id="vatv">£0</b></div>
+<div class="row"><span>Rounded up to the nearest £5</span><b id="rnd">£0</b></div>
+<div class="row"><span>Works out per cleaner hour</span><b id="eff">£0</b></div>
+<div class="row" id="monrow"><span>Worth to you per month</span><b id="mon">£0</b></div>
+<div class="hint" id="note" style="margin-top:10px"></div>
+<div class="noprint" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="copy" type="button">Copy quote summary</button><button class="btn ghost" type="button" onclick="window.print()">Print</button></div>
+<div class="hint" style="margin-top:10px">Starting times for a regular clean: kitchen 40 minutes, each bathroom 30, each bedroom 20, each living room 20, hallway and stairs 15. Deep cleans are timed at 2 times that, end of tenancy 2.5 times and after builders 3 times, then extras are added. These are our starting estimates, not industry figures. Time your own cleans and adjust. A guide, not advice.</div>
+</div></div>
+<section class="article">
+<h2>How to price a cleaning job</h2>
+<p>Every cleaning price comes down to three things: how long the job takes, what your time is worth, and what it costs you to turn up. This calculator estimates the time from the rooms, multiplies it by your hourly rate, then adds products and travel. If the job is small it lifts the price to your minimum charge, and if you are VAT registered it adds 20%.</p>
+<h3>Start with your hourly rate</h3>
+<p>Your rate has to cover more than your time on site. As a self-employed cleaner you pay your own tax and National Insurance, get no holiday or sick pay, and spend unpaid time travelling, quoting and replying to messages. If you are not sure what your rate should be, work it out with the <a href="/tools/hourly-rate/">hourly rate calculator</a> first. If you pay a helper, their pay must be at least the National Living Wage, which is £12.71 an hour from April 2026 for workers aged 21 and over, so your charge per cleaner hour needs to be well above that.</p>
+<h3>Get the time right</h3>
+<p>The time estimate is where most quotes go wrong. The starting times here are a reasonable first guess, but the honest way is to time your next few cleans room by room and put your real total in the time box. A house with pets, clutter or a family of five takes longer than an empty flat with the same number of rooms. For a one-off deep or end of tenancy clean, ask for photos or do a quick visit before you give a fixed price.</p>
+<h3>Typical ways cleaners structure prices</h3>
+<ul><li><b>Regular cleans:</b> usually priced by the hour with a minimum of two or three hours a visit. Weekly and fortnightly customers are your steady income, so the calculator shows what each one is worth a month.</li><li><b>Deep and end of tenancy cleans:</b> usually a fixed price, with extras like the oven, fridge and inside windows listed separately so the customer can see why the price is what it is.</li><li><b>After builders:</b> dust gets everywhere and often needs two visits. Price it as the heaviest job you do.</li></ul>
+<h3>Mistakes to avoid</h3>
+<ul><li><b>Forgetting travel.</b> A 25 minute drive each way on a two hour clean is nearly an hour of unpaid time. Add it, or set a higher minimum for further jobs.</li><li><b>No minimum charge.</b> A one hour job across town can cost you money. A minimum protects you.</li><li><b>Pricing by what others charge.</b> Check local prices, but build yours from your own costs, or you may be busy and still short at the end of the month.</li></ul>
+<p>Once you have a price, turn it into a proper quote with the free <a href="/tools/job-quote/">job quote generator</a>. If you prefer paper, the <a href="https://www.etsy.com/listing/4620020023/invoice-template-uk-tradesman-printable">printable quote and invoice template set</a> is the full version, with matching quote, VAT invoice and A5 forms.</p>
+</section><section class="article"><h2>Questions</h2><h3>How long does it take to clean a 3 bedroom house?</h3><p>It depends on the state of the house and how you work. Using this calculator's starting times, a 3 bedroom, 1 bathroom house with one living room comes out at about 2.75 hours for a regular clean, about 5.5 hours for a deep clean and just under 7 hours for an end of tenancy clean before extras like the oven. Time your own cleans and put your real figure in the time box.</p><h3>Should I charge cleaning by the hour or a fixed price?</h3><p>Many cleaners charge by the hour for regular cleans, because the customer can see what they are paying for, and a fixed price for one-off deep and end of tenancy cleans, because customers want to know the total before you start. Work the fixed price out from your hourly rate and an honest time estimate, then add travel and products.</p><h3>Do I have to charge VAT on cleaning?</h3><p>Only if you are VAT registered. You must register once your taxable turnover goes over £90,000 in any rolling 12 months. Below that most sole trader cleaners do not charge VAT. If you are registered, add 20% to your price and show it on the quote and invoice.</p></section>
+<section class="cta"><div class="kicker">HulmeHeights</div><h3 style="margin-top:6px">Want cleaning customers to find you on Google?</h3><p>HulmeHeights builds fast, simple websites for cleaners and local businesses, so people searching for a cleaner nearby find you, see your prices and get in touch. Free look at your current site, no obligation.</p><a class="btn" href="/#contact">Get a free website check</a></section>
+<h2>More free tools</h2><div class="more"><a href="/tools/job-quote/">Job quote generator<small>Make a printable quote in a minute</small></a><a href="/tools/hourly-rate/">Hourly rate calculator<small>What to charge per hour as a UK tradesperson</small></a><a href="/tools/google-review-link/">Google review link generator<small>Get your review link and QR code</small></a></div>
+</main>
+<footer><a href="/">HOME</a><a href="/tools/">FREE TOOLS</a><a href="/#contact">CONTACT</a><a href="/privacy.html">PRIVACY</a><div style="margin-top:10px">©2026 HULMEHEIGHTS · BUILT IN CHESHIRE</div></footer>
+<script>
+const $=id=>document.getElementById(id);
+const IDS=['type','freq','bed','bath','liv','oven','fridge','cup','win','own','crew','rate','prod','trav','min','vat'];
+const gbp=n=>'£'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+const hm=h=>{const t=Math.round(h*60),H=Math.floor(t/60),M=t%60;return ((H?H+'h ':'')+(M||!H?M+'m':'')).trim()};
+const v=id=>{const s=$(id).value.trim();return s===''?NaN:Number(s)};
+let summary='';
+function calc(){
+const type=$('type'),mult=parseFloat(type.value),regular=mult===1;
+$('freqBox').style.display=regular?'':'none';
+const bed=v('bed'),bath=v('bath'),liv=v('liv'),win=v('win'),crew=v('crew'),rate=v('rate'),prod=v('prod'),trav=v('trav'),min=v('min'),ownS=$('own').value.trim(),own=Number(ownS);
+const int=(n,lo,hi)=>Number.isInteger(n)&&n>=lo&&n<=hi;
+let msg='';
+if(!int(bed,0,10))msg='Bedrooms must be a whole number from 0 to 10.';
+else if(!int(bath,0,8))msg='Bathrooms must be a whole number from 0 to 8.';
+else if(!int(liv,0,8))msg='Living rooms must be a whole number from 0 to 8.';
+else if(!int(win,0,60))msg='Windows must be a whole number from 0 to 60.';
+else if(ownS!==''&&!(own>0&&own<=100))msg='Your own time estimate must be more than 0 and no more than 100 hours, or leave it blank.';
+else if(!int(crew,1,10))msg='Cleaners on the job must be a whole number from 1 to 10.';
+else if(!(rate>0&&rate<=500))msg='Enter your rate per cleaner hour, for example 20.';
+else if(!(prod>=0)||!(trav>=0)||!(min>=0))msg='Products, travel and minimum charge must be 0 or more. Use 0 if they do not apply.';
+$('err').textContent=msg;$('res').style.opacity=msg?'.35':'1';if(msg)return;
+const base=40+30*bath+20*bed+20*liv+15;
+const extraMin=Number($('oven').value)+Number($('fridge').value)+Number($('cup').value)+10*win;
+let hrs=ownS!==''?own:(base*mult+extraMin)/60;
+hrs=Math.ceil(hrs*4-1e-9)/4;
+const site=hrs/crew,lab=hrs*rate,ex=prod+trav,sub=lab+ex,net=Math.max(sub,min),raised=net>sub+1e-9;
+const vr=Number($('vat').value),vat=net*vr,tot=net+vat,rnd=Math.ceil((tot-1e-9)/5)*5;
+const eff=(rnd/(1+vr)-ex)/hrs;
+const freq=regular?Number($('freq').value):0;
+$('hrs').textContent=hm(hrs);$('site').textContent=hm(site)+(crew>1?' with '+crew+' cleaners':'');
+$('lab').textContent=gbp(lab);$('extras').textContent=gbp(ex);
+$('minrow').style.display=raised?'':'none';$('minv').textContent=gbp(net);
+$('vatrow').style.display=vr?'':'none';$('vatv').textContent=gbp(vat);
+$('rnd').textContent=gbp(rnd);$('total').textContent='£'+rnd.toLocaleString('en-GB');
+$('eff').textContent=gbp(eff);
+$('monrow').style.display=freq?'':'none';$('mon').textContent=gbp(rnd*freq);
+let note=ownS!==''?'Using your own time estimate.':'Estimate: '+hm(base/60)+' of rooms'+(mult>1?' at '+mult+' times for this type of clean':'')+(extraMin?', plus '+hm(extraMin/60)+' of extras':'')+'. Rounded up to the next quarter hour.';
+if(crew>1)note+=' If you pay helpers, their pay must be at least the National Living Wage (£12.71 an hour from April 2026, age 21 and over).';
+if(eff<12.71)note+=' Warning: this works out below £12.71 per cleaner hour after products and travel.';
+$('note').textContent=note;
+const rooms=bed+' bed, '+bath+' bath, '+liv+' living';
+summary='Cleaning quote ('+new Date().toLocaleDateString('en-GB')+')\n'+type.selectedOptions[0].text+(freq?', '+$('freq').selectedOptions[0].text.toLowerCase():'')+': '+rooms+'\n'+(Number($('oven').value)?'Oven clean included\n':'')+(Number($('fridge').value)?'Inside fridge and freezer included\n':'')+(Number($('cup').value)?'Inside kitchen cupboards included\n':'')+(win?win+' windows inside\n':'')+'Estimated time: '+hm(site)+(crew>1?' with '+crew+' cleaners':'')+'\nPrice: '+gbp(rnd)+(vr?' including VAT':'')+'\nhttps://hulmeheights.xyz/tools/cleaning-quote-calculator/';
+try{localStorage.setItem('hh_cleaning',JSON.stringify(Object.fromEntries(IDS.map(i=>[i,$(i).value]))))}catch(x){}
+}
+try{const s=JSON.parse(localStorage.getItem('hh_cleaning')||'null');if(s)IDS.forEach(i=>{if(s[i]!=null)$(i).value=s[i]})}catch(x){}
+IDS.forEach(i=>{$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});
+$('copy').onclick=()=>{const b=$('copy');const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy quote summary',1500)};try{navigator.clipboard.writeText(summary).then(done,()=>{prompt('Copy this:',summary)})}catch(x){prompt('Copy this:',summary)}};
+calc();
+</script></body></html>
