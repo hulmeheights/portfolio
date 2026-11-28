@@ -12,6 +12,7 @@ The memorable thing on every page is the business's own name, set huge over thei
 """
 import html, json, os, re, sys
 import trades
+IMGDIR = "m/_img"
 
 STYLES = {
  "dark": dict(bg="#17130f", ink="#efe6d6", mute="#a89c8a", acc="#b8935a", panel="#211b15", line="#3a3128",
@@ -138,7 +139,9 @@ def short_name(n):
 def page(l, hero_base):
     c = trades.get(l.get("trade")); fam = c["family"]; S = STYLES[fam]; e = lambda s: html.escape(str(s or ""), quote=True)
     area = l.get("area") or "the area"; tr = (l.get("trade") or "").strip().lower()
-    hero = f"{hero_base}/hero-{(tr if tr in trades.T else 'default').replace(' ', '-')}.jpg"
+    base = (tr if tr in trades.T else 'default').replace(' ', '-')
+    opts = [f"hero-{base}.jpg"] + [f"hero-{base}-{k}.jpg" for k in (2, 3) if os.path.exists(os.path.join(IMGDIR, f"hero-{base}-{k}.jpg"))]
+    hero = f"{hero_base}/{opts[int(l.get('id') or 0) % len(opts)]}"
     rv = int(l.get("reviews") or 0); rt = float(l.get("rating") or 0); good = rv >= 8 and rt >= 4.3
     stars = f'<div class="stars"><b>★★★★★</b> {rt:.1f} on Google, {rv} reviews</div>' if good else ""
     proof = PROOF.format(rt=f"{rt:.1f}", rv=rv) if good else ""
@@ -154,6 +157,7 @@ def page(l, hero_base):
 
 if __name__ == "__main__":
     leads = json.load(open(sys.argv[1])); out = sys.argv[2]; base = sys.argv[3]; done = []
+    IMGDIR = os.path.join(out, "_img")
     for l in leads:
         if l["name"] == l["name"].lower() or (l["name"] == l["name"].upper() and len(l["name"]) > 5): l["name"] = l["name"].title()
         s = l.get("slug") or slug(f"{l['name']}-{l.get('area') or ''}") or str(l["id"])
